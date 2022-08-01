@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   lib42.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/04/01 01:18:23 by flcarval          #+#    #+#             */
+/*   Updated: 2022/08/01 15:16:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#ifndef LIB42_H
+# define LIB42_H
 
-int	main(int ac, char **av, char **envp)
-{
-	t_game	game;
+# include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
-}
+char	*ft_strndup(char *str, int n);
+
+#endif

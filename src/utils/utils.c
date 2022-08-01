@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/08/01 14:58:58 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/08/01 15:33:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av, char **envp)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_game	game;
-
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	while (*s1 != '\0' && *s2 != '\0')
+	{
+		if (*s1 != *s2)
+			break ;
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

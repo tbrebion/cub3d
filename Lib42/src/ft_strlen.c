@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/11/22 12:35:32 by flcarval          #+#    #+#             */
+/*   Updated: 2022/04/01 01:34:42 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	main(int ac, char **av, char **envp)
+int	ft_strlen(char *str)
 {
-	t_game	game;
+	int	i;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/11/22 12:34:40 by flcarval          #+#    #+#             */
+/*   Updated: 2022/04/01 19:32:46 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	main(int ac, char **av, char **envp)
+void	*ft_memset(void *b, int c, int len)
 {
-	t_game	game;
+	int				i;
+	unsigned char	*str;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	str = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+	{
+		str[i] = c;
+		i++;
+	}
+	b = str;
+	return (b);
 }

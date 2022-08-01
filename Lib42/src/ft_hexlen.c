@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_hexlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/12/14 19:03:11 by flcarval          #+#    #+#             */
+/*   Updated: 2021/12/15 18:00:03 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
-int	main(int ac, char **av, char **envp)
+int	ft_hexlen(unsigned long int nb)
 {
-	t_game	game;
+	int	len;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	len = 0;
+	while (nb > 15)
+	{
+		nb /= 16;
+		len++;
+	}
+	len++;
+	return (len);
 }

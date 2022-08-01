@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/11/26 18:54:43 by flcarval          #+#    #+#             */
+/*   Updated: 2022/04/01 01:17:41 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	main(int ac, char **av, char **envp)
+int	ft_lstsize(t_list *lst)
 {
-	t_game	game;
+	t_list	*count;
+	int		i;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	count = lst;
+	i = 0;
+	while (count != NULL)
+	{
+		count = count->next;
+		i++;
+	}
+	return (i);
 }

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/12/14 13:57:50 by flcarval          #+#    #+#             */
+/*   Updated: 2021/12/15 18:03:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
-int	main(int ac, char **av, char **envp)
+int	ft_nblen(int nb)
 {
-	t_game	game;
+	int	i;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	i = 0;
+	if (nb < 0)
+		i++;
+	if (nb == 0)
+		return (1);
+	while (nb != 0)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }

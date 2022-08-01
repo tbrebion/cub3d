@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:00:13 by tbrebion         ###   ########.fr       */
+/*   Created: 2021/12/07 18:30:06 by flcarval          #+#    #+#             */
+/*   Updated: 2022/04/01 01:17:41 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	main(int ac, char **av, char **envp)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_game	game;
+	t_list	*last;
 
-	(void)envp;
-	check_and_init(ac, av, &game);
-	return (0);
+	if (alst)
+	{
+		if (*alst == NULL)
+			*alst = new;
+		else
+		{
+			last = ft_lstlast(*alst);
+			last->next = new;
+		}
+	}
 }
