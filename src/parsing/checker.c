@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:17:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:33:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ static void	print_map(char **map)
 
 	i = -1;
 	while(map[++i])
-		printf("%s\n", map[i]);
+		printf("%s", map[i]);
 }

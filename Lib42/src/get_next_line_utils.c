@@ -6,11 +6,11 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:11:53 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:26:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:32:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
 
 int	ft_strlen(char *str)
 {

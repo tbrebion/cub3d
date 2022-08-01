@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:20:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:45:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct	s_game
 	char	**map;
 }	t_game;
 
+typedef struct	s_garbage
+{
+	void	*content;
+	void	*next;
+}	t_garbage;
+
+extern t_data	g_data;
 
 //////////////
 // CHECKER x INIT 
