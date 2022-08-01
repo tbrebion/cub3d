@@ -1,0 +1,122 @@
+==185186== Memcheck, a memory error detector
+==185186== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==185186== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==185186== Command: ./bin/cub3d Maps/map1.cub
+==185186== Parent PID: 131965
+==185186== 
+==185186== Invalid read of size 1
+==185186==    at 0x4016F3: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x40148B: save_map (save_map.c:45)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Address 0x4c090b0 is 0 bytes after a block of size 32 alloc'd
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401A66: ft_strjoin (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40166F: ft_read (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401926: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x40148B: save_map (save_map.c:45)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== Conditional jump or move depends on uninitialised value(s)
+==185186==    at 0x4016F8: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x40148B: save_map (save_map.c:45)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Uninitialised value was created by a heap allocation
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401861: clear_stat (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401962: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x40148B: save_map (save_map.c:45)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== Invalid read of size 1
+==185186==    at 0x4016F3: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x401497: save_map (save_map.c:46)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Address 0x4c0e5d0 is 0 bytes after a block of size 32 alloc'd
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401A66: ft_strjoin (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40166F: ft_read (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401926: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x401497: save_map (save_map.c:46)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== Conditional jump or move depends on uninitialised value(s)
+==185186==    at 0x4016F8: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x401497: save_map (save_map.c:46)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Uninitialised value was created by a heap allocation
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401861: clear_stat (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401962: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4015A2: count_lines (save_map.c:28)
+==185186==    by 0x401497: save_map (save_map.c:46)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== Invalid read of size 1
+==185186==    at 0x4016F3: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4014EE: save_map (save_map.c:52)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Address 0x4c13b60 is 0 bytes after a block of size 32 alloc'd
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401A66: ft_strjoin (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40166F: ft_read (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401926: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4014EE: save_map (save_map.c:52)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== Conditional jump or move depends on uninitialised value(s)
+==185186==    at 0x4016F8: parse_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x40194F: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4014EE: save_map (save_map.c:52)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186==  Uninitialised value was created by a heap allocation
+==185186==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185186==    by 0x401861: clear_stat (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x401962: get_next_line (in /mnt/nfs/homes/tbrebion/Desktop/Github/cub3d/bin/cub3d)
+==185186==    by 0x4014EE: save_map (save_map.c:52)
+==185186==    by 0x4013F8: init_map (checker.c:49)
+==185186==    by 0x40130B: check_and_init (checker.c:23)
+==185186==    by 0x4011B9: main (cub3d.c:20)
+==185186== 
+==185186== 
+==185186== HEAP SUMMARY:
+==185186==     in use at exit: 0 bytes in 0 blocks
+==185186==   total heap usage: 45 allocs, 45 frees, 58,949 bytes allocated
+==185186== 
+==185186== All heap blocks were freed -- no leaks are possible
+==185186== 
+==185186== For lists of detected and suppressed errors, rerun with: -s
+==185186== ERROR SUMMARY: 12 errors from 6 contexts (suppressed: 0 from 0)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 17:30:30 by flcarval          #+#    #+#             */
-/*   Updated: 2022/04/01 19:19:26 by flcarval         ###   ########.fr       */
+/*   Created: 2021/12/17 17:11:53 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/08/01 18:26:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/get_next_line.h"
+#include "get_next_line.h"
 
 int	ft_strlen(char *str)
 {
@@ -22,12 +22,14 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_nl(char *str)
+int	ft_return(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str && str[i])
+	if (!str)
+		return (0);
+	while (str[i])
 	{
 		if (str[i] == '\n')
 			return (1);
@@ -38,29 +40,24 @@ int	is_nl(char *str)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*res;
 	int		i;
 	int		j;
+	int		k;
+	char	*res;
 
-	if (!s2)
-		return (NULL);
-	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!res)
-		return (NULL);
 	i = 0;
 	j = 0;
+	k = 0;
+	if (!s2)
+		return (NULL);
+	res = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (res == NULL)
+		return (NULL);
 	while (s1 && s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
+		res[k++] = s1[i++];
 	while (s2[j])
-	{
-		res[i] = s2[j];
-		i++;
-		j++;
-	}
-	res[i] = '\0';
+		res[k++] = s2[j++];
+	res[k] = '\0';
 	free(s1);
 	return (res);
 }

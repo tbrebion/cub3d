@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:37:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:33:31 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:16:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	count_lines(char **av)
 	char	*line;
 	int		fd;
 
-	fd = 0;
 	line = "ok";
 	i = -1;
 	fd = open(av[1], O_RDONLY);
@@ -35,37 +34,35 @@ static int	count_lines(char **av)
 	return (i);
 }
 
-char	*line_map(char **av)
+char	**save_map(char **av)
 {
 	int		fd;
-	char	*line;
-	char	*save;
+	char	**save;
 	int		i;
 	int		j;
 
-	fd = 0;
 	i = 0;
 	j = count_lines(av);
-	save = NULL;
-	line = " ";
+	save = malloc(sizeof(char *) * (count_lines(av) + 1));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	while (i < j)
 	{
-		line = get_next_line(fd);
-		save = ft_strjoin(save, line);
-		free(line);
+		save[i] = get_next_line(fd);
 		i++;
 	}
+	save[i] = NULL;
 	close(fd);
 	return (save);
 }
 
-char	**save_map(char *save)
-{
-	char	**ret;
+// char	**save_map(char *save)
+// {
+// 	char	**ret;
 
-	ret = ft_split(save, '\n');
-	return (ret);
-}
+// 	if (!save)
+// 		return (NULL);
+// 	ret = ft_split(save, '\n');
+// 	return (ret);
+// }

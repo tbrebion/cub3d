@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 15:16:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:20:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,21 @@
 
 typedef struct	s_game
 {
-	char	*l_map;
 	char	**map;
 }	t_game;
+
 
 //////////////
 // CHECKER x INIT 
 //////////////
 void	check_and_init(int ac, char **av, t_game *game);
-void	check_arg(int ac, char **av);
-char	*line_map(char **av);
-char	**save_map(char *save);
+char	**save_map(char **av);
+
 
 //////////////
 // UTILS
 //////////////
 int	ft_strcmp(const char *s1, const char *s2);
-
-void	print_map(char **map);
+void	free_split(char **spl);
 
 #endif

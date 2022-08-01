@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 17:02:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:26:26 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/13 16:23:11 by flcarval          #+#    #+#             */
+/*   Updated: 2022/08/01 18:20:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../include/cub3d.h"
 
-# include<unistd.h>
-# include<stdlib.h>
+void	free_split(char **spl)
+{
+	int	i;
 
-# define BUFFER_SIZE 1
-
-char	*get_next_line(int fd);
-char	*get_save(int fd, char *left_str);
-char	*get_line(char *str);
-char	*new_str(char *str);
-int		ft_return(char *str);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlen(char *str);
-
-#endif
+	i = 0;
+	if (!spl)
+		return ;
+	while (spl[i])
+	{
+		free(spl[i]);
+		i++;
+	}
+	free(spl);
+	spl = NULL;
+}

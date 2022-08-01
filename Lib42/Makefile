@@ -6,7 +6,7 @@
 #    By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/07 18:31:06 by flcarval          #+#    #+#              #
-#    Updated: 2022/08/01 15:18:15 by tbrebion         ###   ########.fr        #
+#    Updated: 2022/08/01 16:42:21 by tbrebion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJ_B = ${BONUSES:.c=.o}
 OBJ_GNL = ${GNL:.c=.o}
 OBJ = $(OBJ_GNL) $(OBJ_B) $(OBJ_M)
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g3
 
 all: $(NAME) clean
 
