@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:23:11 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/01 18:20:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/02 12:31:05 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	free_split(char **spl)
+void	free_split(char **spl, int free_spl)
 {
 	int	i;
 
@@ -24,6 +24,7 @@ void	free_split(char **spl)
 		free(spl[i]);
 		i++;
 	}
-	free(spl);
+	if (free_spl)
+		free(spl);
 	spl = NULL;
 }

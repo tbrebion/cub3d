@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/02 12:22:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/02 12:31:15 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**save_map(char **av);
 // UTILS
 //////////////
 int		ft_strcmp(const char *s1, const char *s2);
-void	free_split(char **spl);
+void	free_split(char **spl, int free_spl);
 
 //////////////
 // GARBAGE COLLECTOR
