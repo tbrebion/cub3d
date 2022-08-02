@@ -23,7 +23,6 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		src/parsing/checker_map.c           	\
-		src/parsing/add_spaces.c            	\
 		src/parsing/checker_init_map.c      	\
 		src/parsing/save_map.c              	\
 
