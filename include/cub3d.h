@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:45:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/02 12:22:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ typedef struct	s_game
 	char	**map;
 }	t_game;
 
-typedef struct	s_garbage
+typedef struct	s_data
 {
-	void	*content;
-	void	*next;
-}	t_garbage;
+	t_game	game;
+	t_list	**garbage;
+}	t_data;
 
 extern t_data	g_data;
 
 //////////////
-// CHECKER x INIT 
+// CHECKER x INIT
 //////////////
 void	check_and_init(int ac, char **av, t_game *game);
 char	**save_map(char **av);
@@ -45,7 +45,14 @@ char	**save_map(char **av);
 //////////////
 // UTILS
 //////////////
-int	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 void	free_split(char **spl);
+
+//////////////
+// GARBAGE COLLECTOR
+//////////////
+void	*garcol_add(void *var, size_t size);
+void	garcol_free_all(void);
+
 
 #endif
