@@ -6,23 +6,30 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/01 18:33:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:39:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	check_arg(int ac, char **av);
-static void	init_map(t_game *game, char **av);
-// static int	check_char_map(t_game *game);
+static int	is_good_char(char c);
+static int	check_char_map(void);
 static void	print_map(char **map);
 
-void	check_and_init(int ac, char **av, t_game *game)
+
+void	check_and_init(int ac, char **av)
 {
 	check_arg(ac, av);
-	init_map(game, av);
-	print_map(game->map);
-	
+	g_data.game.map = save_map(av);
+	g_data.game.max_len = 0;
+	if (check_char_map() || checker_map())
+	{
+		printf("Map Error\n");
+		free_split(g_data.game.map, 1);
+		exit(EXIT_FAILURE);
+	}
+	print_map(g_data.game.map);
 }
 
 static void	check_arg(int ac, char **av)
@@ -44,35 +51,44 @@ static void	check_arg(int ac, char **av)
 	}
 }
 
-static void	init_map(t_game *game, char **av)
+static int	check_char_map(void)
 {
-	game->map = save_map(av);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while(g_data.game.map[i])
+	{
+		while (g_data.game.map[i][j])
+		{
+			if (is_good_char(g_data.game.map[i][j]))
+				return (1);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
 }
 
-// static int	check_char_map(t_game *game)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while(game->l_map[i])
-// 	{
-// 		if (game->l_map[i] != '0' && game->l_map[i] != '1' \
-// 		&& game->l_map[i] != 'N' && game->l_map[i] != 'S' \
-// 		&& game->l_map[i] != 'E' && game->l_map[i] != 'W' && game->l_map[i] != ' ')
-// 		{
-// 			printf("Map Error\n");
-// 			return (1);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
+static int	is_good_char(char c)
+{
+	if (c != '0' && c != '1' \
+		&& c != 'N' && c != 'S' \
+		&& c != 'E' && c != 'W' \
+		&& c != ' ')
+		return (1);
+	return (0);
+}
 
 static void	print_map(char **map)
 {
 	int	i;
 
 	i = -1;
+	printf("////////////////////////////\n");
 	while(map[++i])
-		printf("%s", map[i]);
+		printf("%s1\n", map[i]);
+	printf("////////////////////////////\n");
 }

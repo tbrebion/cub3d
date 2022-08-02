@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/02 12:31:15 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:38:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 typedef struct	s_game
 {
+	int		max_len;
 	char	**map;
 }	t_game;
 
@@ -38,9 +39,9 @@ extern t_data	g_data;
 //////////////
 // CHECKER x INIT
 //////////////
-void	check_and_init(int ac, char **av, t_game *game);
+void	check_and_init(int ac, char **av);
 char	**save_map(char **av);
-
+int		checker_map(void);
 
 //////////////
 // UTILS
