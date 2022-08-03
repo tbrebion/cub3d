@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:37:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 10:49:19 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 12:43:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**save_map(char **av)
 	return (save);
 }
 
-static int	count_lines(char **av)
+static int	count_map_lines(char **av)
 {
 	int		i;
 	char	*line;

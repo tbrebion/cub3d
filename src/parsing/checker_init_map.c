@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 11:10:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 12:42:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ static void	print_map(char **map);
 void	check_and_init(int ac, char **av)
 {
 	check_arg(ac, av);
-	g_data.game.map = save_map(av);
+	g_data.game.file = save_file(av);
+	// g_data.game.map = save_map(av);
 	g_data.game.max_len = 0;
-	if (!g_data.game.map || checker_map())
-	{
-		printf("Map Error\n");
-		free_split(g_data.game.map, 1);
-		exit(EXIT_FAILURE);
-	}
-	print_map(g_data.game.map);
+	// if (!g_data.game.map || checker_map())
+	// {
+	// 	printf("Map Error\n");
+	// 	free_split(g_data.game.map, 1);
+	// 	exit(EXIT_FAILURE);
+	// }
+	printf("FILE:\n");
+	print_map(g_data.game.file);
+	printf("MAP:\n");
+	print_map(g_data.game.file);
 }
 
 static void	check_arg(int ac, char **av)
@@ -55,6 +59,6 @@ static void	print_map(char **map)
 	i = -1;
 	printf("///////////////////////////////////////////////////////////////////////////////////\n");
 	while(map[++i])
-		printf("%s1\n", map[i]);
-	printf("///////////////////////////////////////////////////////////////////////////////////\n");
+		printf("%s", map[i]);
+	printf("\n///////////////////////////////////////////////////////////////////////////////////\n");
 }

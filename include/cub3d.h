@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 11:08:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 12:28:40 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_game
 {
 	int		max_len;
 	char	**map;
+	char	**file;
 }	t_game;
 
 typedef struct	s_data
@@ -40,6 +41,7 @@ extern t_data	g_data;
 // CHECKER x INIT
 //////////////
 void	check_and_init(int ac, char **av);
+char	**save_file(char **av);
 char	**save_map(char **av);
 int		checker_map(void);
 int		first_line_map(char *str);
