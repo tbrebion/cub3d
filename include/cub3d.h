@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/02 18:38:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:08:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ extern t_data	g_data;
 void	check_and_init(int ac, char **av);
 char	**save_map(char **av);
 int		checker_map(void);
+int		first_line_map(char *str);
+int		start_saving_map(int fd, char **av);
 
 //////////////
 // UTILS

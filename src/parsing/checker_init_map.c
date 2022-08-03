@@ -6,16 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 10:02:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:10:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	check_arg(int ac, char **av);
-static int	is_good_char(char c);
-static int	check_char_map(void);
-static	int	check_player(void);
 static void	print_map(char **map);
 
 void	check_and_init(int ac, char **av)
@@ -23,7 +20,7 @@ void	check_and_init(int ac, char **av)
 	check_arg(ac, av);
 	g_data.game.map = save_map(av);
 	g_data.game.max_len = 0;
-	if (!g_data.game.map || check_char_map() || checker_map() || check_player() != 1)
+	if (!g_data.game.map || checker_map())
 	{
 		printf("Map Error\n");
 		free_split(g_data.game.map, 1);
@@ -49,61 +46,6 @@ static void	check_arg(int ac, char **av)
 		printf("Error\nfile must be \"<name>.cub\" !\n");
 		exit(-1);
 	}
-}
-
-static int	check_char_map(void)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while(g_data.game.map[i])
-	{
-		while (g_data.game.map[i][j])
-		{
-			if (is_good_char(g_data.game.map[i][j]))
-				return (1);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (0);
-}
-
-static int	is_good_char(char c)
-{
-	if (c != '0' && c != '1' \
-		&& c != 'N' && c != 'S' \
-		&& c != 'E' && c != 'W' \
-		&& c != ' ')
-		return (1);
-	return (0);
-}
-
-static	int	check_player(void)
-{
-	int	i;
-	int	j;
-	int	player;
-
-	i = 0;
-	j = 0;
-	player = 0;
-	while (g_data.game.map[i])
-	{
-		while (g_data.game.map[i][j])
-		{
-			if (g_data.game.map[i][j] == 'N' || g_data.game.map[i][j] == 'S' \
-			|| g_data.game.map[i][j] == 'E' || g_data.game.map[i][j] == 'W')
-				player++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (player);
 }
 
 static void	print_map(char **map)
