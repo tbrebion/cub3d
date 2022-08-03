@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:33:55 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/02 16:48:04 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:04:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ static int	check_proximity(int i, int j)
 			return (0);
 	}
 	return (0);
+}
+
+int	begin_map(void)	
+{
+
 }

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/02 19:44:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:02:27 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_and_init(int ac, char **av)
 	check_arg(ac, av);
 	g_data.game.map = save_map(av);
 	g_data.game.max_len = 0;
-	if (check_char_map() || checker_map() || check_player() != 1)
+	if (!g_data.game.map || check_char_map() || checker_map() || check_player() != 1)
 	{
 		printf("Map Error\n");
 		free_split(g_data.game.map, 1);
@@ -111,8 +111,8 @@ static void	print_map(char **map)
 	int	i;
 
 	i = -1;
-	printf("////////////////////////////\n");
+	printf("///////////////////////////////////////////////////////////////////////////////////\n");
 	while(map[++i])
 		printf("%s1\n", map[i]);
-	printf("////////////////////////////\n");
+	printf("///////////////////////////////////////////////////////////////////////////////////\n");
 }
