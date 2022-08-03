@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:05:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 15:27:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:55:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	maps_begin(char *str)
 		else
 			return (0);
 	}
-	if (one == 0)
+	if (one < 3)
 		return (0);
 	return (1);
 }
