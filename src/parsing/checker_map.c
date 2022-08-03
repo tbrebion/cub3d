@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:33:55 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 11:08:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:22:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	check_proximity(int i, int j)
 		if (!(g_data.game.map[i + 1][j]) || !(g_data.game.map[i][j + 1])
 		|| !(g_data.game.map[i - 1][j]) || !(g_data.game.map[i][j - 1]))
 			return (1);
-		else if (g_data.game.map[i + 1][j] == ' ' || g_data.game.map[i][j + 1] == ' '
+		if (g_data.game.map[i + 1][j] == ' ' || g_data.game.map[i][j + 1] == ' '
 		|| g_data.game.map[i - 1][j] == ' ' || g_data.game.map[i][j - 1] == ' ')
 			return (1);
 		else
@@ -73,7 +73,7 @@ static int	check_char_map(void)
 
 	i = 0;
 	j = 0;
-	while(g_data.game.map[i])
+	while (g_data.game.map[i])
 	{
 		while (g_data.game.map[i][j])
 		{
@@ -86,7 +86,6 @@ static int	check_char_map(void)
 	}
 	return (0);
 }
-
 
 static int	check_player(void)
 {

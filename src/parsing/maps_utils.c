@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:05:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 15:55:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:25:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	first_map_line(char **file)
 
 static int	maps_begin(char *str)
 {
-	int i;
+	int	i;
 	int	one;
 
 	i = 0;
 	one = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '1')
 		{

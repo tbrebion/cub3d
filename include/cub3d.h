@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 13:06:58 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:15:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int		first_map_line(char **file);
 int		checker_map(void);
 int		first_line_map(char *str);
 int		start_saving_map(int fd, char **av);
+void	del_last_backslash_n(char *str);
+char	*add_end_spaces(char *str);
+char	*save_map_loop(char **save, char **file, int k, int i);
 
 //////////////
 // UTILS
