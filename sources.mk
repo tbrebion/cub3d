@@ -25,6 +25,7 @@ SOURCES		+=                           		\
 		src/parsing/checker_map.c           	\
 		src/parsing/checker_init_map.c      	\
 		src/parsing/save_file.c             	\
+		src/parsing/maps_utils.c            	\
 		src/parsing/save_map.c              	\
 
 

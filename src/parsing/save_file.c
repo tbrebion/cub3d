@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:20:51 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 12:34:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:46:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	**save_file(char **av)
 	save = malloc(sizeof(char *) * (count_file_lines(av) + 1));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
+	{
+		free(save);
 		return (NULL);
+	}
 	while (i < j)
 	{
 		save[i] = get_next_line(fd);

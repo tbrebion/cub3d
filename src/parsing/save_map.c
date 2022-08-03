@@ -6,70 +6,58 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:37:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 12:43:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:48:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	del_last_backslash_n(char *str);
-static int	count_lines(char **av);
+static int	count_map_lines(char **file);
 static char	*get_spaces_lines(int n, char **save);
 static char	*add_end_spaces(char *str);
 
-char	**save_map(char **av)
+char	**save_map(char **file)
 {
-	int		fd;
 	char	**save;
 	char	*tmp;
 	char	*tmp1;
 	int		i;
 	int		j;
+	int		k;
 
 	i = 1;
-	j = count_lines(av) + 1;
-	save = malloc(sizeof(char *) * (count_lines(av) + 3));
+	k = first_map_line(file);
+	j = (count_map_lines(file) - k) + 1;
+	save = malloc(sizeof(char *) * (j + 3));
 	save[0] = get_spaces_lines(0, save);
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		return (NULL);
 	while (i < j)
 	{
-		tmp1 = get_next_line(fd);
+		tmp1 = ft_strdup(file[k]);
 		tmp =  ft_strjoin(ft_strdup(" "), tmp1);
 		free(tmp1);
 		del_last_backslash_n(tmp);
 		save[i] = add_end_spaces(tmp);
 		i++;
+		k++;
 	}
 	save[i] = get_spaces_lines(i, save);
 	i++;
 	save[i] = NULL;
-	close(fd);
 	return (save);
 }
 
-static int	count_map_lines(char **av)
+static int	count_map_lines(char **file)
 {
-	int		i;
-	char	*line;
-	int		fd;
+	int	i;
 
-	line = "ok";
-	i = -1;
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		return (0);
-	while (line)
+	i = 0;
+	while (file[i])
 	{
-		line = get_next_line(fd);
-		if (ft_strlen(line) > g_data.game.max_len)
-			g_data.game.max_len = ft_strlen(line);
-		free(line);
+		if (ft_strlen(file[i]) > g_data.game.max_len)
+			g_data.game.max_len = ft_strlen(file[i]);
 		i++;
 	}
-	free(line);
-	close(fd);
 	return (i);
 }
 

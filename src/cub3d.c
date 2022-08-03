@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 12:41:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:13:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ac, char **av, char **envp)
 	(void)envp;
 	check_and_init(ac, av);
 	free_split(g_data.game.file, 1);
+	free_split(g_data.game.map, 1);
 	return (0);
 }
 
