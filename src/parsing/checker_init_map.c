@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 16:29:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 15:44:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	check_and_init(int ac, char **av)
 		printf("INVALID FILE\n");
 		exit(EXIT_FAILURE);
 	}
-	g_data.game.map = save_map(g_data.game.file);
 	g_data.game.max_len = 0;
-	if (!g_data.game.file || checker_map())
+	g_data.game.map = save_map(g_data.game.file);
+	if (!g_data.game.map || checker_map())
 	{
 		printf("MAP ERROR\n");
 		free_split(g_data.game.map, 1);
