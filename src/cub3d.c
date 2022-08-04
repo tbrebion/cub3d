@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/04 16:35:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 16:50:38 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(int ac, char **av, char **envp)
 {
 	(void)envp;
 	check_and_init(ac, av);
-	free_split(g_data.game.file, 1);
-	free_split(g_data.game.map, 1);
+	garcol_free_all();
 	return (0);
 }
 
@@ -65,6 +64,6 @@ int	main(int ac, char **av, char **envp)
 // 	printf("%s%s%s", str_tab[0], str_tab[1], str_tab[2]);
 // 	//////////////////////////////////////////////////////////
 // 	garcol_free_all();
-// 	free(g_data.garbage);
+//	// free(g_data.garbage);
 // 	return (0);
-}
+// }

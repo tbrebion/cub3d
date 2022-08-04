@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:37:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 16:27:04 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:01:52 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	**save_map(char **file)
 	k = first_map_line(file);
 	j = (count_map_lines(file) - k) + 1;
 	save = malloc(sizeof(char *) * (j + 3));
+	garcol_add(save);
 	save[0] = get_spaces_lines(0, save);
 	while (i < j)
 	{
@@ -59,6 +60,7 @@ static char	*get_spaces_lines(int n, char **save)
 
 	i = 0;
 	save[n] = malloc(g_data.game.max_len + 3);
+	garcol_add(save[n]);
 	while (i <= g_data.game.max_len)
 	{
 		save[n][i] = ' ';
@@ -91,5 +93,6 @@ char	*add_end_spaces(char *str)
 	prev_len = ft_strlen(str);
 	while (i++ <= (g_data.game.max_len - prev_len) + 1)
 		str = ft_strjoin(str, " ");
+	garcol_add(str);
 	return (str);
 }

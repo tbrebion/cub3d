@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 16:15:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:00:25 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_split(char **spl, int free_spl);
 //////////////
 // GARBAGE COLLECTOR
 //////////////
-void	*garcol_add(void *var, size_t size);
+void	garcol_add(void *var);
 void	garcol_free_all(void);
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_init_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/04 15:44:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:05:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ static void	print_file(char **file);
 void	check_and_init(int ac, char **av)
 {
 	check_arg(ac, av);
+	g_data.garbage = malloc(sizeof(t_list *));
+	*g_data.garbage = NULL;
 	g_data.game.file = save_file(av);
 	if (!g_data.game.file)
 	{
 		printf("INVALID FILE\n");
+		garcol_free_all();
 		exit(EXIT_FAILURE);
 	}
 	g_data.game.max_len = 0;
@@ -30,8 +33,7 @@ void	check_and_init(int ac, char **av)
 	if (!g_data.game.map || checker_map())
 	{
 		printf("MAP ERROR\n");
-		free_split(g_data.game.map, 1);
-		free_split(g_data.game.file, 1);
+		garcol_free_all();
 		exit(EXIT_FAILURE);
 	}
 	printf("\n\nFILE:\n\n");

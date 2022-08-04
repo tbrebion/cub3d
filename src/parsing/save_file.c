@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:20:51 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 15:46:35 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:04:00 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	**save_file(char **av)
 	i = 0;
 	j = count_file_lines(av);
 	save = malloc(sizeof(char *) * (count_file_lines(av) + 1));
+	garcol_add(save);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -33,6 +34,7 @@ char	**save_file(char **av)
 	while (i < j)
 	{
 		save[i] = get_next_line(fd);
+		garcol_add(save[i]);
 		i++;
 	}
 	save[i] = NULL;
