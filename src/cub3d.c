@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/04 16:20:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/04 16:35:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ int	main(int ac, char **av, char **envp)
 // 	str[i] = '\0';
 // 	printf("str = [%s]\n", str);
 // 	/////////////////////////////////////////////////////////
+// 	str = garcol_add(str, 4096);
+// 	i = 0;
+// 	char	*abc = "abcdefg";
+// 	while (abc[i])
+// 	{
+// 		str[i] = abc[i];
+// 		i++;
+// 	}
+// 	str[i] = '\0';
+// 	printf("str = [%s]\n", str);
+// 	/////////////////////////////////////////////////////////
 // 	char	**str_tab;
 // 	str_tab = NULL;
 // 	str_tab = garcol_add(str_tab, sizeof(char *) * 3);
@@ -56,4 +67,4 @@ int	main(int ac, char **av, char **envp)
 // 	garcol_free_all();
 // 	free(g_data.garbage);
 // 	return (0);
-// }
+}
