@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/04 17:00:25 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:23:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@
 #include <math.h>
 #include "../minilibx-linux/mlx.h"
 #include "../Lib42/include/lib42.h"
+
+typedef struct	s_mlx
+{
+	void	*mlx_ptr;
+}	t_mlx;
+
+typedef struct	s_win
+{
+	void	*win_ptr;
+	int		x;
+	int		y;
+}	t_win;
 
 typedef struct	s_game
 {
