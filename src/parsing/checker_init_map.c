@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/08 19:23:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:48:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	check_and_init(int ac, char **av)
 		garcol_free_all();
 		exit(EXIT_FAILURE);
 	}
-	////////////////////////////////////
+	///////////////////////
 	printf("\n\nFILE:\n\n");
 	print_file(g_data.game.file);
 	printf("\n\nMAP:\n\n");
 	print_map(g_data.game.map);
-	///////////////////////////////////////
+	//////////////////////////////
 }
 
 static void	check_arg(int ac, char **av)
