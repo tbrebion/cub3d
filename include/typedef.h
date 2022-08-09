@@ -6,9 +6,10 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 17:29:28 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:01:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
@@ -41,6 +42,10 @@ typedef struct	s_game
 	int		max_len;
 	char	**map;
 	char	**file;
+	int				max_len;
+	char			**map;
+	char			**file;
+	t_game_params	params;
 }	t_game;
 
 typedef struct	s_data
