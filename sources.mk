@@ -23,8 +23,8 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		src/parsing/checker_map.c           	\
-		src/parsing/checker_init_map.c      	\
 		src/parsing/save_map_loop.c         	\
+		src/parsing/check_init_file.c       	\
 		src/parsing/save_file.c             	\
 		src/parsing/maps_utils.c            	\
 		src/parsing/save_map.c              	\
@@ -34,5 +34,11 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		src/render/render.c                 	\
+
+
+## SRC/TEST ##
+
+SOURCES		+=                           		\
+		src/TEST/test.c                     	\
 
 

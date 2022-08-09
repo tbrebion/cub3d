@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_init_map.c                                 :+:      :+:    :+:   */
+/*   check_init_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/08 19:48:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/09 16:15:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_arg(int ac, char **av);
 static void	print_map(char **map);
 static void	print_file(char **file);
 
-void	check_and_init(int ac, char **av)
+void	check_init_file(int ac, char **av)
 {
 	check_arg(ac, av);
 	g_data.garbage = malloc(sizeof(t_list *));
