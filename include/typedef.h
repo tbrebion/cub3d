@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:37 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:29:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ typedef struct	s_win
 	int		x;
 	int		y;
 }	t_win;
+
+typedef struct	s_game_params
+{
+	char	*NO_path;
+	char	*SO_path;
+	char	*WE_path;
+	char	*EA_path;
+	int		colors[3];
+}	t_game_params;
 
 typedef struct	s_game
 {

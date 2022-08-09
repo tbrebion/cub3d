@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:46 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:17:03 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	free_split(char **spl, int free_spl);
 // GARBAGE COLLECTOR
 //////////////
 void	garcol_add(void *var);
+char	**garcol_split(char *str, char lim);
 void	garcol_free_all(void);
 
 #endif

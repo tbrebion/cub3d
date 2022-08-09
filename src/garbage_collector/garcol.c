@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:29:15 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/04 16:58:58 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:16:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 void	garcol_add(void *var)
 {
 	ft_lstadd_back(g_data.garbage, ft_lstnew(var));
+}
+
+char	**garcol_split(char *str, char lim)
+{
+	char	**split;
+	int		i;
+
+	split = ft_split(str, lim);
+	if (!split)
+		return (NULL);
+	garcol_add(split);
+	i = 0;
+	while (split[i])
+	{
+		garcol_add(split[i]);
+		i++;
+	}
+	return (split);
 }
 
 void	garcol_free_all(void)
