@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 19:19:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:51:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	get_game_params(void)
 	i = 0;
 	while (header[i])
 	{
-		///////////////////////////////
-		printf("here\n");
-		///////////////////////////////
 		if (detect_param(header[i]))
 			param_handler(garcol_split(header[i], ' ')[1], detect_param(header[i]));
 		i++;
@@ -55,9 +52,6 @@ static char	**get_header(void)
 	{
 		header[j] = ft_strdup(g_data.game.file[j]);
 		garcol_add(header[j]);
-		///////////////////////////////
-		printf("header[%d] = %s\n", j, header[j]);
-		///////////////////////////////
 		j++;
 	}
 	header[j] = NULL;
@@ -86,14 +80,20 @@ static int	detect_param(char *str)
 static int	is_only_ones(char *str)
 {
 	int	i;
+	int	p;
 
 	i = 0;
+	p = 0;
 	while (str[i])
 	{
+		if (str[i] == '1')
+			p = 1;
 		if (!(str[i] == '1' || str[i] == ' ' || str[i] == '\n'))
 			return (0);
 		i++;
 	}
+	if (!p)
+		return (0);
 	return (1);
 }
 

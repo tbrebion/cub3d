@@ -41,6 +41,7 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		src/utils/free_split.c              	\
+		src/utils/is_empty_str.c            	\
 		src/utils/utils.c                   	\
 
 

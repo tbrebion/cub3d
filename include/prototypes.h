@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 18:33:59 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:20:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	F_handler(char *str);
 //////////////
 int		ft_strcmp(const char *s1, const char *s2);
 void	free_split(char **spl, int free_spl);
+int		is_empty_str(char *str);
 
 //////////////
 // GARBAGE COLLECTOR
