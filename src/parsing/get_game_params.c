@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 18:02:14 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:05:01 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 #include "../../include/cub3d.h"
 
 static int	detect_param(char *str);
-
-int	get_game_params()
-{
-	int	i;
-
-	i = 0;
-
-	return (0);
-}
-
 static int	is_only_ones(char *str);
 static char	**get_header(void);
 
@@ -32,7 +22,7 @@ int	get_game_params()
 	char	**header;
 
 	header = get_header();
-
+	
 	return (0);
 }
 
@@ -43,7 +33,7 @@ static char	**get_header(void)
 	char	**header;
 
 	i = 0;
-	while (/*pas que des '1'*/ !is_only_ones(g_data.game.file[i]))
+	while (!is_only_ones(g_data.game.file[i]))
 		i++;
 	header = malloc(sizeof(char *) * i);
 	if (!header)
