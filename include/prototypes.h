@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 17:17:03 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:33:59 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ int		start_saving_map(int fd, char **av);
 void	del_last_backslash_n(char *str);
 char	*add_end_spaces(char *str);
 char	*save_map_loop(char **save, char **file, int k, int i);
+int		get_game_params(void);
+void	NO_handler(char *str);
+void	SO_handler(char *str);
+void	WE_handler(char *str);
+void	EA_handler(char *str);
+void	F_handler(char *str);
 
 //////////////
 // UTILS

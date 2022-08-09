@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 18:01:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:03:48 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ typedef struct	s_game_params
 
 typedef struct	s_game
 {
-	int		max_len;
-	char	**map;
-	char	**file;
 	int				max_len;
 	char			**map;
 	char			**file;
