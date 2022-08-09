@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_game_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:23 by flcarval         ###   ########.fr       */
+/*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
+/*   Updated: 2022/08/09 16:21:46 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../include/cub3d.h"
 
-# include "dependencies.h"
-# include "prototypes.h"
-# include "typedef.h"
 
-extern t_data	g_data;
-
-#endif

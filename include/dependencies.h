@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   dependencies.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:23 by flcarval         ###   ########.fr       */
+/*   Created: 2022/08/09 16:33:27 by flcarval          #+#    #+#             */
+/*   Updated: 2022/08/09 16:35:39 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef DEPENDENCIES_H
+# define DEPENDENCIES_H
 
-# include "dependencies.h"
-# include "prototypes.h"
-# include "typedef.h"
-
-extern t_data	g_data;
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <math.h>
+# include "../minilibx-linux/mlx.h"
+# include "../Lib42/include/lib42.h"
 
 #endif
