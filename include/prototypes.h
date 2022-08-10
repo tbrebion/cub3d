@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 20:20:11 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/10 15:32:02 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,10 @@ int		is_empty_str(char *str);
 void	garcol_add(void *var);
 char	**garcol_split(char *str, char lim);
 void	garcol_free_all(void);
+
+////////////////
+// MLX
+////////////////
+void	init_mlx(void);
 
 #endif
