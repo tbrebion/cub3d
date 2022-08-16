@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/16 15:13:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:41:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,16 @@ int	main(int ac, char **av, char **envp)
 	g_data.ray.posx = 300;
 	g_data.ray.posy = 300;
 	init_mlx();
+
 	////////////////////////////////////////////////////////////////////
-	// int	i;
-	// for (i = 300; i < 600; i++)
-	mlx_pixel_put(g_data.game.mlx, g_data.game.win, g_data.ray.posx, g_data.ray.posx, 0x00FF0000);
+	// int	mapsizeX = 8;
+	// int	mapsizeY = 8;
+	// int	square_size = 64;
+	printf("\nline %d\ncol %d\n", nb_line(), nb_col());
+	draw_map();	
+	mlx_pixel_put(g_data.game.mlx, g_data.game.win, g_data.ray.posx, g_data.ray.posy, 0x00FF0000);
+	mlx_key_hook(g_data.game.win, &key_press, &g_data);
+
 	////////////////////////////////////////////////////////////////////
 	mlx_loop(g_data.game.mlx);
 	garcol_free_all();

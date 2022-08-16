@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/16 12:55:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:39:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	F_handler(char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 void	free_split(char **spl, int free_spl);
 int		is_empty_str(char *str);
+int		nb_line(void);
+int		nb_col(void);
 
 //////////////
 // GARBAGE COLLECTOR
@@ -54,5 +56,6 @@ void	garcol_free_all(void);
 ////////////////
 void	init_mlx(void);
 int		key_press(int keysym);
+void	draw_map(void);
 
 #endif
