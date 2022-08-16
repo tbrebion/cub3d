@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/15 18:46:19 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/16 13:00:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_mlx(void)
 
 int	key_press(int keysym)
 {
-	if (keysym == 113)
+	if (keysym == 53)
 	{
 		// ft_putstr_fd("\nOKOKOKOK\n", 0);
 		mlx_clear_window(g_data.game.mlx, g_data.game.win);
