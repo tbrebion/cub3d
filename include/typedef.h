@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/15 18:06:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:49:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct	s_ray
 typedef struct	s_data
 {
 	t_game	game;
+	t_ray	ray;
 	t_list	**garbage;
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/15 18:47:58 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:13:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,33 @@
 
 t_data	g_data;
 
+// int	main(int ac, char **av, char **envp)
+// {
+// 	(void)envp;
+// 	check_init_file(ac, av);
+// 	init_mlx();
+// 	mlx_loop(g_data.game.mlx);
+// 	garcol_free_all();
+// 	return (0);
+// }
+
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)envp;
 	check_init_file(ac, av);
+	g_data.ray.posx = 300;
+	g_data.ray.posy = 300;
 	init_mlx();
+	////////////////////////////////////////////////////////////////////
+	// int	i;
+	// for (i = 300; i < 600; i++)
+	mlx_pixel_put(g_data.game.mlx, g_data.game.win, g_data.ray.posx, g_data.ray.posx, 0x00FF0000);
+	////////////////////////////////////////////////////////////////////
 	mlx_loop(g_data.game.mlx);
 	garcol_free_all();
 	return (0);
 }
-
 // 	TEST MAIN FOR GARCOL
 // int	main(void)
 // {
