@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 17:17:03 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:17:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,19 @@ int		start_saving_map(int fd, char **av);
 void	del_last_backslash_n(char *str);
 char	*add_end_spaces(char *str);
 char	*save_map_loop(char **save, char **file, int k, int i);
+int		get_game_params(void);
+void	NO_handler(char *str);
+void	SO_handler(char *str);
+void	WE_handler(char *str);
+void	EA_handler(char *str);
+void	F_handler(char *str);
 
 //////////////
 // UTILS
 //////////////
 int		ft_strcmp(const char *s1, const char *s2);
 void	free_split(char **spl, int free_spl);
+int		is_empty_str(char *str);
 
 //////////////
 // GARBAGE COLLECTOR
@@ -41,5 +48,11 @@ void	free_split(char **spl, int free_spl);
 void	garcol_add(void *var);
 char	**garcol_split(char *str, char lim);
 void	garcol_free_all(void);
+
+////////////////
+// MLX
+////////////////
+void	init_mlx(void);
+int	key_press(int keysym);
 
 #endif

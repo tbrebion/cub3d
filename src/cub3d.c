@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/09 16:15:11 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:47:58 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int ac, char **av, char **envp)
 {
 	(void)envp;
 	check_init_file(ac, av);
+	init_mlx();
+	mlx_loop(g_data.game.mlx);
 	garcol_free_all();
 	return (0);
 }

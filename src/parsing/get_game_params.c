@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 18:05:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:51:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,21 @@
 static int	detect_param(char *str);
 static int	is_only_ones(char *str);
 static char	**get_header(void);
+static void	param_handler(char *str, int param);
 
-int	get_game_params()
+int	get_game_params(void)
 {
 	char	**header;
+	int		i;
 
 	header = get_header();
-	
+	i = 0;
+	while (header[i])
+	{
+		if (detect_param(header[i]))
+			param_handler(garcol_split(header[i], ' ')[1], detect_param(header[i]));
+		i++;
+	}
 	return (0);
 }
 
@@ -35,7 +43,7 @@ static char	**get_header(void)
 	i = 0;
 	while (!is_only_ones(g_data.game.file[i]))
 		i++;
-	header = malloc(sizeof(char *) * i);
+	header = malloc(sizeof(char *) * (i + 1));
 	if (!header)
 		return (NULL);
 	garcol_add(header);
@@ -72,13 +80,33 @@ static int	detect_param(char *str)
 static int	is_only_ones(char *str)
 {
 	int	i;
+	int	p;
 
 	i = 0;
+	p = 0;
 	while (str[i])
 	{
+		if (str[i] == '1')
+			p = 1;
 		if (!(str[i] == '1' || str[i] == ' ' || str[i] == '\n'))
 			return (0);
 		i++;
 	}
+	if (!p)
+		return (0);
 	return (1);
+}
+
+static void	param_handler(char *str, int param)
+{
+	if (param == 1)
+		NO_handler(str);
+	else if (param == 2)
+		SO_handler(str);
+	else if (param == 3)
+		WE_handler(str);
+	else if (param == 4)
+		EA_handler(str);
+	else if (param == 5)
+		F_handler(str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_init_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/09 16:15:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:05:07 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	check_arg(int ac, char **av);
 static void	print_map(char **map);
 static void	print_file(char **file);
+static void	print_params(t_game_params params);
 
 void	check_init_file(int ac, char **av)
 {
@@ -36,11 +37,14 @@ void	check_init_file(int ac, char **av)
 		garcol_free_all();
 		exit(EXIT_FAILURE);
 	}
+	get_game_params();
 	///////////////////////
 	printf("\n\nFILE:\n\n");
 	print_file(g_data.game.file);
 	printf("\n\nMAP:\n\n");
 	print_map(g_data.game.map);
+	printf("\n\nPARAMS:\n\n");
+	print_params(g_data.game.params);
 	//////////////////////////////
 }
 
@@ -87,4 +91,13 @@ static void	print_map(char **map)
 		printf("%s1\n", map[i]);
 	printf("////////////////////////////////\
 ///////////////////////////////////////////////////\n");
+}
+
+static void	print_params(t_game_params params)
+{
+	printf("NO_path = %s\n", params.NO_path);
+	printf("SO_path = %s\n", params.SO_path);
+	printf("WE_path = %s\n", params.WE_path);
+	printf("EA_path = %s\n", params.EA_path);
+	printf("colors = %d,%d,%d\n", params.colors[0], params.colors[1], params.colors[2]);
 }
