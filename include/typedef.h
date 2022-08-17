@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/16 14:49:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:45:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define TYPEDEF_H
 
 # include "cub3d.h"
+
+#define SIZE 32
 
 // typedef struct	s_mlx
 // {
@@ -88,3 +90,20 @@ typedef struct	s_data
 
 #endif
 
+// Linux qwerty :
+
+// define ROTATE_LEFT 65361
+// define ROTATE_RIGHT 65363
+// define FORWARD_W 119
+// define BACK_S 115
+// define RIGHT_D 100
+// define LEFT_A 97
+
+// Linux azerty :
+
+// define ROTATE_LEFT 65361
+// define ROTATE_RIGHT 65363
+// define FORWARD_Z 122
+// define BACK_S 115
+// define RIGHT_D 100
+// define LEFT_Q 113
