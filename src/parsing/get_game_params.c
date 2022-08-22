@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_game_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 20:51:20 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	**get_header(void)
 	char	**header;
 
 	i = 0;
-	while (!is_only_ones(g_data.game.file[i]))
+	while (!is_only_ones(g_data.utils.file[i]))
 		i++;
 	header = malloc(sizeof(char *) * (i + 1));
 	if (!header)
@@ -50,7 +50,7 @@ static char	**get_header(void)
 	j = 0;
 	while (j < i)
 	{
-		header[j] = ft_strdup(g_data.game.file[j]);
+		header[j] = ft_strdup(g_data.utils.file[j]);
 		garcol_add(header[j]);
 		j++;
 	}

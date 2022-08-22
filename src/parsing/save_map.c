@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:37:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/04 17:01:52 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	count_map_lines(char **file)
 	i = 0;
 	while (file[i])
 	{
-		if (ft_strlen(file[i]) > g_data.game.max_len)
-			g_data.game.max_len = ft_strlen(file[i]);
+		if (ft_strlen(file[i]) > g_data.utils.max_len)
+			g_data.utils.max_len = ft_strlen(file[i]);
 		i++;
 	}
 	return (i);
@@ -59,9 +59,9 @@ static char	*get_spaces_lines(int n, char **save)
 	int	i;
 
 	i = 0;
-	save[n] = malloc(g_data.game.max_len + 3);
+	save[n] = malloc(g_data.utils.max_len + 3);
 	garcol_add(save[n]);
-	while (i <= g_data.game.max_len)
+	while (i <= g_data.utils.max_len)
 	{
 		save[n][i] = ' ';
 		i++;
@@ -91,7 +91,7 @@ char	*add_end_spaces(char *str)
 
 	i = 0;
 	prev_len = ft_strlen(str);
-	while (i++ <= (g_data.game.max_len - prev_len) + 1)
+	while (i++ <= (g_data.utils.max_len - prev_len) + 1)
 		str = ft_strjoin(str, " ");
 	garcol_add(str);
 	return (str);

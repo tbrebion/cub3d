@@ -6,15 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:27:15 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/16 19:51:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:26:53 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-#define SIZE 32
-
-static void	draw(int x, int y/*, int i, int j*/);
+static void	draw(int x, int y);
 
 void	draw_map(void)
 {
@@ -27,11 +25,11 @@ void	draw_map(void)
 	j = 0;
 	x = 0;
 	y = 0;
-	while (g_data.game.map[i])
+	while (g_data.map.tab[i])
 	{
-		while (g_data.game.map[i][j])
+		while (g_data.map.tab[i][j])
 		{
-			if (g_data.game.map[i][j] == '1')
+			if (g_data.map.tab[i][j] == '1')
 				draw(x, y);
 			x += SIZE;
 			j++;	
@@ -44,7 +42,7 @@ void	draw_map(void)
 	
 }
 
-static void	draw(int x, int y/*, int i, int j*/)
+static void	draw(int x, int y)
 {
 	int	tmpx;
 	int	tmpy;
@@ -55,7 +53,7 @@ static void	draw(int x, int y/*, int i, int j*/)
 	{
 		while (x < (tmpx + SIZE))
 		{
-			mlx_pixel_put(g_data.game.mlx, g_data.game.win, x, y, 0x00FF0000);
+			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x, y, 0x00FF0000);
 			x++;
 		}
 		x = tmpx;

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/16 19:22:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	check_init_file(int ac, char **av)
 	check_arg(ac, av);
 	g_data.garbage = malloc(sizeof(t_list *));
 	*g_data.garbage = NULL;
-	g_data.game.file = save_file(av);
-	if (!g_data.game.file)
+	g_data.utils.file = save_file(av);
+	if (!g_data.utils.file)
 	{
 		printf("INVALID FILE\n");
 		garcol_free_all();
 		exit(EXIT_FAILURE);
 	}
-	g_data.game.max_len = 0;
-	g_data.game.map = save_map(g_data.game.file);
-	if (!g_data.game.map || checker_map())
+	g_data.utils.max_len = 0;
+	g_data.map.tab = save_map(g_data.utils.file);
+	if (!g_data.map.tab || checker_map())
 	{
 		printf("MAP ERROR\n");
 		garcol_free_all();
@@ -40,11 +40,11 @@ void	check_init_file(int ac, char **av)
 	get_game_params();
 	///////////////////////
 	printf("\n\nFILE:\n\n");
-	print_file(g_data.game.file);
+	print_file(g_data.utils.file);
 	printf("\n\nMAP:\n\n");
-	print_map(g_data.game.map);
+	print_map(g_data.map.tab);
 	printf("\n\nPARAMS:\n\n");
-	print_params(g_data.game.params);
+	print_params(g_data.utils.params);
 	//////////////////////////////
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/09 19:08:27 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ LE PATH ET SON OUVERTURE
 
 void	NO_handler(char *str)
 {
-	g_data.game.params.NO_path = str;
+	g_data.utils.params.NO_path = str;
 }
 
 void	SO_handler(char *str)
 {
-	g_data.game.params.SO_path = str;
+	g_data.utils.params.SO_path = str;
 }
 
 void	WE_handler(char *str)
 {
-	g_data.game.params.WE_path = str;
+	g_data.utils.params.WE_path = str;
 }
 
 void	EA_handler(char *str)
 {
-	g_data.game.params.EA_path = str;
+	g_data.utils.params.EA_path = str;
 }
 
 void	F_handler(char *str)
@@ -52,7 +52,7 @@ void	F_handler(char *str)
 			garcol_free_all();
 			exit(42);
 		}
-		g_data.game.params.colors[i] = ft_atoi(split[i]);
+		g_data.utils.params.colors[i] = ft_atoi(split[i]);
 		i++;
 	}
 }
