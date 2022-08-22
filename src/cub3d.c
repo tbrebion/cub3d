@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/17 15:13:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:02:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ t_data	g_data;
 // 	return (0);
 // }
 
+int	ft_close(void)
+{
+	mlx_clear_window(g_data.game.mlx, g_data.game.win);
+	mlx_destroy_window(g_data.game.mlx, g_data.game.win);
+	garcol_free_all();
+	exit(0);
+	return (1);
+}
 
 int	main(int ac, char **av, char **envp)
 {
@@ -33,21 +41,26 @@ int	main(int ac, char **av, char **envp)
 	g_data.ray.posy = 300;
 	init_mlx();
 
-	////////////////////////////////////////////////////////////////////
-	// int	mapsizeX = 8;
-	// int	mapsizeY = 8;
-	// int	square_size = 64;
-	printf("\nline %d\ncol %d\n", nb_line(), nb_col());
+	///////////////////////////////////
 	draw_map();	
 	mlx_pixel_put(g_data.game.mlx, g_data.game.win, g_data.ray.posx, g_data.ray.posy, 0x00FF0000);
 	mlx_hook(g_data.game.win, 1, 1, &key_press, &g_data);
+	mlx_hook(g_data.game.win, 17, 0, &ft_close, &g_data);
 	// mlx_key_hook(g_data.game.win, &key_press, &g_data);
-
 	////////////////////////////////////////////////////////////////////
 	mlx_loop(g_data.game.mlx);
 	garcol_free_all();
 	return (0);
 }
+
+
+
+
+
+
+
+
+
 // 	TEST MAIN FOR GARCOL
 // int	main(void)
 // {
