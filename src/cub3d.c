@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/22 17:26:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:37:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int ac, char **av, char **envp)
 {
 	(void)envp;
 	check_init_file(ac, av);
-	g_data.pos.x = 300;
-	g_data.pos.y = 300;
 	init_mlx();
 
 	///////////////////////////////////

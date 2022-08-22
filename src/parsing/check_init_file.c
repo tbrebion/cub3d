@@ -6,13 +6,15 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:58:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	check_arg(int ac, char **av);
+static int	player_pos(char c);
+static void	init_pos(void);
 static void	print_map(char **map);
 static void	print_file(char **file);
 static void	print_params(t_game_params params);
@@ -38,6 +40,7 @@ void	check_init_file(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	get_game_params();
+	init_pos();
 	///////////////////////
 	printf("\n\nFILE:\n\n");
 	print_file(g_data.utils.file);
@@ -66,6 +69,39 @@ static void	check_arg(int ac, char **av)
 		exit(-1);
 	}
 }
+
+static void init_pos(void)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (g_data.map.tab[i])
+	{
+		while (g_data.map.tab[i][j])
+		{
+			if (player_pos(g_data.map.tab[i][j]))
+			{
+				g_data.pos.x = j * SIZE;
+				g_data.pos.y = i * SIZE;
+				return ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	
+}
+
+static int	player_pos(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (1);
+	return (0);
+}
+
 
 static void	print_file(char **file)
 {
