@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/16 19:39:35 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:56:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_split(char **spl, int free_spl);
 int		is_empty_str(char *str);
 int		nb_line(void);
 int		nb_col(void);
+int		ft_close(void);
 
 //////////////
 // GARBAGE COLLECTOR

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/17 14:45:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:08:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "cub3d.h"
 
 #define SIZE 32
+#define SPEED 15
+#define TURN 0.5
 
 // typedef struct	s_mlx
 // {
@@ -39,6 +41,14 @@ typedef struct	s_game_params
 	char	*EA_path;
 	int		colors[3];
 }	t_game_params;
+
+typedef struct	s_map
+{
+	char	**tab;
+	int		x;
+	int		y;
+	int		spr;
+}	t_map;
 
 typedef struct	s_game
 {
@@ -84,6 +94,7 @@ typedef struct	s_ray
 typedef struct	s_data
 {
 	t_game	game;
+	t_map	map;
 	t_ray	ray;
 	t_list	**garbage;
 }	t_data;

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/17 15:14:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:26:03 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	init_mlx(void)
 
 int	key_press(int keysym)
 {
-	// if (keysym == 122)
-	// {
-	// 	// ft_putstr_fd("\nOKOKOKOK\n", 0);
-	// 	mlx_clear_window(g_data.game.mlx, g_data.game.win);
-	// 	mlx_destroy_window(g_data.game.mlx, g_data.game.win);
-	// 	garcol_free_all();
-	// 	exit(0);
-	// }
+	if (keysym == 53)
+	{
+		// ft_putstr_fd("\nOKOKOKOK\n", 0);
+		mlx_clear_window(g_data.game.mlx, g_data.game.win);
+		mlx_destroy_window(g_data.game.mlx, g_data.game.win);
+		garcol_free_all();
+		exit(0);
+	}
 	if (keysym == 119)
 	{
 		// mlx_clear_window(g_data.game.mlx, g_data.game.win);
