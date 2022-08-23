@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/22 16:56:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/23 13:50:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	garcol_free_all(void);
 // MLX
 ////////////////
 void	init_mlx(void);
-int		key_press(int keysym);
+int		ft_key(int keysym);
 void	draw_map(void);
 
 #endif

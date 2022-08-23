@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/22 18:37:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/23 13:53:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	main(int ac, char **av, char **envp)
 	///////////////////////////////////
 	draw_map();	
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x, g_data.pos.y, 0x00FF0000);
-	mlx_hook(g_data.win.ptr, 2, 0, &key_press, &g_data);
+	// mlx_hook(g_data.win.ptr, 2, 0, &ft_key, &g_data);
 	mlx_hook(g_data.win.ptr, 17, 0, &ft_close, &g_data);
-	// mlx_key_hook(g_data.win.ptr, &key_press, &g_data);
+	mlx_key_hook(g_data.win.ptr, &ft_key, &g_data);
 	////////////////////////////////////////////////////////////////////
 	mlx_loop(g_data.mlx.ptr);
 	garcol_free_all();
