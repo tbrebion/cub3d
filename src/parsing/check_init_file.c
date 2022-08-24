@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/22 18:58:04 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:27:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	check_arg(int ac, char **av);
 static int	player_pos(char c);
 static void	init_pos(void);
+static void	get_dir(char c);
 static void	print_map(char **map);
 static void	print_file(char **file);
 static void	print_params(t_game_params params);
@@ -83,8 +84,9 @@ static void init_pos(void)
 		{
 			if (player_pos(g_data.map.tab[i][j]))
 			{
-				g_data.pos.x = j * SIZE;
-				g_data.pos.y = i * SIZE;
+				g_data.pos.x = j + 0.5;
+				g_data.pos.y = i + 0.5;
+				get_dir(g_data.map.tab[i][j]);
 				return ;
 			}
 			j++;
@@ -102,6 +104,25 @@ static int	player_pos(char c)
 	return (0);
 }
 
+static void	get_dir(char c)
+{
+	if (c == 'E' || c == 'W')
+		g_data.dir.x = 1;
+	else
+		g_data.dir.x = 0;
+	if (c == 'W')
+		g_data.dir.x *= -1;
+	else
+		g_data.dir.x *= 1;
+	if (c == 'N' || c == 'S')
+		g_data.dir.y = 1;
+	else
+		g_data.dir.y = 0;
+	if (c == 'N')
+		g_data.dir.y *= -1;
+	else
+		g_data.dir.y *= 1;
+}
 
 static void	print_file(char **file)
 {

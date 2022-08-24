@@ -6,13 +6,15 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/23 13:53:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:13:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 t_data	g_data;
+
+// static double	ft_deg_to_rad(double d);
 
 int	ft_close(void)
 {
@@ -32,21 +34,15 @@ int	main(int ac, char **av, char **envp)
 	///////////////////////////////////
 	draw_map();	
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x, g_data.pos.y, 0x00FF0000);
-	// mlx_hook(g_data.win.ptr, 2, 0, &ft_key, &g_data);
+	mlx_hook(g_data.win.ptr, 2, (1L << 0), &ft_key, &g_data);
 	mlx_hook(g_data.win.ptr, 17, 0, &ft_close, &g_data);
-	mlx_key_hook(g_data.win.ptr, &ft_key, &g_data);
 	////////////////////////////////////////////////////////////////////
 	mlx_loop(g_data.mlx.ptr);
 	garcol_free_all();
 	return (0);
 }
 
-// int	main(int ac, char **av, char **envp)
+// static double	ft_deg_to_rad(double d)
 // {
-// 	(void)envp;
-// 	check_init_file(ac, av);
-// 	init_mlx();
-// 	mlx_loop(g_data.mlx.ptr);
-// 	garcol_free_all();
-// 	return (0);
+// 	return (d * M_PI / 180.0);
 // }
