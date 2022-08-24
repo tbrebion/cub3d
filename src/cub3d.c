@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/24 17:19:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:26:01 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av, char **envp)
 
 	///////////////////////////////////
 	draw_map();	
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x, g_data.pos.y, 0x00FF0000);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FF0000);
 	mlx_hook(g_data.win.ptr, 2, (1L << 0), &ft_key, &g_data);
 	mlx_hook(g_data.win.ptr, 17, 0, &ft_close, &g_data);
 	////////////////////////////////////////////////////////////////////
