@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/24 15:08:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:18:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	ft_key(int keysym)
 		ft_ad(1);
 	if (keysym == XK_a) 
 		ft_ad(-1);
+	printf("//////////////////////////////////////////\n");
+	printf("\nPOSx : %f\n\nPOSy : %f\n\n", g_data.pos.x, g_data.pos.y);
+	printf("//////////////////////////////////////////\n");
 	// if (keysym == XK_Right || keysym == XK_Left)
 	// {
 	// 	right_left__key(keysym);

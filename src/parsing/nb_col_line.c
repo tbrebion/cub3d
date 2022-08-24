@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:06:29 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/22 17:09:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:51:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int	nb_line(void)
 int	nb_col(void)
 {
 	int	i;
-	int	j;
 	int	len;
 
 	i = 0;
-	j = 0;
 	len = 0;
 	while (g_data.map.tab[i])
 	{

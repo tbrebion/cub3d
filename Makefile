@@ -37,7 +37,7 @@ cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omi
 CFLAGS				:= $(cflags.$(BUILD))
 CPPFLAGS			:= $(cflags.$(BUILD)) -std=c++98
 
-lib.release			:=  -Lminilibx-linux -lmlx -lX11 -lXext -Lminilibx-linux -lmlx -L./Lib42 -l42
+lib.release			:=  -Lminilibx-linux -lmlx -lX11 -lXext -Lminilibx-linux -lmlx -L./Lib42 -l42 -lm
 lib.valgrind		:= $(lib.release)
 lib.debug			:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
 LIB					:= $(lib.$(BUILD))

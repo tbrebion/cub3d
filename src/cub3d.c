@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/24 15:13:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:19:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_close(void)
 {
 	mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	mlx_destroy_window(g_data.mlx.ptr, g_data.win.ptr);
+	mlx_destroy_image(g_data.mlx.ptr, g_data.img.ptr);
+	mlx_destroy_display(g_data.mlx.ptr);
 	garcol_free_all();
 	exit(0);
 	return (1);
