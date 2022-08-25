@@ -37,8 +37,8 @@ SOURCES		+=                           		\
 ## SRC/RENDER ##
 
 SOURCES		+=                           		\
-		src/render/render.c                 	\
 		src/render/draw.c                   	\
+		src/render/init_and_key.c           	\
 
 
 ## SRC/TEST ##

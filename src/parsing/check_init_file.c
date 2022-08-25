@@ -6,19 +6,22 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/24 15:27:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/25 15:57:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	check_arg(int ac, char **av);
-static int	player_pos(char c);
+// static int	player_pos(char c);
 static void	init_pos(void);
 static void	get_dir(char c);
+
+////////////////////
 static void	print_map(char **map);
 static void	print_file(char **file);
 static void	print_params(t_game_params params);
+////////////////////
 
 void	check_init_file(int ac, char **av)
 {
@@ -52,25 +55,6 @@ void	check_init_file(int ac, char **av)
 	//////////////////////////////
 }
 
-static void	check_arg(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		printf("Error\nwrong number of args !\n");
-		exit(-1);
-	}
-	if (!ft_strrchr((char *)av[1], '.'))
-	{
-		printf("Error\ninvalid arg !\n");
-		exit(-1);
-	}
-	if (ft_strcmp(ft_strrchr((char *)av[1], '.'), ".cub") != 0)
-	{
-		printf("Error\nfile must be \"<name>.cub\" !\n");
-		exit(-1);
-	}
-}
-
 static void init_pos(void)
 {
 	int	i;
@@ -97,7 +81,27 @@ static void init_pos(void)
 	
 }
 
-static int	player_pos(char c)
+static void	check_arg(int ac, char **av)
+{
+	if (ac != 2)
+	{
+		printf("Error\nwrong number of args !\n");
+		exit(-1);
+	}
+	if (!ft_strrchr((char *)av[1], '.'))
+	{
+		printf("Error\ninvalid arg !\n");
+		exit(-1);
+	}
+	if (ft_strcmp(ft_strrchr((char *)av[1], '.'), ".cub") != 0)
+	{
+		printf("Error\nfile must be \"<name>.cub\" !\n");
+		exit(-1);
+	}
+}
+
+
+int	player_pos(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
