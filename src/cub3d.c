@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/25 20:35:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/26 20:07:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	main(int ac, char **av, char **envp)
 
 static void	init(void)
 {
-	g_data.win.x = /*2558 0*/1420;
-	g_data.win.y = /*1080 0*/800;
+	g_data.win.x = 2558/*1420*/;
+	g_data.win.y = 1080/*800*/;
 	g_data.map.x = 0;
 	g_data.map.y = 0;
 	g_data.pos.x = 0;
