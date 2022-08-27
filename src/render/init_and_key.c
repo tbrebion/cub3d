@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/26 14:42:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/27 18:14:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	ft_ws(double d);
 static void	ft_ad(double d);
 static void	ft_rotate(double d);
+// static void	ray(void);
 
 void	init_mlx(void)
 {
@@ -28,19 +29,19 @@ int	ft_key(int keysym)
 {
 	if (keysym == XK_Escape)
 		ft_close();
-	else if (keysym == XK_w) 
+	else if (keysym == XK_z) 
 		ft_ws(1);
 	else if (keysym == XK_s) 
 		ft_ws(-1);
 	else if (keysym == XK_d) 
 		ft_ad(1);
-	else if (keysym == XK_a) 
+	else if (keysym == XK_q) 
 		ft_ad(-1);
 	else if (keysym == XK_Left)
 		ft_rotate(-1);
 	else if (keysym == XK_Right)
 		ft_rotate(1);
-
+	// ray();
 	////////////////////////////////////////////////////////////
 	printf("//////////////////////////////////////////\n");
 	printf("\nPOSx : %f\n\nPOSy : %f\n\n", g_data.pos.x, g_data.pos.y);
@@ -81,3 +82,22 @@ static void	ft_rotate(double d)
 	g_data.dir.x /= dist;
 	g_data.dir.y /= dist;
 }
+
+// static void	ray(void)
+// {
+// 	double	x;
+// 	double	y;
+
+// 	x = g_data.pos.x;
+// 	y = g_data.pos.y;
+// 	while (g_data.map.tab[(int)floor(y)][(int)floor(x)] != '1')
+// 	{
+// 		x += (x * SPEED / 100);
+// 		y += (y * SPEED / 100);
+// 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+// 	}
+// 	// if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1')
+// 		// x -= (g_data.dir.x * SPEED / 100);
+// 	// if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1')
+// 		// y -= (g_data.dir.y * SPEED / 100);
+// }
