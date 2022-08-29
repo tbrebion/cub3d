@@ -15,6 +15,7 @@ SOURCES		+=                           		\
 ## SRC/UTILS ##
 
 SOURCES		+=                           		\
+		src/utils/math.c                    	\
 		src/utils/is_empty_str.c            	\
 		src/utils/free_split.c              	\
 		src/utils/utils.c                   	\
