@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/29 17:46:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:08:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,19 @@ static void	ft_rotate(double d)
 
 static void	ray(void)
 {
+	int		i;
 	double	x;
 	double	y;
 
+	i = 0;
 	x = g_data.pos.x;
 	y = g_data.pos.y;
-	while (g_data.map.tab[(int)floor(y)][(int)floor(x)] != '1')
+	while (/*g_data.map.tab[(int)floor(y)][(int)floor(x)] != '1'*/i < 5)
 	{
 		x += (g_data.dir.x * SPEED / 100);
 		y += (g_data.dir.y * SPEED / 100);
-		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, floor(x) * SIZE, y * SIZE, 0x00FFFFFF);
-		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, floor(y) * SIZE, 0x00FFFFFF);
+		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+		i++;
 	}
 	// double	angle;
 	// double	dist;
