@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/30 13:08:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:32:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	ft_ws(double d);
 static void	ft_ad(double d);
 static void	ft_rotate(double d);
 static void	ray(void);
+static void	show_dir_player(void);
 
 void	init_mlx(void)
 {
@@ -41,12 +42,13 @@ int	ft_key(int keysym)
 		ft_rotate(-1);
 	else if (keysym == XK_Right)
 		ft_rotate(1);
+	show_dir_player();
 	ray();
 	// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.ray.x * SIZE, g_data.ray.y * SIZE, 0x00FFFFFF);
 
-	// printf("//////////////////////////////////////////\n");
-	// printf("RAYX %f    RAYY %f", g_data.ray.x, g_data.ray.y);
-	// printf("//////////////////////////////////////////\n");
+	printf("//////////////////////////////////////////\n");
+	printf("RAYX %f    RAYY %f", g_data.ray.x, g_data.ray.y);
+	printf("//////////////////////////////////////////\n");
 	////////////////////////////////////////////////////////////
 	printf("//////////////////////////////////////////\n");
 	printf("\nPOSx : %f\n\nPOSy : %f\n\n", g_data.pos.x, g_data.pos.y);
@@ -90,7 +92,7 @@ static void	ft_rotate(double d)
 	g_data.dir.y /= dist;
 }
 
-static void	ray(void)
+static void	show_dir_player(void)
 {
 	int		i;
 	double	x;
@@ -106,19 +108,23 @@ static void	ray(void)
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		i++;
 	}
-	// double	angle;
-	// double	dist;
+}
 
-	// while (g_data.ray.i < g_data.win.x)
-	// {
-	// 	angle = ((g_data.ray.i - (g_data.win.x / 2)) * 33 / (g_data.win.x / 2));
-	// 	angle = ft_deg_to_rad(angle);
-	// 	g_data.ray.x = g_data.dir.x * cos(angle) - g_data.dir.y * sin(angle);
-	// 	g_data.ray.y = g_data.dir.y * cos(angle) + g_data.dir.x * sin(angle);
-	// 	dist = hypot(g_data.ray.x, g_data.ray.y);
-	// 	g_data.ray.x /= dist;
-	// 	g_data.ray.y /= dist;
-	// 	g_data.ray.i++;
-	// 	// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.ray.x * SIZE, g_data.ray.y * SIZE, 0x00FFFFFF);
-	// }
+static void	ray(void)
+{
+	double	angle;
+	double	dist;
+
+	if (g_data.ray.i < g_data.win.x)
+	{
+		angle = ((g_data.ray.i - (g_data.win.x / 2)) * 33 / (g_data.win.x / 2));
+		angle = ft_deg_to_rad(angle);
+		g_data.ray.x = g_data.dir.x * cos(angle) - g_data.dir.y * sin(angle);
+		g_data.ray.y = g_data.dir.y * cos(angle) + g_data.dir.x * sin(angle);
+		dist = hypot(g_data.ray.x, g_data.ray.y);
+		g_data.ray.x /= dist;
+		g_data.ray.y /= dist;
+		g_data.ray.i++;
+		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.ray.x * SIZE, g_data.ray.y * SIZE, 0x00FFFFFF);
+	}
 }
