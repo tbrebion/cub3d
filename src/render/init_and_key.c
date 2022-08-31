@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/30 17:39:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:24:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	ft_rotate(double d);
 static void	ray_player(void);
 static void	ray_30_right(void);
 static void	ray_30_left(void);
-// static void	ray(void);
 
 void	init_mlx(void)
 {
@@ -47,7 +46,6 @@ int	ft_key(int keysym)
 	ray_player();
 	ray_30_left();
 	ray_30_right();
-	// ray();
 	// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.ray.x * SIZE, g_data.ray.y * SIZE, 0x00FFFFFF);
 
 	printf("//////////////////////////////////////////\n");
@@ -101,25 +99,27 @@ static void	ray_player(void)
 	int		i;
 	double	x;
 	double	y;
-	// double	hitx;
-	// double	hity;
+	double	dist;
 
 	i = 0;
-	x = g_data.pos.x;
-	y = g_data.pos.y;
+	x = 0.0;//g_data.pos.x;
+	y = 0.0;//g_data.pos.y;
+	dist = 0.0;
 	while (i < g_data.win.x * 2)
 	{
-		x += (g_data.dir.x * SPEED / 1000);
-		y += (g_data.dir.y * SPEED / 1000);
-		if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1' || g_data.map.tab[(int)floor(y)][(int)floor(x)] == ' ')
-		{
-			// hitx = x;
-			// hity = y;
-			break ;
-		}
+		x += sqrt(1 + (g_data.dir.y * g_data.dir.y) / (g_data.dir.x * g_data.dir.x));//(g_data.dir.x * SPEED / 1000);
+		y += sqrt(1 + (g_data.dir.x * g_data.dir.x) / (g_data.dir.y * g_data.dir.y));//(g_data.dir.y * SPEED / 1000);
+		// if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1' || g_data.map.tab[(int)floor(y)][(int)floor(x)] == ' ')
+		// {
+		// 	// g_data.hit.x = x;
+		// 	// g_data.hit.y = y;
+		// 	break ;
+		// }
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		i++;
 	}
+	dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
+	printf("////////////////////\ndist: %f\n////////////////////////\n", dist);
 }
 static void	ray_30_right(void)
 {
@@ -129,7 +129,9 @@ static void	ray_30_right(void)
 	double	tmpdirx;
 	double	tmpdiry;
 	int		d;
+	double dist;
 
+	dist = 0.0;
 	i = 0;
 	d = 1;
 	x = g_data.pos.x;
@@ -147,6 +149,8 @@ static void	ray_30_right(void)
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		i++;
 	}
+	dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
+	printf("////////////////////\ndist right: %f\n////////////////////////\n", dist);
 }
 
 static void	ray_30_left(void)
@@ -157,7 +161,9 @@ static void	ray_30_left(void)
 	double	tmpdirx;
 	double	tmpdiry;
 	int		d;
+	double dist;
 
+	dist = 0.0;
 	i = 0;
 	d = -1;
 	x = g_data.pos.x;
@@ -175,41 +181,9 @@ static void	ray_30_left(void)
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		i++;
 	}
+	dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
+	printf("////////////////////\ndist left: %f\n////////////////////////\n", dist);
 }
-
-// static void	ray(void)
-// {
-// 	int	i;
-// 	int	d;
-// 	int	x;
-// 	int	y;
-// 	double	tmpdirx;
-// 	double	tmpdiry;
-
-// 	x = g_data.pos.x;
-// 	y = g_data.pos.y;
-// 	i = 0;
-// 	d = 1;
-// 	tmpdirx = g_data.dir.x * cos(d * 0.75) - g_data.dir.y * sin(d * 0.75);
-// 	tmpdiry = g_data.dir.y * cos(d * 0.75) + g_data.dir.x * sin(d * 0.75);
-// 	d = -1;
-// 	while(tmpdirx != g_data.dir.x)
-// 	{
-// 		tmpdirx = g_data.dir.x * cos(d * 0.75) - g_data.dir.y * sin(d * 0.75);
-// 		tmpdiry = g_data.dir.y * cos(d * 0.75) + g_data.dir.x * sin(d * 0.75);
-// 		while (i < g_data.win.x * 2)
-// 		{
-// 			x += (tmpdirx * SPEED / 1000);
-// 			y += (tmpdiry * SPEED / 1000);
-// 			if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1')
-// 			{
-// 				break ;
-// 			}
-// 			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
-// 			i++;
-// 		}
-// 	}
-// }
 
 // static void	ray(void)
 // {
