@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/29 13:07:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:21:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 #define SPEED 15
 #define TURN 0.5
 #define PI 3.141592653589793
+#define NORTH 1
+#define SOUTH 2
+#define EAST 3
+#define WEST 4
+// #define H 15
 
 typedef struct	s_mlx
 {
@@ -99,6 +104,14 @@ typedef struct	s_hit
 	double	d;
 }	t_hit;
 
+// typedef struct	s_view
+// {
+// 	double	right_x;
+// 	double	right_y;
+// 	double	left_x;
+// 	double	left_y;
+// }	t_view;
+
 typedef struct	s_game_params
 {
 	char	*NO_path;
@@ -115,6 +128,12 @@ typedef struct	s_utils
 	t_game_params	params;
 }	t_utils;
 
+typedef struct	s_dist
+{
+	double	dist;
+	int		side;
+}	t_dist;
+
 typedef struct	s_data
 {
 	t_mlx	mlx;
@@ -127,6 +146,8 @@ typedef struct	s_data
 	t_dir	dir;
 	t_ray	ray;
 	t_hit	hit;
+	t_dist	dist;
+	// t_view	view;
 	t_utils	utils;
 	t_list	**garbage;
 }	t_data;
