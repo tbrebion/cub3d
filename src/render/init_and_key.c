@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/06 11:19:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:04:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static void	ft_ws(double d);
 static void	ft_ad(double d);
 static void	ft_rotate(double d);
-static void	others_ray(double d);
+static void	ray_right(void);
+// static void	ray_left(void);
 static int which_side(void);
-static void draw_wall(void);
+static void draw_right(int half_win);
+// static void draw_left(int half_win);
 
 void	init_mlx(void)
 {
@@ -44,8 +46,9 @@ int	ft_key(int keysym)
 	else if (keysym == XK_Right)
 		ft_rotate(1);
 	
-	others_ray(1);
-	others_ray(-1);
+	ray_right();
+	// ray_left();
+	// others_ray(-1);
 	// mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
 
@@ -95,7 +98,7 @@ static void	ft_rotate(double d)
 	g_data.dir.y /= dist;
 }
 
-static void	others_ray(double d)
+static void	ray_right(void)
 {
 	double 	x;
 	double 	y;
@@ -105,6 +108,8 @@ static void	others_ray(double d)
 	double 	angle;
 	int		side;
 
+	int	half_win = g_data.win.x / 2;
+
 	angle = 0.0;
 	tmpx = 0.0;
 	tmpy = 0.0;
@@ -113,8 +118,8 @@ static void	others_ray(double d)
 	{
 		x = g_data.pos.x;
 		y = g_data.pos.y;
-		tmpx = g_data.dir.x * cos(d * angle) - g_data.dir.y * sin(d * angle);
-		tmpy = g_data.dir.y * cos(d * angle) + g_data.dir.x * sin(d * angle);
+		tmpx = g_data.dir.x * cos(1 * angle) - g_data.dir.y * sin(1 * angle);
+		tmpy = g_data.dir.y * cos(1 * angle) + g_data.dir.x * sin(1 * angle);
 		while (j < g_data.win.x * 2)
 		{
 			x += (tmpx * SPEED / 1000);
@@ -125,15 +130,54 @@ static void	others_ray(double d)
 				g_data.hit.y = y;
 				break;
 			}
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+			// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
-		// DDA ALGO
-		draw_wall();
+		draw_right(half_win);
 		angle += 0.005;
+		half_win--;
 	}
 }
+
+// static void	ray_left(void)
+// {
+// 	double 	x;
+// 	double 	y;
+// 	double 	tmpx;
+// 	double 	tmpy;
+// 	int		j;
+// 	double 	angle;
+// 	int		side;
+
+// 	angle = 0.0;
+// 	tmpx = 0.0;
+// 	tmpy = 0.0;
+// 	j = 0;
+// 	while (angle < 0.5)
+// 	{
+// 		x = g_data.pos.x;
+// 		y = g_data.pos.y;
+// 		tmpx = g_data.dir.x * cos(-1 * angle) - g_data.dir.y * sin(-1 * angle);
+// 		tmpy = g_data.dir.y * cos(-1 * angle) + g_data.dir.x * sin(-1 * angle);
+// 		while (j < g_data.win.x * 2)
+// 		{
+// 			x += (tmpx * SPEED / 1000);
+// 			y += (tmpy * SPEED / 1000);
+// 			if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1' || g_data.map.tab[(int)floor(y)][(int)floor(x)] == ' ')
+// 			{
+// 				g_data.hit.x = x;
+// 				g_data.hit.y = y;
+// 				break;
+// 			}
+// 			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+// 		}
+// 		side = which_side();
+// 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
+// 		draw_wall();
+// 		angle += 0.005;
+// 	}
+// }
 
 static int which_side(void)
 {
@@ -154,14 +198,18 @@ static int which_side(void)
 	return (-1);
 }
 
-static void draw_wall(void)
+static void draw_right(int half_win)
 {
 	int	line_height;
 	int	draw_start;
 	int	draw_end;
-	double x;
-	double y;
+	// double x;
+	// double y;
+	// int half_win;
+	int	i;
 
+	// half_win = g_data.win.x / 2;
+	i = 0;
 	line_height = SIZE / g_data.dist.dist;
 	draw_start = -line_height / 2 + SIZE / 2;
 	if (draw_start < 0)
@@ -169,13 +217,17 @@ static void draw_wall(void)
 	draw_end = line_height / 2 + SIZE / 2;
 	if (draw_end >= SIZE)
 		draw_end = SIZE - 1;
-	x = g_data.hit.x;
-	y = g_data.hit.y;
-	while (draw_start <= draw_end * SIZE)
+	// while (half_win > i)
+	// {
+	while (draw_start < draw_end)
 	{
-		// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
-		y--;
-		x--;
+		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, half_win, draw_start, 0X00FFFFFF);
 		draw_start++;
 	}
+		// half_win--;
+	// }
+	
+	// x = g_data.hit.x;
+	// y = g_data.hit.y;
+	
 }
