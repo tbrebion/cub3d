@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:58:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/03 16:19:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:47:07 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,16 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
+
+void	width_height_map(void)
+{
+	int	i;
+
+	i = 0;
+	g_data.map.w = ft_strlen(g_data.map.tab[0]) - 3;
+	while (g_data.map.tab[i])
+		i++;
+	g_data.map.h = i - 2;
+}
+
+// void	

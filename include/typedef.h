@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/05 15:21:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:42:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-// #define H 15
+#define H 1080
+#define W 2556
 
 typedef struct	s_mlx
 {
@@ -39,16 +40,6 @@ typedef struct	s_win
 	int		y;
 }	t_win;
 
-typedef struct	s_key
-{
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int	left;
-	int	right;
-}	t_key;
-
 typedef struct s_img
 {
 	void			*ptr;
@@ -61,19 +52,21 @@ typedef struct	s_map
 	char	**tab;
 	int		x;
 	int		y;
-	int		spr;
+	int		w;
+	int		h;
+	// int		spr;
 }	t_map;
 
-typedef struct	s_tex
-{
-	unsigned int	*n;
-	unsigned int	*s;
-	unsigned int	*e;
-	unsigned int	*w;
-	unsigned int	*i;
-	unsigned int	c;
-	unsigned int	f;
-}	t_tex;
+// typedef struct	s_tex
+// {
+// 	unsigned int	*n;
+// 	unsigned int	*s;
+// 	unsigned int	*e;
+// 	unsigned int	*w;
+// 	unsigned int	*i;
+// 	unsigned int	c;
+// 	unsigned int	f;
+// }	t_tex;
 
 typedef struct s_pos
 {
@@ -92,25 +85,16 @@ typedef struct	s_ray
 {
 	double	x;
 	double	y;
-	double	i;
-	double	v;
-	double	w;
+	// double	i;
+	// double	v;
+	// double	w;
 }	t_ray;
 
 typedef struct	s_hit
 {
 	double	x;
 	double	y;
-	double	d;
 }	t_hit;
-
-// typedef struct	s_view
-// {
-// 	double	right_x;
-// 	double	right_y;
-// 	double	left_x;
-// 	double	left_y;
-// }	t_view;
 
 typedef struct	s_game_params
 {
@@ -138,16 +122,14 @@ typedef struct	s_data
 {
 	t_mlx	mlx;
 	t_win	win;
-	t_key	key;
 	t_img	img;
 	t_map	map;
-	t_tex	tex;
+	// t_tex	tex;
 	t_pos	pos;
 	t_dir	dir;
 	t_ray	ray;
 	t_hit	hit;
 	t_dist	dist;
-	// t_view	view;
 	t_utils	utils;
 	t_list	**garbage;
 }	t_data;

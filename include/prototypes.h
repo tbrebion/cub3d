@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/27 15:06:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:47:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		nb_col(void);
 int		ft_close(void);
 int		player_pos(char c);
 double	ft_deg_to_rad(double d);
+void	width_height_map(void);
 
 //////////////
 // GARBAGE COLLECTOR
