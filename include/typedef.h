@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/07 23:42:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:23:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 
 # include "cub3d.h"
 
-#define SIZE 16
+#define SIZE 6
 #define SPEED 15
-#define TURN 0.5
+#define TURN 0.15
 #define PI 3.141592653589793
 #define NORTH 1
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define H 900//1440
-#define W 1600//2560
+#define H 1440
+#define W 2560
 
 typedef struct	s_mlx
 {

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/07 17:38:31 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:44:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ static void	ray_right(void)
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
-		// printf("/////////\ndist %f\n////////////\n", g_data.dist.dist);
-		printf("//////////\nside %d\n/////////////\n", side);
 		draw_line(start_x, side, 1);
 		start_x += SIZE;
 		angle += 0.005;
@@ -175,10 +173,9 @@ static void	ray_left(void)
 				g_data.hit.y = y;
 				break;
 			}
-			// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 		}
+		// printf("///////////\nhit X: %f\nhit Y: %f\n//////////////\n", g_data.hit.x, g_data.hit.y);
 		side = which_side();
-		printf("////////\nside %d\n/////////////\n", side);
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
 		draw_line(start_x, side, -1);
 		start_x -= SIZE;
@@ -188,21 +185,31 @@ static void	ray_left(void)
 
 static int which_side(void)
 {
-	if (((int)g_data.hit.y % SIZE) != 0)
+	static	int	tmp_side = 0;
+
+	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) < fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
+		if (g_data.pos.y > g_data.hit.y)
+			tmp_side = NORTH;
 		if (g_data.pos.y < g_data.hit.y)
-			return (SOUTH);
-		else 
-			return (NORTH);
+			tmp_side = SOUTH;
 	}
-	if ((int)g_data.hit.x % SIZE != 0)
+	else if (fabs((int)round(g_data.hit.y) - g_data.hit.y) > fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
+		if (g_data.pos.x > g_data.hit.x)
+			tmp_side = WEST;
 		if (g_data.pos.x < g_data.hit.x)
-			return (EAST);
-		else 
-			return (WEST);
+			tmp_side = EAST;
 	}
-	return (-1);
+	else if (g_data.map.tab[(int)round(g_data.hit.y) + 1][(int)round(g_data.hit.x)] == ' ')
+		tmp_side = NORTH;
+	else if (g_data.map.tab[(int)round(g_data.hit.y) - 1][(int)round(g_data.hit.x)] == ' ')
+		tmp_side = SOUTH;
+	else if (g_data.map.tab[(int)round(g_data.hit.y)][(int)round(g_data.hit.x) - 1] == ' ')
+		tmp_side = WEST;
+	else if (g_data.map.tab[(int)round(g_data.hit.y)][(int)round(g_data.hit.x) + 1] == ' ')
+		tmp_side = EAST;
+	return (tmp_side);
 }
 
 static void draw_line(int start_x, int side, int screen)
@@ -212,13 +219,14 @@ static void draw_line(int start_x, int side, int screen)
 	int	i;
 
 	i = 0;
+	printf("/////////\nSIDE %d\n//////////////\n", side);
 	while (i <= SIZE)
 	{
 		line_height = (H / g_data.dist.dist) * SIZE;
 		y = H / 2;
 		while (y - H / 2 < line_height / 2)
 		{
-			if (side < EAST)
+			if (side < EAST && side != 0)
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
 			else
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
@@ -227,7 +235,7 @@ static void draw_line(int start_x, int side, int screen)
 		y = H / 2;
 		while (abs(y - H / 2) < line_height / 2)
 		{
-			if (side < EAST)
+			if (side < EAST && side != 0)
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
 			else
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
