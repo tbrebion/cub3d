@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/08 15:32:07 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:46:40 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ static void	ray_right(void)
 		tmpy = g_data.dir.y * cos(1 * angle) + g_data.dir.x * sin(1 * angle);
 		while (j < g_data.win.x * 2)
 		{
-			x += (tmpx * SPEED / 1000);
-			y += (tmpy * SPEED / 1000);
+			x += (tmpx * SPEED / 100000);
+			y += (tmpy * SPEED / 100000);
 			if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1' || g_data.map.tab[(int)floor(y)][(int)floor(x)] == ' ')
 			{
 				g_data.hit.x = x;
@@ -165,8 +165,8 @@ static void	ray_left(void)
 		tmpy = g_data.dir.y * cos(-1 * angle) + g_data.dir.x * sin(-1 * angle);
 		while (j < g_data.win.x * 2)
 		{
-			x += (tmpx * SPEED / 1000);
-			y += (tmpy * SPEED / 1000);
+			x += (tmpx * SPEED / 100000);
+			y += (tmpy * SPEED / 100000);
 			if (g_data.map.tab[(int)floor(y)][(int)floor(x)] == '1' || g_data.map.tab[(int)floor(y)][(int)floor(x)] == ' ')
 			{
 				g_data.hit.x = x;
@@ -185,7 +185,7 @@ static void	ray_left(void)
 
 static int which_side(void)
 {
-	static	int	tmp_side = 0;
+	static int	tmp_side = 0;
 
 	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) < fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
