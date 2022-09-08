@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/08 14:44:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:32:07 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ static void	ray_right(void)
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
 		draw_line(start_x, side, 1);
 		start_x += SIZE;
-		angle += 0.005;
+		angle += 0.0025;
 	}
 }
 
@@ -179,7 +179,7 @@ static void	ray_left(void)
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
 		draw_line(start_x, side, -1);
 		start_x -= SIZE;
-		angle += 0.005;
+		angle += 0.0025;
 	}
 }
 
@@ -201,14 +201,6 @@ static int which_side(void)
 		if (g_data.pos.x < g_data.hit.x)
 			tmp_side = EAST;
 	}
-	else if (g_data.map.tab[(int)round(g_data.hit.y) + 1][(int)round(g_data.hit.x)] == ' ')
-		tmp_side = NORTH;
-	else if (g_data.map.tab[(int)round(g_data.hit.y) - 1][(int)round(g_data.hit.x)] == ' ')
-		tmp_side = SOUTH;
-	else if (g_data.map.tab[(int)round(g_data.hit.y)][(int)round(g_data.hit.x) - 1] == ' ')
-		tmp_side = WEST;
-	else if (g_data.map.tab[(int)round(g_data.hit.y)][(int)round(g_data.hit.x) + 1] == ' ')
-		tmp_side = EAST;
 	return (tmp_side);
 }
 
@@ -226,7 +218,7 @@ static void draw_line(int start_x, int side, int screen)
 		y = H / 2;
 		while (y - H / 2 < line_height / 2)
 		{
-			if (side < EAST && side != 0)
+			if (side < EAST /*&& side != 0*/)
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
 			else
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
@@ -235,7 +227,7 @@ static void draw_line(int start_x, int side, int screen)
 		y = H / 2;
 		while (abs(y - H / 2) < line_height / 2)
 		{
-			if (side < EAST && side != 0)
+			if (side < EAST /*&& side != 0*/)
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
 			else
 				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
