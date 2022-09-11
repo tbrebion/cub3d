@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/11 23:06:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/11 23:20:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ static void	ray_right(void)
 			x += (2 * g_data.dir.v - 1);//(raydir_x * step(raydir_x, raydir_y));
 			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;//(raydir_y * step(raydir_x, raydir_y));
 			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+			j++;
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
@@ -181,7 +182,8 @@ static void	ray_left(void)
 			}
 			x += (2 * g_data.dir.v - 1);//(raydir_x * step(raydir_x, raydir_y));
 			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;//(raydir_y * step(raydir_x, raydir_y));
-			// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+			j++;
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
