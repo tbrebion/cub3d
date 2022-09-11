@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/11 23:20:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/11 23:30:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ static void	ray_right(void)
 		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x); //g_data.pos.y;
 		printf("//////////////////\nx %d\n  y %d\n////////////////\n", (int)(x - 1 + g_data.dir.v), (int)floor(y));
 		printf("MAP[x][y] : [%c]\n", g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/]);
-		while (j < g_data.win.x * 2)
+		while (j < g_data.win.x/* * 2*/)
 		{
 			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/] == '1')
 			{
@@ -172,7 +172,7 @@ static void	ray_left(void)
 		raydir_y = g_data.dir.y * cos(-1 * angle) + g_data.dir.x * sin(-1 * angle);
 		x = floor(g_data.pos.x) + g_data.dir.v;//g_data.pos.x;
 		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x); //g_data.pos.y;
-		while (j < g_data.win.x * 2)
+		while (j < g_data.win.x/** 2*/)
 		{
 			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/] == '1')
 			{
