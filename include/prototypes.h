@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/12 14:45:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:06:03 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int		ft_close(void);
 int		player_pos(char c);
 double	ft_deg_to_rad(double d);
 void	width_height_map(void);
+int		for_win(char *line, int *i);
+int		ft_spaceskip(char *line, int *i);
+
 
 //////////////
 // GARBAGE COLLECTOR
@@ -60,6 +63,9 @@ void	garcol_free_all(void);
 ////////////////
 void	init_mlx(void);
 int		ft_key(int keysym);
+void	ft_ws(double d);
+void	ft_ad(double d);
+void	ft_rotate(double d);
 void	draw(void);
 // void	ray_right(void);
 // void	ray_left(void);

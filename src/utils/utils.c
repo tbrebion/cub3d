@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:58:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/06 11:47:07 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:05:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,24 @@ void	width_height_map(void)
 	g_data.map.h = i - 2;
 }
 
-// void	
+int		ft_spaceskip(char *line, int *i)
+{
+	while ((line[*i] == ' ' || line[*i] == '\t' || line[*i] == '\n')
+	|| (line[*i] == '\r' || line[*i] == '\v' || line[*i] == '\f'))
+		(*i)++;
+	return (1);
+}
+
+int		for_win(char *line, int *i)
+{
+	int	num;
+
+	num = 0;
+	ft_spaceskip(line, i);
+	while (line[*i] >= '0' && line[*i] <= '9')
+	{
+		num = num * 10 + (line[*i] - 48);
+		(*i)++;
+	}
+	return (num);
+}

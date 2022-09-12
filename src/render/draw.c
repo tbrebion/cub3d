@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:27:15 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/25 16:06:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:23:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,3 @@ static void	draw_help_dos(int x, int y)
 		x++;
 	}
 }
-// void	draw(void)
-// {
-// 	g_data.ray.x = 0;
-// 	g_data.ray.y = 0;
-// 	g_data.ray.i = 0;
-// 	g_data.ray.v = 0;
-// 	g_data.ray.w = 0;
-// 	g_data.hit.x = 0;
-// 	g_data.hit.y = 0;
-// 	g_data.hit.d = 0;
-	
-// }

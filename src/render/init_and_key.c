@@ -6,15 +6,15 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/12 14:50:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:10:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	ft_ws(double d);
-static void	ft_ad(double d);
-static void	ft_rotate(double d);
+// static void	ft_ws(double d);
+// static void	ft_ad(double d);
+// static void	ft_rotate(double d);
 
 void	init_mlx(void)
 {
@@ -29,44 +29,28 @@ int	ft_key(int keysym)
 	ft_dir();
 	if (keysym == XK_Escape)
 		ft_close();
-	else if (keysym == XK_w) 
+	else if (keysym == XK_z) 
 		ft_ws(1);
 	else if (keysym == XK_s) 
 		ft_ws(-1);
 	else if (keysym == XK_d) 
 		ft_ad(1);
-	else if (keysym == XK_a) 
+	else if (keysym == XK_q) 
 		ft_ad(-1);
 	else if (keysym == XK_Left)
 		ft_rotate(-1);
 	else if (keysym == XK_Right)
 		ft_rotate(1);
-	g_data.map.x = 0;//(int)floor(g_data.pos.x);
-	g_data.map.y = 10;//(int)floor(g_data.pos.y);
-	// ft_dir();
+	g_data.map.x = W;//(int)floor(g_data.pos.x);
+	g_data.map.y = H;//(int)floor(g_data.pos.y);
 	// mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
-	// ray_right();
-	// ray_left();
-	// ray();
-	// others_ray(-1);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
 	screen_loop();
-	// printf("//////////////////////////////////////////\n");
-	// printf("RAYX %f    RAYY %f", g_data.ray.x, g_data.ray.y);
-	// printf("//////////////////////////////////////////\n");
-	// ////////////////////////////////////////////////////////////
-	printf("//////////////////////////////////////////\n");
-	printf("\nPOSx : %f\n\nPOSy : %f\n\n", g_data.pos.x, g_data.pos.y);
-	printf("//////////////////////////////////////////\n");
-	printf("\nDIRx : %f\n\nDIRy : %f\n\n", g_data.dir.x, g_data.dir.y);
-	printf("//////////////////////////////////////////\n");
-	// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
-	////////////////////////////////////////////////////////////
-	
+	printf("///////\n%f\n///////////\n", g_data.dir.x);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
 	return (1);
 }
 
-static void	ft_ws(double d)
+void	ft_ws(double d)
 {
 	g_data.pos.x += d * (g_data.dir.x * SPEED / 100);
 	if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x)] == '1')
@@ -76,7 +60,7 @@ static void	ft_ws(double d)
 		g_data.pos.y -= d * (g_data.dir.y * SPEED / 100);
 }
 
-static void	ft_ad(double d)
+void	ft_ad(double d)
 {
 	g_data.pos.x -= d * (g_data.dir.y * SPEED / 100);
 	if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x)] == '1')
@@ -86,7 +70,7 @@ static void	ft_ad(double d)
 		g_data.pos.y -= d * (g_data.dir.x * SPEED / 100);
 }
 
-static void	ft_rotate(double d)
+void	ft_rotate(double d)
 {
 	double	dist;
 
