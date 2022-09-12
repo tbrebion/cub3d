@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/06 11:47:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:48:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,18 @@ char	**garcol_split(char *str, char lim);
 void	garcol_free_all(void);
 
 ////////////////
-// MLX
+// KEY x RENDER
 ////////////////
 void	init_mlx(void);
 int		ft_key(int keysym);
 void	draw(void);
+// void	ray_right(void);
+// void	ray_left(void);
+void	ray(void);
+int 	which_side(void);
+void	ft_dir(void);
+void	draw_line(int start_x, int side, int screen);
+
 // void	init_pos(void);
 
 #endif

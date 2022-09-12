@@ -38,13 +38,8 @@ SOURCES		+=                           		\
 ## SRC/RENDER ##
 
 SOURCES		+=                           		\
+		src/render/screen.c                 	\
 		src/render/draw.c                   	\
 		src/render/init_and_key.c           	\
-
-
-## SRC/TEST ##
-
-SOURCES		+=                           		\
-		src/TEST/test.c                     	\
 
 
