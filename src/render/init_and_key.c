@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/11 23:30:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 10:42:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static void	ft_rotate(double d);
 static void	ray_right(void);
 static void	ray_left(void);
 static int which_side(void);
-// static void draw_line(int start_x, int side, int screen);
-// static double	step(double raydir_x, double raydir_y);
 static void	ft_dir(void);
-// static void draw_left(int half_win);
+// static void draw_line(int start_x, int side, int screen);
 
 void	init_mlx(void)
 {
@@ -113,8 +111,6 @@ static void	ray_right(void)
 	double 	angle;
 	int		side;
 
-	int	start_x = W / 2;
-
 	angle = 0.0;
 	raydir_x = 0.0;
 	raydir_y = 0.0;
@@ -123,27 +119,28 @@ static void	ray_right(void)
 	{
 		raydir_x = g_data.dir.x * cos(1 * angle) - g_data.dir.y * sin(1 * angle);
 		raydir_y = g_data.dir.y * cos(1 * angle) + g_data.dir.x * sin(1 * angle);
-		x = floor(g_data.pos.x) + g_data.dir.v;//g_data.pos.x;
-		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x); //g_data.pos.y;
-		printf("//////////////////\nx %d\n  y %d\n////////////////\n", (int)(x - 1 + g_data.dir.v), (int)floor(y));
-		printf("MAP[x][y] : [%c]\n", g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/]);
-		while (j < g_data.win.x/* * 2*/)
+		x = floor(g_data.pos.x) + g_data.dir.v;
+		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x);
+		
+		// printf("//////////////////\nx %d\n  y %d\n////////////////\n", (int)(x - 1 + g_data.dir.v), (int)floor(y));
+		// printf("MAP[x][y] : [%c]\n", g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)]);
+
+		while (j < g_data.win.x)
 		{
-			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/] == '1')
+			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)] == '1')
 			{
 				g_data.hit.x = x;
 				g_data.hit.y = y;
 				break;
 			}
-			x += (2 * g_data.dir.v - 1);//(raydir_x * step(raydir_x, raydir_y));
-			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;//(raydir_y * step(raydir_x, raydir_y));
+			x += (2 * g_data.dir.v - 1);
+			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;
 			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 			j++;
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
-		// draw_line(start_x, side, 1);
-		start_x += SIZE;
+		draw_line(start_x, side, 1);
 		angle += 0.0025;
 	}
 }
@@ -158,79 +155,35 @@ static void	ray_left(void)
 	double 	angle;
 	int		side;
 
-	int	start_x = W / 2;
-
 	angle = 0.0;
 	raydir_x = 0.0;
 	raydir_y = 0.0;
 	j = 0;
 	while (angle < 0.5)
 	{
-		// x = g_data.pos.x;
-		// y = g_data.pos.y;
 		raydir_x = g_data.dir.x * cos(-1 * angle) - g_data.dir.y * sin(-1 * angle);
 		raydir_y = g_data.dir.y * cos(-1 * angle) + g_data.dir.x * sin(-1 * angle);
-		x = floor(g_data.pos.x) + g_data.dir.v;//g_data.pos.x;
-		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x); //g_data.pos.y;
+		x = floor(g_data.pos.x) + g_data.dir.v;
+		y = g_data.pos.y + (x - g_data.pos.x) * (raydir_y / raydir_x);
 		while (j < g_data.win.x/** 2*/)
 		{
-			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)/*floor(x)*/] == '1')
+			if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.dir.v)] == '1')
 			{
 				g_data.hit.x = x;
 				g_data.hit.y = y;
 				break;
 			}
-			x += (2 * g_data.dir.v - 1);//(raydir_x * step(raydir_x, raydir_y));
-			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;//(raydir_y * step(raydir_x, raydir_y));
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
+			x += (2 * g_data.dir.v - 1);
+			y += (2 * g_data.dir.v - 1) * g_data.dir.y / g_data.dir.x;
+			// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 			j++;
 		}
 		side = which_side();
 		g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
-		// draw_line(start_x, side, -1);
-		start_x -= SIZE;
+		draw_line(start_x, side, -1);
 		angle += 0.0025;
 	}
 }
-
-// static double	step(double raydir_x, double raydir_y)
-// {
-// 	// double	x;
-// 	// double	y;
-// 	double	x1;
-// 	double	y1;
-// 	double	x2;
-// 	double	y2;
-// 	double	diff_x;
-// 	double	diff_y;
-// 	double	step;
-// 	// int		i;
-
-// 	x1 = g_data.pos.x;
-// 	y1 = g_data.pos.y;
-// 	x1 -= raydir_x * SPEED / 100;
-// 	y1 -= raydir_y * SPEED / 100;
-// 	x2 = g_data.pos.x;
-// 	y2 = g_data.pos.y;
-// 	diff_x = x2 - x1;
-// 	diff_y = y2 - y1;
-// 	if (fabs(diff_x) >= fabs(diff_y))
-// 		step = fabs(diff_x);
-// 	else
-// 		step = fabs(diff_y);
-// 	// diff_x = diff_x / step;
-// 	// diff_y = diff_y / step;
-// 	// x = x1;
-// 	// y = y1;
-// 	// i = 1;
-// 	// while (i <= step)
-// 	// {
-// 	// 	x += diff_x;
-// 	// 	y += diff_y;
-// 	// 	i++;
-// 	// }
-// 	return (step);
-// }
 
 static void	ft_dir(void)
 {
@@ -243,6 +196,7 @@ static void	ft_dir(void)
 	else
 		g_data.dir.w = 0;
 }
+
 static int which_side(void)
 {
 	static int	tmp_side = 0;

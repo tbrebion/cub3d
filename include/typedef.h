@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/11 22:30:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 10:33:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define H 900//1440
-#define W 1600//2560
+#define H 1080
+#define W 1920
 
 typedef struct	s_mlx
 {
