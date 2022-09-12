@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/12 12:11:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:50:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	ft_key(int keysym)
 		ft_rotate(1);
 	g_data.map.x = 0;//(int)floor(g_data.pos.x);
 	g_data.map.y = 10;//(int)floor(g_data.pos.y);
-	ft_dir();
+	// ft_dir();
 	// mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	// ray_right();
 	// ray_left();
-	ray();
+	// ray();
 	// others_ray(-1);
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
-
+	screen_loop();
 	// printf("//////////////////////////////////////////\n");
 	// printf("RAYX %f    RAYY %f", g_data.ray.x, g_data.ray.y);
 	// printf("//////////////////////////////////////////\n");

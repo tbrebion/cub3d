@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/12 11:48:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:45:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,12 @@ int		ft_key(int keysym);
 void	draw(void);
 // void	ray_right(void);
 // void	ray_left(void);
-void	ray(void);
+void	ray_ver(void);
+void	ray_hor(void);
+void	ray_rotate(void);
 int 	which_side(void);
 void	ft_dir(void);
+void	screen_loop(void);
 void	draw_line(int start_x, int side, int screen);
 
 // void	init_pos(void);

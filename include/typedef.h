@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/12 10:33:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:35:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ typedef struct	s_dir
 {
 	double	x;
 	double	y;
-	double	v;
-	double	w;
+	// double	v;
+	// double	w;
+	// int		i;
 	// double	a;
 }	t_dir;
 
@@ -87,15 +88,16 @@ typedef struct	s_ray
 {
 	double	x;
 	double	y;
-	// double	i;
-	// double	v;
-	// double	w;
+	double	v;
+	double	w;
+	int		i;
 }	t_ray;
 
 typedef struct	s_hit
 {
 	double	x;
 	double	y;
+	double	d;
 }	t_hit;
 
 typedef struct	s_game_params
