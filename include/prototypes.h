@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/13 15:40:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:57:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int 	which_side(void);
 void	ft_dir(void);
 void	screen_loop(void);
 void	draw_line(int start_x);
-
+void	ft_stock(void);
 // void	init_pos(void);
 
 #endif

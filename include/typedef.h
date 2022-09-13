@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/13 15:58:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:48:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct	s_win
 typedef struct s_img
 {
 	void			*ptr;
-	unsigned int	adr;
+	// unsigned int	adr;
+	char			*adr;
 	int				fsh;
 }	t_img;
 
@@ -121,6 +122,13 @@ typedef struct	s_dist
 	int		side;
 }	t_dist;
 
+typedef struct	s_stock
+{
+	double	x;
+	double	y;
+	double	d;
+}	t_stock;
+
 typedef struct	s_data
 {
 	t_mlx	mlx;
@@ -134,6 +142,7 @@ typedef struct	s_data
 	t_hit	hit;
 	t_dist	dist;
 	t_utils	utils;
+	t_stock	*stock;
 	t_list	**garbage;
 }	t_data;
 
