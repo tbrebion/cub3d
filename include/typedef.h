@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/13 14:01:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:47:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_img
 typedef struct	s_map
 {
 	char	**tab;
-	int		x;
-	int		y;
 	int		w;
 	int		h;
 	// int		spr;
