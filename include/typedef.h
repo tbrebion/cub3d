@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/13 15:47:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:58:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include "cub3d.h"
 
-#define SIZE 32
+#define SIZE 8
 #define SPEED 15
 #define TURN 0.15
 #define PI 3.141592653589793

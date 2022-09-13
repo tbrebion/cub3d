@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:27:15 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/12 19:23:05 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:57:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	draw_help_dos(int x, int y)
 
 	tmpx = x;
 	tmpy = y;
-	while (y < (tmpy + SIZE)) //check hit ray
+	while (y < (tmpy + SIZE))
 	{
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x, y, 0x00FF0000);
 		y++;

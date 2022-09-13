@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 15:27:10 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:57:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_key(int keysym)
 		ft_rotate(1);
 	mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	screen_loop();
+	draw();
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
 	return (1);
 }
