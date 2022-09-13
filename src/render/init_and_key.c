@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 15:57:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:05:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,15 @@ int	ft_key(int keysym)
 	screen_loop();
 	draw();
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
-	return (1);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) + 1, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) + 2, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) - 1, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) - 2, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 2, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) - 2, 0x00FFFFFF);
+return (1);
 }
 
 void	ft_ws(double d)
