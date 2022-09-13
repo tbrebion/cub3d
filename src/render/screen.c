@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 15:40:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:51:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,11 @@ void	ray_ver(void)
 		}
 		x += (2 * g_data.ray.v - 1);
 		y += (2 * g_data.ray.v - 1) * g_data.ray.y / g_data.ray.x;
-		// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 	}
 	g_data.hit.x = g_data.pos.x;
 	g_data.hit.y = g_data.pos.y;
 	g_data.hit.d = 10000000;
 	g_data.hit.side = 0;
-	// g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
-	// draw_line(start_x, side, 1);
 }
 
 void	ray_hor(void)
@@ -70,7 +67,6 @@ void	ray_hor(void)
 		}
 		y += (2 * g_data.ray.w - 1);
 		x += (2 * g_data.ray.w - 1) * g_data.ray.x / g_data.ray.y;
-		// mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
 	}
 }
 
@@ -129,7 +125,6 @@ void	screen_loop(void)
 		ft_dir();
 		ray_ver();
 		ray_hor();
-		// printf("dist : %f\n", g_data.hit.d);
 		draw_line(g_data.ray.i);
 		g_data.ray.i++;
 	}
