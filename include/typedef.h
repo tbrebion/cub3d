@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/12 18:42:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:01:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define H 900//1080
-#define W 1600//1920
+#define H 1440
+#define W 2560
 
 typedef struct	s_mlx
 {
@@ -98,6 +98,7 @@ typedef struct	s_hit
 	double	x;
 	double	y;
 	double	d;
+	int		side;
 }	t_hit;
 
 typedef struct	s_game_params

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/12 20:06:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:05:54 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	ft_ws(double d);
 void	ft_ad(double d);
 void	ft_rotate(double d);
 void	draw(void);
-// void	ray_right(void);
-// void	ray_left(void);
 void	ray_ver(void);
 void	ray_hor(void);
 void	ray_rotate(void);

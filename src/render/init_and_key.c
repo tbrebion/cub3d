@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/12 20:10:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:11:33 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,22 @@ void	init_mlx(void)
 
 int	ft_key(int keysym)
 {
-	ft_dir();
+	// ft_dir();
 	if (keysym == XK_Escape)
 		ft_close();
-	else if (keysym == XK_z) 
+	else if (keysym == XK_w) 
 		ft_ws(1);
 	else if (keysym == XK_s) 
 		ft_ws(-1);
 	else if (keysym == XK_d) 
 		ft_ad(1);
-	else if (keysym == XK_q) 
+	else if (keysym == XK_a) 
 		ft_ad(-1);
 	else if (keysym == XK_Left)
 		ft_rotate(-1);
 	else if (keysym == XK_Right)
 		ft_rotate(1);
-	g_data.map.x = W;//(int)floor(g_data.pos.x);
-	g_data.map.y = H;//(int)floor(g_data.pos.y);
-	// mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	screen_loop();
-	printf("///////\n%f\n///////////\n", g_data.dir.x);
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
 	return (1);
 }

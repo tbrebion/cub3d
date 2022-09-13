@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/12 21:20:35 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:32:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,28 @@ void	ray_ver(void)
 
 	x = floor(g_data.pos.x) + g_data.ray.v;
 	y = g_data.pos.y + (x - g_data.pos.x) * (g_data.ray.y / g_data.ray.x);
-	printf("///////////////\nposx %f\nposy %f\nrayx %f\nrayy %f\n////////////////\n", g_data.pos.x, g_data.pos.y, g_data.ray.x, g_data.ray.y);
-	while ((int)floor(y) > 0 && (int)floor(y) < /*W*/g_data.map.y)
+	while ((int)floor(y) > 0 && (int)floor(y) < 1000)
 	{
-		if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == '1')
+		if ((int)floor(y) > g_data.map.h || (int)(x - 1 + g_data.ray.v) > g_data.map.w)
+			break;
+		if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == '1' || g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == ' ')
 		{
 			g_data.hit.x = x;
 			g_data.hit.y = y;
 			g_data.hit.d = hypot(x - g_data.pos.x, y - g_data.pos.y);
+			g_data.hit.side = which_side();
 			return ;
 		}
 		x += (2 * g_data.ray.v - 1);
 		y += (2 * g_data.ray.v - 1) * g_data.ray.y / g_data.ray.x;
 		mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, x * SIZE, y * SIZE, 0x00FFFFFF);
-		// printf("///////////////\nx : %f, y : %f\n////////////////\n", x, y);
 	}
 	g_data.hit.x = g_data.pos.x;
 	g_data.hit.y = g_data.pos.y;
 	g_data.hit.d = 10000000;
-	// side = which_side();
+	g_data.hit.side = 0;
 	// g_data.dist.dist = sqrt(pow(x - g_data.pos.x, 2) + pow(y - g_data.pos.y, 2));
 	// draw_line(start_x, side, 1);
-	// angle += 0.0025;
-	// j++;
 }
 
 void	ray_hor(void)
@@ -51,15 +50,18 @@ void	ray_hor(void)
 
 	y = floor(g_data.pos.y) + g_data.ray.w;
 	x = g_data.pos.x + (y - g_data.pos.y) * (g_data.ray.x / g_data.ray.y);
-	while ((int)floor(x) > 0 && (int)floor(x) < /*W*/g_data.map.x)
+	while ((int)floor(x) > 0 && (int)floor(x) < 1000)
 	{
-		if (g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == '1')
+		if ((int)(y - 1 + g_data.ray.w) > g_data.map.h || (int)floor(x) > g_data.map.w)
+			break;
+		if (g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == '1' || g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == ' ')
 		{
 			if (g_data.hit.d > hypot(x - g_data.pos.x, y - g_data.pos.y))
 			{
 				g_data.hit.x = x;
 				g_data.hit.y = y;
 				g_data.hit.d = hypot(x - g_data.pos.x, y - g_data.pos.y);
+				g_data.hit.side = which_side();
 			}
 			return ;
 		}
@@ -107,12 +109,10 @@ void	ray_rotate(void)
 	double	angle;
 	double	dist;
 
-	angle = ((double)g_data.ray.i - (/*g_data.win.x*/W / 2)) * 33 / (/*g_data.win.x*/W / 2);
+	angle = ((double)g_data.ray.i - (W / 2)) * 33 / (W / 2);
 	angle = ft_deg_to_rad(angle);
-	// printf("///////\n%f\n///////////\n", g_data.dir.x);
 	g_data.ray.x = g_data.dir.x * cos(angle) - g_data.dir.y * sin(angle);
 	g_data.ray.y = g_data.dir.y * cos(angle) + g_data.dir.x * sin(angle);
-	printf("/////////\nray x : %f, ray y : %f\n/////////////\n", g_data.ray.x, g_data.ray.y);
 	dist = hypot(g_data.ray.x, g_data.ray.y);
 	g_data.ray.x /= dist;
 	g_data.ray.y /= dist;
@@ -120,16 +120,16 @@ void	ray_rotate(void)
 
 void	screen_loop(void)
 {
-	while (g_data.ray.i < g_data.win.x)
+	while (g_data.ray.i < W)
 	{
 		ray_rotate();
 		ft_dir();
 		ray_ver();
 		ray_hor();
-		// printf("\nOEOEOOE\n\n");
 		// draw_line(g_data.ray.i, 1, 1);
 		g_data.ray.i++;
 	}
+	g_data.ray.i = 0;
 }
 
 void draw_line(int start_x, int side, int screen)
