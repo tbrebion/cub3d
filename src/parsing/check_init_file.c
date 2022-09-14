@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/08/25 15:57:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:34:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	get_dir(char c);
 ////////////////////
 static void	print_map(char **map);
 static void	print_file(char **file);
-static void	print_params(t_game_params params);
+static void	print_params(t_params params);
 ////////////////////
 
 void	check_init_file(int ac, char **av)
@@ -154,11 +154,11 @@ static void	print_map(char **map)
 ///////////////////////////////////////////////////\n");
 }
 
-static void	print_params(t_game_params params)
+static void	print_params(t_params params)
 {
 	printf("NO_path = %s\n", params.NO_path);
 	printf("SO_path = %s\n", params.SO_path);
 	printf("WE_path = %s\n", params.WE_path);
 	printf("EA_path = %s\n", params.EA_path);
-	printf("colors = %d,%d,%d\n", params.colors[0], params.colors[1], params.colors[2]);
+	// printf("colors = %d,%d,%d\n", params.colors[0], params.colors[1], params.colors[2]);
 }

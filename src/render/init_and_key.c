@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 21:11:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:35:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	ft_key(int keysym)
 {
 	if (keysym == XK_Escape)
 		ft_close();
-	else if (keysym == XK_z) 
+	else if (keysym == XK_w) 
 		ft_ws(1);
 	else if (keysym == XK_s) 
 		ft_ws(-1);
 	else if (keysym == XK_d) 
 		ft_ad(1);
-	else if (keysym == XK_q) 
+	else if (keysym == XK_a) 
 		ft_ad(-1);
 	else if (keysym == XK_Left)
 		ft_rotate(-1);
