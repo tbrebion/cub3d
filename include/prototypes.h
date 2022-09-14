@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/14 13:20:11 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:39:38 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	SO_handler(char *str);
 void	WE_handler(char *str);
 void	EA_handler(char *str);
 void	F_handler(char *str);
+void	C_handler(char *str);
 
 //////////////
 // UTILS

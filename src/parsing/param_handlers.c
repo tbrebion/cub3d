@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/14 15:25:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:39:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ void	F_handler(char *str)
 			exit(42);
 		}
 		g_data.utils.params.colors_f[i] = ft_atoi(split[i]);
+		i++;
+	}
+}
+
+void	C_handler(char *str)
+{
+	char	**split;
+	int		i;
+
+	split = garcol_split(str, ',');
+	i = 0;
+	while (i < 3)
+	{
+		if (!ft_atoi(split[i]))
+		{
+			printf("Error in game parameters (colors)\n");
+			garcol_free_all();
+			exit(42);
+		}
+		g_data.utils.params.colors_c[i] = ft_atoi(split[i]);
 		i++;
 	}
 }

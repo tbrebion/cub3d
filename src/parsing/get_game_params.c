@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_game_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/14 15:28:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:39:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	detect_param(char *str)
 	else if (!ft_strcmp(line[0], "F"))
 		return (5);
 	else if (!ft_strcmp(line[0], "C"))
-		return (5);
+		return (6);
 	else
 		return (0);
 }
@@ -111,4 +111,6 @@ static void	param_handler(char *str, int param)
 		EA_handler(str);
 	else if (param == 5)
 		F_handler(str);
+	else if (param == 6)
+		C_handler(str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_init_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/14 15:34:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:43:35 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void init_pos(void)
 		j = 0;
 		i++;
 	}
-	
+
 }
 
 static void	check_arg(int ac, char **av)
@@ -160,5 +160,6 @@ static void	print_params(t_params params)
 	printf("SO_path = %s\n", params.SO_path);
 	printf("WE_path = %s\n", params.WE_path);
 	printf("EA_path = %s\n", params.EA_path);
-	// printf("colors = %d,%d,%d\n", params.colors[0], params.colors[1], params.colors[2]);
+	printf("colors_f = %d,%d,%d\n", params.colors_f[0], params.colors_f[1], params.colors_f[2]);
+	printf("colors_c = %d,%d,%d\n", params.colors_c[0], params.colors_c[1], params.colors_c[2]);
 }
