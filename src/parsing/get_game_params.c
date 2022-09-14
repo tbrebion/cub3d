@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:28:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static int	detect_param(char *str)
 	else if (!ft_strcmp(line[0], "EA"))
 		return (4);
 	else if (!ft_strcmp(line[0], "F"))
+		return (5);
+	else if (!ft_strcmp(line[0], "C"))
 		return (5);
 	else
 		return (0);

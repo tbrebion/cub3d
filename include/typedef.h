@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/13 17:48:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:24:40 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define H 1440
-#define W 2560
+#define H 1080//1440
+#define W 1920//2560
 
 typedef struct	s_mlx
 {
@@ -56,16 +56,16 @@ typedef struct	s_map
 	// int		spr;
 }	t_map;
 
-// typedef struct	s_tex
-// {
-// 	unsigned int	*n;
-// 	unsigned int	*s;
-// 	unsigned int	*e;
-// 	unsigned int	*w;
-// 	unsigned int	*i;
-// 	unsigned int	c;
-// 	unsigned int	f;
-// }	t_tex;
+typedef struct	s_tex
+{
+	unsigned int	*n;
+	unsigned int	*s;
+	unsigned int	*e;
+	unsigned int	*w;
+	unsigned int	*i;
+	unsigned int	c;
+	unsigned int	f;
+}	t_tex;
 
 typedef struct s_pos
 {
@@ -100,20 +100,21 @@ typedef struct	s_hit
 	int		side;
 }	t_hit;
 
-typedef struct	s_game_params
+typedef struct	s_params
 {
 	char	*NO_path;
 	char	*SO_path;
 	char	*WE_path;
 	char	*EA_path;
-	int		colors[3];
-}	t_game_params;
+	int		colors_f[3];
+	int		colors_c[3];
+}	t_params;
 
 typedef struct	s_utils
 {
 	int				max_len;
 	char			**file;
-	t_game_params	params;
+	t_params	params;
 }	t_utils;
 
 typedef struct	s_dist
@@ -131,19 +132,19 @@ typedef struct	s_stock
 
 typedef struct	s_data
 {
-	t_mlx	mlx;
-	t_win	win;
-	t_img	img;
-	t_map	map;
-	// t_tex	tex;
-	t_pos	pos;
-	t_dir	dir;
-	t_ray	ray;
-	t_hit	hit;
-	t_dist	dist;
-	t_utils	utils;
-	t_stock	*stock;
-	t_list	**garbage;
+	t_mlx		mlx;
+	t_win		win;
+	t_img		img;
+	t_map		map;
+	t_tex		tex;
+	t_pos		pos;
+	t_dir		dir;
+	t_ray		ray;
+	t_hit		hit;
+	t_dist		dist;
+	t_utils		utils;
+	t_stock		*stock;
+	t_list		**garbage;
 }	t_data;
 
 #endif

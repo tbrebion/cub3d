@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/08/22 18:34:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:25:33 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	F_handler(char *str)
 			garcol_free_all();
 			exit(42);
 		}
-		g_data.utils.params.colors[i] = ft_atoi(split[i]);
+		g_data.utils.params.colors_f[i] = ft_atoi(split[i]);
 		i++;
 	}
 }

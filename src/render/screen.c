@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 18:05:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:00:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// static int	ft_size(void);
+static int	ft_size(void);
 
 void	ray_ver(void)
 {
@@ -141,6 +141,7 @@ void	screen_loop(void)
 		ray_ver();
 		ray_hor();
 		ft_stock();
+		
 		draw_line(g_data.ray.i);
 		g_data.ray.i++;
 	}
@@ -152,7 +153,7 @@ void draw_line(int start_x)
 	int	line_height;
 	int	y;
 
-	line_height = /*ft_size();*/(H / g_data.hit.d);
+	line_height = ft_size();//(H / g_data.hit.d);
 	y = H / 2;
 	while (y - H / 2 < line_height / 2)
 	{
@@ -173,13 +174,13 @@ void draw_line(int start_x)
 	}
 }
 
-// static int	ft_size(void)
-// {
-// 	double	correc;
-// 	double	fisheye;
+static int	ft_size(void)
+{
+	double	correc;
+	double	fisheye;
 
-// 	fisheye = fabs((double)g_data.ray.i / (g_data.win.x / 2) - 1);
-// 	fisheye *= 28 * PI / 180;
-// 	correc = (double)g_data.hit.d * cos(fisheye);
-// 	return (round(H / correc));
-// }
+	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
+	fisheye *= 28 * PI / 180;
+	correc = (double)g_data.hit.d * cos(fisheye);
+	return (round(H / correc));
+}
