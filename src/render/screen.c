@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/14 14:00:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:33:26 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	ft_size(void);
+// static int	ft_size(void);
 
 void	ray_ver(void)
 {
@@ -141,7 +141,7 @@ void	screen_loop(void)
 		ray_ver();
 		ray_hor();
 		ft_stock();
-		
+
 		draw_line(g_data.ray.i);
 		g_data.ray.i++;
 	}
@@ -151,36 +151,41 @@ void	screen_loop(void)
 void draw_line(int start_x)
 {
 	int	line_height;
-	int	y;
+	int	i;
+	int	j;
+	int	k;
 
-	line_height = ft_size();//(H / g_data.hit.d);
-	y = H / 2;
-	while (y - H / 2 < line_height / 2)
+	line_height = (H / g_data.hit.d);
+	g_data.wall.top = (H / 2) - (line_height / 2);
+	g_data.wall.bot = (H / 2) + (line_height / 2);
+	i = g_data.wall.top;
+	j = g_data.wall.bot;
+	k = 0;
+	while (k < H)
 	{
-		if (g_data.hit.side < EAST /*&& side != 0*/)
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
+		if (k < i)
+			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0xffb3b3);
+		else if (k >= i && k <= j)
+		{
+			if (g_data.hit.side < EAST /*&& side != 0*/)
+				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0X2cc1cc);
+			else
+				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0X2c71cc);
+			i++;
+		}
 		else
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
-		y++;
-	}
-	y = H / 2;
-	while (abs(y - H / 2) < line_height / 2)
-	{
-		if (g_data.hit.side < EAST /*&& side != 0*/)
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2cc1cc);
-		else
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , y , 0X2c71cc);
-		y--;
+			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0Xff9900);
+		k++;
 	}
 }
 
-static int	ft_size(void)
-{
-	double	correc;
-	double	fisheye;
+// static int	ft_size(void)
+// {
+// 	double	correc;
+// 	double	fisheye;
 
-	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
-	fisheye *= 28 * PI / 180;
-	correc = (double)g_data.hit.d * cos(fisheye);
-	return (round(H / correc));
-}
+// 	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
+// 	fisheye *= 28 * PI / 180;
+// 	correc = (double)g_data.hit.d * cos(fisheye);
+// 	return (round(H / correc));
+// }

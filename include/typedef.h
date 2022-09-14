@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/14 14:24:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:20:01 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,12 @@ typedef struct	s_stock
 	double	d;
 }	t_stock;
 
+typedef struct s_wall
+{
+	int	top;
+	int	bot;
+}	t_wall;
+
 typedef struct	s_data
 {
 	t_mlx		mlx;
@@ -143,6 +149,7 @@ typedef struct	s_data
 	t_hit		hit;
 	t_dist		dist;
 	t_utils		utils;
+	t_wall		wall;
 	t_stock		*stock;
 	t_list		**garbage;
 }	t_data;
