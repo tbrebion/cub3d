@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/14 17:33:26 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:20:40 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// static int	ft_size(void);
+static int	ft_size(void);
+static void	pixel_in_img(int color);
 
 void	ray_ver(void)
 {
@@ -125,7 +126,6 @@ void	screen_loop(void)
 	int	sl;
 	int	end;
 
-	g_data.img.ptr = mlx_new_image(g_data.mlx.ptr, W, H);
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &bpp, &sl, &end);
 	g_data.stock = malloc(sizeof(t_stock) * W);
 	if (!g_data.stock)
@@ -140,52 +140,79 @@ void	screen_loop(void)
 		ft_dir();
 		ray_ver();
 		ray_hor();
-		ft_stock();
-
-		draw_line(g_data.ray.i);
+		// ft_stock();
+		draw_line();
 		g_data.ray.i++;
+		g_data.img.adr += 4;
 	}
+	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
 }
 
-void draw_line(int start_x)
+void draw_line(void)
 {
 	int	line_height;
 	int	i;
 	int	j;
-	int	k;
+	int	y;
+	int	color;
 
-	line_height = (H / g_data.hit.d);
+	line_height = ft_size();//(H / g_data.hit.d);
 	g_data.wall.top = (H / 2) - (line_height / 2);
 	g_data.wall.bot = (H / 2) + (line_height / 2);
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
-	k = 0;
-	while (k < H)
+	y = 0;
+	while (y < H)
 	{
-		if (k < i)
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0xffb3b3);
-		else if (k >= i && k <= j)
+		if (y < i)
+		{
+			color = create_trgb(00, 00, 00, 102);
+			pixel_in_img(color);
+		}
+		else if (y >= i && y <= j)
 		{
 			if (g_data.hit.side < EAST /*&& side != 0*/)
-				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0X2cc1cc);
+			{
+				color = create_trgb(100, 77, 77, 77);
+				pixel_in_img(color);
+			}
 			else
-				mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0X2c71cc);
+			{
+				color = create_trgb(00, 153, 00, 00);
+				pixel_in_img(color);
+			}
 			i++;
+			// g_data.img.adr += W * 4;
 		}
 		else
-			mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, start_x , k, 0Xff9900);
-		k++;
+		{
+			color = create_trgb(00, 00, 153, 00);
+			pixel_in_img(color);
+		}
+		y++;
+		g_data.img.adr += W * 4;
 	}
+	g_data.img.adr -= H * (W * 4);
 }
 
-// static int	ft_size(void)
-// {
-// 	double	correc;
-// 	double	fisheye;
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-// 	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
-// 	fisheye *= 28 * PI / 180;
-// 	correc = (double)g_data.hit.d * cos(fisheye);
-// 	return (round(H / correc));
-// }
+static void	pixel_in_img(int color)
+{
+	*(int *)g_data.img.adr = color;
+}
+
+static int	ft_size(void)
+{
+	double	correc;
+	double	fisheye;
+
+	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
+	fisheye *= 28 * PI / 180;
+	correc = (double)g_data.hit.d * cos(fisheye);
+	return (floor(H / correc));
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/14 15:39:38 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:13:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ void	garcol_free_all(void);
 ////////////////
 void	init_mlx(void);
 int		ft_key(int keysym);
-void	ft_ws(double d);
-void	ft_ad(double d);
-void	ft_rotate(double d);
 void	draw(void);
 void	ray_ver(void);
 void	ray_hor(void);
@@ -74,8 +71,9 @@ void	ray_rotate(void);
 int 	which_side(void);
 void	ft_dir(void);
 void	screen_loop(void);
-void	draw_line(int start_x);
+void	draw_line(void);
 void	ft_stock(void);
-// void	init_pos(void);
+void	player_mini_map(void);
+int	create_trgb(int t, int r, int g, int b);
 
 #endif
