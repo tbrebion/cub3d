@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/15 15:42:34 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:40:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,10 @@ typedef struct	s_map
 
 typedef struct	s_tex
 {
-	unsigned int	*n;
-	unsigned int	*s;
-	unsigned int	*e;
-	unsigned int	*w;
-	unsigned int	*i;
-	unsigned int	c;
-	unsigned int	f;
+	void	*n;
+	void	*s;
+	void	*e;
+	void	*w;
 }	t_tex;
 
 typedef struct s_pos
@@ -103,8 +100,8 @@ typedef struct	s_params
 
 typedef struct	s_utils
 {
-	int				max_len;
-	char			**file;
+	int			max_len;
+	char		**file;
 	t_params	params;
 }	t_utils;
 

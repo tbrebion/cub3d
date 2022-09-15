@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:58:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 14:06:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:07:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,28 @@ void	width_height_map(void)
 	g_data.map.h = i - 2;
 }
 
-int		ft_spaceskip(char *line, int *i)
+// int		ft_spaceskip(char *line, int *i)
+// {
+// 	while ((line[*i] == ' ' || line[*i] == '\t' || line[*i] == '\n')
+// 	|| (line[*i] == '\r' || line[*i] == '\v' || line[*i] == '\f'))
+// 		(*i)++;
+// 	return (1);
+// }
+
+char	*ft_strndup(char *s1, int len)
 {
-	while ((line[*i] == ' ' || line[*i] == '\t' || line[*i] == '\n')
-	|| (line[*i] == '\r' || line[*i] == '\v' || line[*i] == '\f'))
-		(*i)++;
-	return (1);
+	int		i;
+	char	*res;
+
+	res = malloc(sizeof(char) * (len + 1));
+	if (res == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] && i < len)
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

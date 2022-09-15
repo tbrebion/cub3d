@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/15 15:39:54 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:06:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		player_pos(char c);
 double	ft_deg_to_rad(double d);
 void	width_height_map(void);
 int		for_win(char *line, int *i);
+char	*ft_strndup(char *s1, int len);
 // int		ft_spaceskip(char *line, int *i);
 
 

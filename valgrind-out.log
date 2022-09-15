@@ -1,15 +1,380 @@
-==234295== Memcheck, a memory error detector
-==234295== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==234295== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==234295== Command: ./bin/cub3d Maps/map1.cub
-==234295== Parent PID: 211536
-==234295== 
-==234295== 
-==234295== HEAP SUMMARY:
-==234295==     in use at exit: 0 bytes in 0 blocks
-==234295==   total heap usage: 5,246 allocs, 5,246 frees, 968,134 bytes allocated
-==234295== 
-==234295== All heap blocks were freed -- no leaks are possible
-==234295== 
-==234295== For lists of detected and suppressed errors, rerun with: -s
-==234295== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+==10285== Memcheck, a memory error detector
+==10285== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==10285== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==10285== Command: ./bin/cub3d Maps/map1.cub
+==10285== Parent PID: 4462
+==10285== 
+==10285== Invalid read of size 1
+==10285==    at 0x4073F9: ft_atoi (ft_atoi.c:24)
+==10285==    by 0x40340F: C_handler (param_handlers.c:69)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==10285== 
+==10285== 
+==10285== Process terminating with default action of signal 11 (SIGSEGV)
+==10285==  Access not within mapped region at address 0x0
+==10285==    at 0x4073F9: ft_atoi (ft_atoi.c:24)
+==10285==    by 0x40340F: C_handler (param_handlers.c:69)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285==  If you believe this happened as a result of a stack
+==10285==  overflow in your program's main thread (unlikely but
+==10285==  possible), you can try to increase the size of the
+==10285==  main thread stack using the --main-stacksize= flag.
+==10285==  The main thread stack size used in this run was 8388608.
+==10285== 
+==10285== HEAP SUMMARY:
+==10285==     in use at exit: 6,206 bytes in 240 blocks
+==10285==   total heap usage: 4,496 allocs, 4,256 frees, 153,816 bytes allocated
+==10285== 
+==10285== 6 bytes in 2 blocks are still reachable in loss record 1 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407540: strdup_custom (ft_split.c:30)
+==10285==    by 0x4076B7: split_supply (ft_split.c:69)
+==10285==    by 0x407879: ft_split (ft_split.c:106)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x4033E9: C_handler (param_handlers.c:65)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 8 bytes in 1 blocks are still reachable in loss record 2 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x403524: check_init_file (check_init_file.c:29)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 11 bytes in 3 blocks are still reachable in loss record 3 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407540: strdup_custom (ft_split.c:30)
+==10285==    by 0x4076B7: split_supply (ft_split.c:69)
+==10285==    by 0x407879: ft_split (ft_split.c:106)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403349: F_handler (param_handlers.c:45)
+==10285==    by 0x404101: param_handler (get_game_params.c:113)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 4 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x403C73: save_file (save_file.c:27)
+==10285==    by 0x403544: check_init_file (check_init_file.c:31)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 5 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x40438F: save_map (save_map.c:29)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 6 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x4044F7: get_spaces_lines (save_map.c:63)
+==10285==    by 0x40439A: save_map (save_map.c:30)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 7 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x4044F7: get_spaces_lines (save_map.c:63)
+==10285==    by 0x4043F5: save_map (save_map.c:37)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 8 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x403ECD: get_header (get_game_params.c:49)
+==10285==    by 0x403DBC: get_game_params (get_game_params.c:26)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 9 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A23: garcol_split (garcol.c:28)
+==10285==    by 0x403349: F_handler (param_handlers.c:45)
+==10285==    by 0x404101: param_handler (get_game_params.c:113)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 16 bytes in 1 blocks are still reachable in loss record 10 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A23: garcol_split (garcol.c:28)
+==10285==    by 0x4033E9: C_handler (param_handlers.c:65)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 24 bytes in 1 blocks are still reachable in loss record 11 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407850: ft_split (ft_split.c:103)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x4033E9: C_handler (param_handlers.c:65)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 32 bytes in 1 blocks are still reachable in loss record 12 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407850: ft_split (ft_split.c:103)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403349: F_handler (param_handlers.c:45)
+==10285==    by 0x404101: param_handler (get_game_params.c:113)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 32 bytes in 2 blocks are still reachable in loss record 13 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A4E: garcol_split (garcol.c:32)
+==10285==    by 0x4033E9: C_handler (param_handlers.c:65)
+==10285==    by 0x404119: param_handler (get_game_params.c:115)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 48 bytes in 3 blocks are still reachable in loss record 14 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A4E: garcol_split (garcol.c:32)
+==10285==    by 0x403349: F_handler (param_handlers.c:45)
+==10285==    by 0x404101: param_handler (get_game_params.c:113)
+==10285==    by 0x403E2E: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 72 bytes in 1 blocks are still reachable in loss record 15 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x403EA8: get_header (get_game_params.c:46)
+==10285==    by 0x403DBC: get_game_params (get_game_params.c:26)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 82 bytes in 1 blocks are still reachable in loss record 16 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x4044D7: get_spaces_lines (save_map.c:62)
+==10285==    by 0x40439A: save_map (save_map.c:30)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 82 bytes in 1 blocks are still reachable in loss record 17 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x4044D7: get_spaces_lines (save_map.c:62)
+==10285==    by 0x4043F5: save_map (save_map.c:37)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 96 bytes in 6 blocks are still reachable in loss record 18 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A23: garcol_split (garcol.c:28)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403DEB: get_game_params (get_game_params.c:30)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 96 bytes in 6 blocks are still reachable in loss record 19 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A23: garcol_split (garcol.c:28)
+==10285==    by 0x403E0A: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 96 bytes in 6 blocks are still reachable in loss record 20 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A23: garcol_split (garcol.c:28)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403E23: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 107 bytes in 13 blocks are still reachable in loss record 21 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407540: strdup_custom (ft_split.c:30)
+==10285==    by 0x4076B7: split_supply (ft_split.c:69)
+==10285==    by 0x407879: ft_split (ft_split.c:106)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403DEB: get_game_params (get_game_params.c:30)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 107 bytes in 13 blocks are still reachable in loss record 22 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407540: strdup_custom (ft_split.c:30)
+==10285==    by 0x4076B7: split_supply (ft_split.c:69)
+==10285==    by 0x407879: ft_split (ft_split.c:106)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403E0A: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 107 bytes in 13 blocks are still reachable in loss record 23 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407540: strdup_custom (ft_split.c:30)
+==10285==    by 0x4076B7: split_supply (ft_split.c:69)
+==10285==    by 0x407879: ft_split (ft_split.c:106)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403E23: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 128 bytes in 8 blocks are still reachable in loss record 24 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x403F15: get_header (get_game_params.c:54)
+==10285==    by 0x403DBC: get_game_params (get_game_params.c:26)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 131 bytes in 8 blocks are still reachable in loss record 25 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x4078AE: ft_strdup (ft_strdup.c:22)
+==10285==    by 0x403EF5: get_header (get_game_params.c:53)
+==10285==    by 0x403DBC: get_game_params (get_game_params.c:26)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 152 bytes in 6 blocks are still reachable in loss record 26 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407850: ft_split (ft_split.c:103)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403DEB: get_game_params (get_game_params.c:30)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 152 bytes in 6 blocks are still reachable in loss record 27 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407850: ft_split (ft_split.c:103)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403E0A: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 152 bytes in 6 blocks are still reachable in loss record 28 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407850: ft_split (ft_split.c:103)
+==10285==    by 0x4029FE: garcol_split (garcol.c:25)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403E23: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 168 bytes in 1 blocks are still reachable in loss record 29 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x404382: save_map (save_map.c:28)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 208 bytes in 13 blocks are still reachable in loss record 30 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A4E: garcol_split (garcol.c:32)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403DEB: get_game_params (get_game_params.c:30)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 208 bytes in 13 blocks are still reachable in loss record 31 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A4E: garcol_split (garcol.c:32)
+==10285==    by 0x403E0A: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 208 bytes in 13 blocks are still reachable in loss record 32 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x402A4E: garcol_split (garcol.c:32)
+==10285==    by 0x403F69: detect_param (get_game_params.c:65)
+==10285==    by 0x403E23: get_game_params (get_game_params.c:31)
+==10285==    by 0x4035DD: check_init_file (check_init_file.c:46)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 216 bytes in 1 blocks are still reachable in loss record 33 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x403C66: save_file (save_file.c:26)
+==10285==    by 0x403544: check_init_file (check_init_file.c:31)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 272 bytes in 17 blocks are still reachable in loss record 34 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x404633: add_end_spaces (save_map.c:96)
+==10285==    by 0x4034D4: save_map_loop (save_map_loop.c:24)
+==10285==    by 0x4043C3: save_map (save_map.c:33)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 416 bytes in 26 blocks are still reachable in loss record 35 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407395: ft_lstnew (ft_lstnew.c:19)
+==10285==    by 0x4029C0: garcol_add (garcol.c:17)
+==10285==    by 0x403CD7: save_file (save_file.c:34)
+==10285==    by 0x403544: check_init_file (check_init_file.c:31)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 1,283 bytes in 25 blocks are still reachable in loss record 36 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x406E2D: get_line (get_next_line.c:25)
+==10285==    by 0x40710B: get_next_line (get_next_line.c:103)
+==10285==    by 0x403CB7: save_file (save_file.c:33)
+==10285==    by 0x403544: check_init_file (check_init_file.c:31)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== 1,394 bytes in 17 blocks are still reachable in loss record 37 of 37
+==10285==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10285==    by 0x407226: ft_strjoin (get_next_line_utils.c:53)
+==10285==    by 0x404621: add_end_spaces (save_map.c:95)
+==10285==    by 0x4034D4: save_map_loop (save_map_loop.c:24)
+==10285==    by 0x4043C3: save_map (save_map.c:33)
+==10285==    by 0x403593: check_init_file (check_init_file.c:39)
+==10285==    by 0x4025B5: main (cub3d.c:33)
+==10285== 
+==10285== LEAK SUMMARY:
+==10285==    definitely lost: 0 bytes in 0 blocks
+==10285==    indirectly lost: 0 bytes in 0 blocks
+==10285==      possibly lost: 0 bytes in 0 blocks
+==10285==    still reachable: 6,206 bytes in 240 blocks
+==10285==         suppressed: 0 bytes in 0 blocks
+==10285== 
+==10285== For lists of detected and suppressed errors, rerun with: -s
+==10285== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/15 14:19:02 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:12:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ void	init_mlx(void)
 	garcol_add(g_data.mlx.ptr);
 	g_data.win.ptr = mlx_new_window(g_data.mlx.ptr, W, H, "./cub3d");
 	g_data.img.ptr = mlx_new_image(g_data.mlx.ptr, W, H);
+	g_data.tex.n = mlx_xpm_file_to_image(g_data.mlx.ptr, g_data.utils.params.NO_path, (int *)W, (int *)H);
+	g_data.tex.s = mlx_xpm_file_to_image(g_data.mlx.ptr, g_data.utils.params.SO_path, (int *)W, (int *)H);
+	g_data.tex.e = mlx_xpm_file_to_image(g_data.mlx.ptr, g_data.utils.params.EA_path, (int *)W, (int *)H);
+	g_data.tex.w = mlx_xpm_file_to_image(g_data.mlx.ptr, g_data.utils.params.WE_path, (int *)W, (int *)H);
+	// if (!g_data.tex.n || !g_data.tex.s || !g_data.tex.e || !g_data.tex.w)
+	// {
+	// 	printf("Error : texture not found\n");
+	// 	ft_close();
+	// }
 }
 
 int	ft_key(int keysym)
