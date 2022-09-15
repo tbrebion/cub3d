@@ -38,9 +38,9 @@ SOURCES		+=                           		\
 ## SRC/RENDER ##
 
 SOURCES		+=                           		\
+		src/render/set_texture.c            	\
 		src/render/screen.c                 	\
 		src/render/draw.c                   	\
-		src/render/column.c                 	\
 		src/render/init_and_key.c           	\
 
 

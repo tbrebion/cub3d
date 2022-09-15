@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/15 14:13:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:39:54 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ int 	which_side(void);
 void	ft_dir(void);
 void	screen_loop(void);
 void	draw_line(void);
-void	ft_stock(void);
 void	player_mini_map(void);
-int	create_trgb(int t, int r, int g, int b);
+int		create_trgb(int t, int r, int g, int b);
 
 #endif

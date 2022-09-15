@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/15 14:20:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:39:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,20 +127,12 @@ void	screen_loop(void)
 	int	end;
 
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &bpp, &sl, &end);
-	g_data.stock = malloc(sizeof(t_stock) * W);
-	if (!g_data.stock)
-	{
-		garcol_free_all();
-		exit(EXIT_FAILURE);
-	}
-	garcol_add(g_data.stock);
 	while (g_data.ray.i < W)
 	{
 		ray_rotate();
 		ft_dir();
 		ray_ver();
 		ray_hor();
-		// ft_stock();
 		draw_line();
 		g_data.ray.i++;
 		g_data.img.adr += 4;
@@ -157,7 +149,7 @@ void draw_line(void)
 	int	y;
 	int	color;
 
-	line_height = ft_size();//(H / g_data.hit.d);
+	line_height = ft_size();
 	g_data.wall.top = (H / 2) - (line_height / 2);
 	g_data.wall.bot = (H / 2) + (line_height / 2);
 	i = g_data.wall.top;
@@ -167,12 +159,12 @@ void draw_line(void)
 	{
 		if (y < i)
 		{
-			color = create_trgb(00, 00, 00, 102);
+			color = create_trgb(00, g_data.utils.params.colors_c[0], g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
 			pixel_in_img(color);
 		}
 		else if (y >= i && y <= j)
 		{
-			if (g_data.hit.side < EAST /*&& side != 0*/)
+			if (g_data.hit.side < EAST)
 			{
 				color = create_trgb(100, 77, 77, 77);
 				pixel_in_img(color);
@@ -183,11 +175,10 @@ void draw_line(void)
 				pixel_in_img(color);
 			}
 			i++;
-			// g_data.img.adr += W * 4;
 		}
 		else
 		{
-			color = create_trgb(00, 00, 153, 00);
+			color = create_trgb(00, g_data.utils.params.colors_f[0], g_data.utils.params.colors_f[1], g_data.utils.params.colors_f[2]);
 			pixel_in_img(color);
 		}
 		y++;
