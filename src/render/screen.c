@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/16 18:47:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:59:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,22 +165,22 @@ void draw_line(void)
 		{
 			if (g_data.hit.side == NORTH)
 			{
-				color = tex_n_to_int();//create_trgb(00, 77, 77, 77);
+				color = /*tex_n_to_int();*/create_trgb(00, 77, 77, 77);
 				pixel_in_img(color);			
 			}
 			else if (g_data.hit.side == SOUTH)
 			{
-				color = tex_s_to_int();//create_trgb(00, 77, 77, 77);
+				color = /*tex_s_to_int();*/create_trgb(00, 77, 77, 77);
 				pixel_in_img(color);
 			}
 			else if (g_data.hit.side == EAST)
 			{
-				color = tex_e_to_int();//create_trgb(00, 153, 00, 00);
+				color = /*tex_e_to_int();*/create_trgb(00, 153, 00, 00);
 				pixel_in_img(color);
 			}
 			else if (g_data.hit.side == WEST)
 			{
-				color = tex_w_to_int();//create_trgb(00, 153, 00, 00);
+				color = /*tex_w_to_int();*/create_trgb(00, 153, 00, 00);
 				pixel_in_img(color);
 			}
 			i++;
