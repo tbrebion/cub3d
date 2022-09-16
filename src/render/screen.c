@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/16 14:29:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:47:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ void	screen_loop(void)
 	int	sl;
 	int	end;
 
-	init_texture();
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &bpp, &sl, &end);
 	while (g_data.ray.i < W)
 	{
@@ -166,24 +165,22 @@ void draw_line(void)
 		{
 			if (g_data.hit.side == NORTH)
 			{
-				color = create_trgb(00, 77, 77, 77);
-				pixel_in_img(color);				
-				// mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.tex.n, i, y);
-
+				color = tex_n_to_int();//create_trgb(00, 77, 77, 77);
+				pixel_in_img(color);			
 			}
 			else if (g_data.hit.side == SOUTH)
 			{
-				color = create_trgb(00, 77, 77, 77);
-				pixel_in_img(color);				
+				color = tex_s_to_int();//create_trgb(00, 77, 77, 77);
+				pixel_in_img(color);
 			}
 			else if (g_data.hit.side == EAST)
 			{
-				color = create_trgb(00, 153, 00, 00);
+				color = tex_e_to_int();//create_trgb(00, 153, 00, 00);
 				pixel_in_img(color);
 			}
 			else if (g_data.hit.side == WEST)
 			{
-				color = create_trgb(00, 153, 00, 00);
+				color = tex_w_to_int();//create_trgb(00, 153, 00, 00);
 				pixel_in_img(color);
 			}
 			i++;

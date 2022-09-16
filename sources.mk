@@ -41,6 +41,7 @@ SOURCES		+=                           		\
 		src/render/set_texture.c            	\
 		src/render/screen.c                 	\
 		src/render/draw.c                   	\
+		src/render/texture_to_int.c         	\
 		src/render/init_and_key.c           	\
 
 

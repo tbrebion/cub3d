@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/16 13:37:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 16:49:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,9 @@ void	player_mini_map(void);
 int		create_trgb(int t, int r, int g, int b);
 void	init_texture(void);
 void	pixel_in_img(int color);
+int		tex_n_to_int(void);
+int		tex_s_to_int(void);
+int		tex_e_to_int(void);
+int		tex_w_to_int(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/16 13:29:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 16:15:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	ft_close(void)
 	mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
 	mlx_destroy_window(g_data.mlx.ptr, g_data.win.ptr);
 	mlx_destroy_image(g_data.mlx.ptr, g_data.img.ptr);
+	mlx_destroy_image(g_data.mlx.ptr, g_data.tex.n);
+	mlx_destroy_image(g_data.mlx.ptr, g_data.tex.s);
+	mlx_destroy_image(g_data.mlx.ptr, g_data.tex.e);
+	mlx_destroy_image(g_data.mlx.ptr, g_data.tex.w);
 	mlx_destroy_display(g_data.mlx.ptr);
 	garcol_free_all();
 	exit(0);
@@ -35,8 +39,8 @@ int	main(int ac, char **av, char **envp)
 	init();
 	init_mlx();
 	screen_loop();
-	draw();
-	player_mini_map();
+	// draw();
+	// player_mini_map();
 	mlx_hook(g_data.win.ptr, 2, (1L << 0), ft_key, &g_data);
 	mlx_hook(g_data.win.ptr, 17, 0, &ft_close, &g_data);
 	mlx_loop(g_data.mlx.ptr);

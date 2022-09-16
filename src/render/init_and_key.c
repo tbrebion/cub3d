@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/16 12:22:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 16:14:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_mlx(void)
 	garcol_add(g_data.mlx.ptr);
 	g_data.win.ptr = mlx_new_window(g_data.mlx.ptr, W, H, "./cub3d");
 	g_data.img.ptr = mlx_new_image(g_data.mlx.ptr, W, H);
+	init_texture();
 }
 
 int	ft_key(int keysym)
