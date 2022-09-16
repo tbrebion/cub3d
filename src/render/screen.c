@@ -6,14 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/15 18:20:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:29:03 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static int	ft_size(void);
-static void	pixel_in_img(int color);
 
 void	ray_ver(void)
 {
@@ -126,6 +125,7 @@ void	screen_loop(void)
 	int	sl;
 	int	end;
 
+	init_texture();
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &bpp, &sl, &end);
 	while (g_data.ray.i < W)
 	{
@@ -168,6 +168,8 @@ void draw_line(void)
 			{
 				color = create_trgb(00, 77, 77, 77);
 				pixel_in_img(color);				
+				// mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.tex.n, i, y);
+
 			}
 			else if (g_data.hit.side == SOUTH)
 			{
@@ -195,16 +197,6 @@ void draw_line(void)
 		g_data.img.adr += W * 4;
 	}
 	g_data.img.adr -= H * (W * 4);
-}
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-static void	pixel_in_img(int color)
-{
-	*(int *)g_data.img.adr = color;
 }
 
 static int	ft_size(void)

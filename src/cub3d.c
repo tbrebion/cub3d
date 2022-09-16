@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/15 14:19:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:29:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,22 @@ static void	init(void)
 	g_data.hit.x = 0;
 	g_data.hit.y = 0;
 	g_data.hit.d = 0;
+	g_data.win.w = malloc(sizeof(int *));
+	if (!g_data.win.w)
+	{
+		garcol_free_all();
+		exit(EXIT_FAILURE);
+	}
+	garcol_add(g_data.win.w);
+	g_data.win.h = malloc(sizeof(int *));
+	if (!g_data.win.h)
+	{
+		garcol_free_all();
+		exit(EXIT_FAILURE);
+	}
+	garcol_add(g_data.win.h);
+	*g_data.win.w = W;
+	*g_data.win.h = H;
 }
 
 void	player_mini_map(void)

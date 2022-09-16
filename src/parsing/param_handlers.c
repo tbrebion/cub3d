@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/15 15:35:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:48:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@ LE PATH ET SON OUVERTURE
 
 void	NO_handler(char *str)
 {
+	del_last_backslash_n(str);
 	g_data.utils.params.NO_path = str;
 }
 
 void	SO_handler(char *str)
 {
+	del_last_backslash_n(str);
 	g_data.utils.params.SO_path = str;
 }
 
 void	WE_handler(char *str)
 {
+	del_last_backslash_n(str);
 	g_data.utils.params.WE_path = str;
 }
 
 void	EA_handler(char *str)
 {
+	del_last_backslash_n(str);
 	g_data.utils.params.EA_path = str;
 }
 

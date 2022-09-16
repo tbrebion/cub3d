@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/15 18:40:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:22:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_mlx
 typedef struct	s_win
 {
 	void	*ptr;
+	int		*w;
+	int		*h;
 }	t_win;
 
 typedef struct s_img
@@ -57,6 +59,10 @@ typedef struct	s_tex
 	void	*s;
 	void	*e;
 	void	*w;
+	char	*n_adr;
+	char	*s_adr;
+	char	*e_adr;
+	char	*w_adr;
 }	t_tex;
 
 typedef struct s_pos
