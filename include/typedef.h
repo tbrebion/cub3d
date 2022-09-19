@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/16 14:22:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:43:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,19 @@ typedef struct	s_mlx
 typedef struct	s_win
 {
 	void	*ptr;
-	int		*w;
-	int		*h;
+	// int		*w;
+	// int		*h;
 }	t_win;
 
 typedef struct s_img
 {
-	void			*ptr;
-	char			*adr;
+	void	*ptr;
+	char	*adr;
+	int		x;
+	int		y;
+	int		bpp;
+	int		ll;
+	int		end;
 }	t_img;
 
 typedef struct	s_map
@@ -53,17 +58,17 @@ typedef struct	s_map
 	int		h;
 }	t_map;
 
-typedef struct	s_tex
-{
-	void	*n;
-	void	*s;
-	void	*e;
-	void	*w;
-	char	*n_adr;
-	char	*s_adr;
-	char	*e_adr;
-	char	*w_adr;
-}	t_tex;
+// typedef struct	s_tex
+// {
+// 	void	*n;
+// 	void	*s;
+// 	void	*e;
+// 	void	*w;
+// 	char	*n_adr;
+// 	char	*s_adr;
+// 	char	*e_adr;
+// 	char	*w_adr;
+// }	t_tex;
 
 typedef struct s_pos
 {
@@ -121,6 +126,8 @@ typedef struct s_wall
 {
 	int	top;
 	int	bot;
+	int	count;
+	// int	line_y;
 }	t_wall;
 
 typedef struct	s_data
@@ -128,8 +135,9 @@ typedef struct	s_data
 	t_mlx		mlx;
 	t_win		win;
 	t_img		img;
+	t_img		sprites[4];
 	t_map		map;
-	t_tex		tex;
+	// t_tex		tex;
 	t_pos		pos;
 	t_dir		dir;
 	t_ray		ray;
