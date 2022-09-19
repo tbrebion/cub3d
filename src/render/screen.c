@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/19 18:43:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/19 21:50:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_size(void);
 static void draw_wall(int color/*, int lineheight, double texpos*/);
 static void	jump_line_tex(void);
-static void	jump_line_reverse_tex(void);
+static void	jump_line_reverse_tex(int wall_h);
 static void	increment_tex(void);
 static void	decrement_tex(void);
 static void	mod_four(void);
@@ -153,11 +153,14 @@ void draw_line(void)
 	int	y;
 	int	color;
 
+	int	wall_h;
+
 	line_height = ft_size();
 	g_data.wall.top = (H / 2) - (line_height / 2);
 	g_data.wall.bot = (H / 2) + (line_height / 2);
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
+	wall_h = j - i;
 	if (j >= H)
 		j = H - 1;
 	y = 0;
@@ -180,9 +183,9 @@ void draw_line(void)
 		}
 		y++;
 		g_data.img.adr += W * 4;
-		if (g_data.wall.count >= (1024 * (1024 * 4)))
-			jump_line_reverse_tex();
 	}
+	if (g_data.wall.count >= (wall_h * (1024 * 4)))
+		jump_line_reverse_tex(wall_h);
 	g_data.img.adr -= H * (W * 4);
 }
 
@@ -237,17 +240,17 @@ static void	jump_line_tex(void)
 	mod_four();
 }
 
-static void	jump_line_reverse_tex(void)
+static void	jump_line_reverse_tex(int wall_h)
 {	
-	g_data.sprites[0].adr -= 1024 * (1024 * g_data.sprites[0].bpp / 8);
+	g_data.sprites[0].adr -= wall_h/*1024*/ * (1024 * g_data.sprites[0].bpp / 8);
 	// g_data.sprites[0].adr += 4;
-	g_data.sprites[1].adr -= 1024 * (1024 * g_data.sprites[1].bpp / 8);
+	g_data.sprites[1].adr -= wall_h/*1024*/ * (1024 * g_data.sprites[1].bpp / 8);
 	// g_data.sprites[1].adr += 4;
-	g_data.sprites[2].adr -= 1024 * (1024 * g_data.sprites[2].bpp / 8);
+	g_data.sprites[2].adr -= wall_h/*1024*/ * (1024 * g_data.sprites[2].bpp / 8);
 	// g_data.sprites[2].adr += 4;
-	g_data.sprites[3].adr -= 1024 * (1024 * g_data.sprites[3].bpp / 8);
+	g_data.sprites[3].adr -= wall_h/*1024*/ * (1024 * g_data.sprites[3].bpp / 8);
 	// g_data.sprites[3].adr += 4;
-	g_data.wall.count -= 1024 * (1024 * 4);
+	g_data.wall.count -= wall_h/*1024*/ * (1024 * 4);
 	mod_four();
 }
 
