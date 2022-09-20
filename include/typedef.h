@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/19 21:50:59 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:46:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #define WEST 4
 #define H 1440
 #define W 2560
+#define TEX_S 1024
+// #define TEX_H 1024
 
 typedef struct	s_mlx
 {
@@ -114,6 +116,8 @@ typedef struct	s_utils
 	int			max_len;
 	char		**file;
 	t_params	params;
+	int			line_height;
+	int			step;
 }	t_utils;
 
 typedef struct	s_dist
@@ -126,8 +130,9 @@ typedef struct s_wall
 {
 	int	top;
 	int	bot;
-	int	count;
+	// int	count;
 	// int	line_y;
+	// int	y;
 }	t_wall;
 
 typedef struct	s_data
