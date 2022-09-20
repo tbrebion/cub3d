@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/16 16:14:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:33:53 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	init_mlx(void)
 int	ft_key(int keysym)
 {
 	if (keysym == XK_Escape)
-		ft_close();
-	else if (keysym == XK_w) 
+		ft_close(0);
+	else if (keysym == XK_w)
 		ft_ws(1);
-	else if (keysym == XK_s) 
+	else if (keysym == XK_s)
 		ft_ws(-1);
-	else if (keysym == XK_d) 
+	else if (keysym == XK_d)
 		ft_ad(1);
-	else if (keysym == XK_a) 
+	else if (keysym == XK_a)
 		ft_ad(-1);
 	else if (keysym == XK_Left)
 		ft_rotate(-1);

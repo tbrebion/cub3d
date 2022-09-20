@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 12:15:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:25:07 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_split(char **spl, int free_spl);
 int		is_empty_str(char *str);
 int		nb_line(void);
 int		nb_col(void);
-int		ft_close(void);
+int		ft_close(int code);
 int		player_pos(char c);
 double	ft_deg_to_rad(double d);
 void	width_height_map(void);
@@ -53,6 +53,7 @@ char	*ft_strndup(char *s1, int len);
 // int		ft_spaceskip(char *line, int *i);
 int		split_len(char **spl);
 int		count_char(char c, char *str);
+void	ft_error(const char *msg);
 
 //////////////
 // GARBAGE COLLECTOR

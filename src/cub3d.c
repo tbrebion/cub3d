@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/19 18:43:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:42:04 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,33 @@ static void	init(void);
 
 t_data	g_data;
 
-int	ft_close(void)
+int	ft_close(int code)
 {
-	mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
-	mlx_destroy_window(g_data.mlx.ptr, g_data.win.ptr);
-	mlx_destroy_image(g_data.mlx.ptr, g_data.img.ptr);
-	mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[0].ptr);
-	mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[1].ptr);
-	mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[2].ptr);
-	mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[3].ptr);
-	mlx_destroy_display(g_data.mlx.ptr);
+	if (g_data.mlx.ptr && g_data.win.ptr)
+	{
+		mlx_clear_window(g_data.mlx.ptr, g_data.win.ptr);
+		mlx_destroy_window(g_data.mlx.ptr, g_data.win.ptr);
+		mlx_destroy_image(g_data.mlx.ptr, g_data.img.ptr);
+	}
+	if (g_data.mlx.ptr && g_data.sprites[0].ptr)
+		mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[0].ptr);
+	if (g_data.mlx.ptr && g_data.sprites[1].ptr)
+		mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[1].ptr);
+	if (g_data.mlx.ptr && g_data.sprites[2].ptr)
+		mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[2].ptr);
+	if (g_data.mlx.ptr && g_data.sprites[3].ptr)
+		mlx_destroy_image(g_data.mlx.ptr, g_data.sprites[3].ptr);
+	if (g_data.mlx.ptr)
+		mlx_destroy_display(g_data.mlx.ptr);
 	garcol_free_all();
-	exit(0);
+	exit(code);
 	return (1);
+}
+
+int	ft_close_hook(void)
+{
+	ft_close(0);
+	return (0);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -42,7 +56,7 @@ int	main(int ac, char **av, char **envp)
 	draw();
 	player_mini_map();
 	mlx_hook(g_data.win.ptr, 2, (1L << 0), ft_key, &g_data);
-	mlx_hook(g_data.win.ptr, 17, 0, &ft_close, &g_data);
+	mlx_hook(g_data.win.ptr, 17, 0, &ft_close_hook, &g_data);
 	mlx_loop(g_data.mlx.ptr);
 	garcol_free_all();
 	return (0);
@@ -75,5 +89,5 @@ void	player_mini_map(void)
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 2, 0x00FFFFFF);
 	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) - 2, 0x00FFFFFF);	
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) - 2, 0x00FFFFFF);
 }

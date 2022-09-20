@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 14:22:57 by flcarval         ###   ########.fr       */
+/*   Created: 2022/09/20 14:19:54 by flcarval          #+#    #+#             */
+/*   Updated: 2022/09/20 14:36:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../include/cub3d.h"
 
-# include "dependencies.h"
-# include "prototypes.h"
-# include "typedef.h"
-# include "./colors.h"
-
-extern t_data	g_data;
-
-#endif
+void	ft_error(const char *msg)
+{
+	printf("%sError : %s%s\n", RED, msg, NC);
+	ft_close(42);
+}

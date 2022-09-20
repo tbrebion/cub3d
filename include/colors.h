@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:43:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 14:22:57 by flcarval         ###   ########.fr       */
+/*   Created: 2022/07/06 16:23:09 by flcarval          #+#    #+#             */
+/*   Updated: 2022/07/06 16:26:31 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef COLORS_H
+# define COLORS_H
 
-# include "dependencies.h"
-# include "prototypes.h"
-# include "typedef.h"
-# include "./colors.h"
-
-extern t_data	g_data;
+# define NC  "\x1B[0m"
+# define RED  "\x1B[31m"
+# define GRN  "\x1B[32m"
+# define YEL  "\x1B[33m"
+# define BLU  "\x1B[34m"
+# define MAG  "\x1B[35m"
+# define CYN  "\x1B[36m"
+# define WHT  "\x1B[37m"
 
 #endif

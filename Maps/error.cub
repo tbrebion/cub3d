@@ -1,8 +1,8 @@
 NO     ./images/north.xpm
 SO     ./images/south.xpm
 EA     ./images/east.xpm
-WE     ./Pimages/west.xpm
-F   051,102,255
+WE     ./images/west.xpm
+X   051,102,255
 C   000,000,026
 
 111111111111111111111111111111111111111111111111111111111111

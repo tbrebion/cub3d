@@ -16,6 +16,7 @@ SOURCES		+=                           		\
 
 SOURCES		+=                           		\
 		src/utils/math.c                    	\
+		src/utils/ft_error.c                	\
 		src/utils/count_char.c              	\
 		src/utils/is_empty_str.c            	\
 		src/utils/free_split.c              	\

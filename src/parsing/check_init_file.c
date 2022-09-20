@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 11:24:06 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:26:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,11 @@ void	check_init_file(int ac, char **av)
 	*g_data.garbage = NULL;
 	g_data.utils.file = save_file(av);
 	if (!g_data.utils.file)
-	{
-		printf("INVALID FILE\n");
-		garcol_free_all();
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Invalid file");
 	g_data.utils.max_len = 0;
 	g_data.map.tab = save_map(g_data.utils.file);
 	if (!g_data.map.tab || checker_map())
-	{
-		printf("MAP ERROR\n");
-		garcol_free_all();
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Map error");
 	get_game_params();
 	init_pos();
 	///////////////////////

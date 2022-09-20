@@ -14,7 +14,7 @@
 #  : F ou C avec une virgule en moins ou une virgule en trop
 #  : F ou C avec un int supérieur à int max : doit renvoyer une erreur
 #  : F ou C avec un chiffre supérieur à 255
- : Un identifiant mauvais genre (X au lieu de R, ou E au lieu de EA)
+#  : Un identifiant mauvais genre (X au lieu de R, ou E au lieu de EA)
 # Tous les trucs tricky auxquels il faut penser pour le parsing de la map :
 #  : Une ligne vide dans la map : “Sauf pour la map elle-même, les informations de chaque élément peuvent être séparées par un ou plusieurs espace(s)"
 #  : Un caractère incorrect dans la map, genre un 4
