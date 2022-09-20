@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/19 12:35:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:15:49 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	width_height_map(void);
 int		for_win(char *line, int *i);
 char	*ft_strndup(char *s1, int len);
 // int		ft_spaceskip(char *line, int *i);
-
+int		split_len(char **spl);
+int		count_char(char c, char *str);
 
 //////////////
 // GARBAGE COLLECTOR

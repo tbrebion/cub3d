@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_game_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/16 11:47:17 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:20:30 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
 
+static void	set_empty_params(void);
 static int	detect_param(char *str);
 static int	is_only_ones(char *str);
 static char	**get_header(void);
@@ -23,13 +24,33 @@ int	get_game_params(void)
 	char	**header;
 	int		i;
 
+	set_empty_params();
 	header = get_header();
 	i = 0;
 	while (header[i])
 	{
 		if (detect_param(header[i]))
 			param_handler(garcol_split(header[i], ' ')[1], detect_param(header[i]));
+		else if (header[i][0] != '\n')
+		{
+			printf("Error : Unexpected field in file.\n");
+			garcol_free_all();
+			exit(EXIT_FAILURE);
+		}
 		i++;
+	}
+	if (!g_data.utils.params.EA_path || !g_data.utils.params.NO_path \
+		|| !g_data.utils.params.SO_path || !g_data.utils.params.WE_path \
+		|| g_data.utils.params.colors_c[0] == -1 \
+		|| g_data.utils.params.colors_f[0] == -1 \
+		|| g_data.utils.params.colors_c[1] == -1 \
+		|| g_data.utils.params.colors_f[1] == -1 \
+		|| g_data.utils.params.colors_c[2] == -1 \
+		|| g_data.utils.params.colors_f[2] == -1)
+	{
+		printf("ERROR : Missing a parametor.\n");
+		garcol_free_all();
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
@@ -113,4 +134,18 @@ static void	param_handler(char *str, int param)
 		F_handler(str);
 	else if (param == 6)
 		C_handler(str);
+}
+
+static void	set_empty_params(void)
+{
+	g_data.utils.params.EA_path = NULL;
+	g_data.utils.params.NO_path = NULL;
+	g_data.utils.params.SO_path = NULL;
+	g_data.utils.params.WE_path = NULL;
+	g_data.utils.params.colors_c[0] = -1;
+	g_data.utils.params.colors_f[0] = -1;
+	g_data.utils.params.colors_c[1] = -1;
+	g_data.utils.params.colors_f[1] = -1;
+	g_data.utils.params.colors_c[2] = -1;
+	g_data.utils.params.colors_f[2] = -1;
 }
