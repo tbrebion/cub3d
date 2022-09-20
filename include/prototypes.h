@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 14:25:07 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:53:36 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ int		tex_n_to_int(void);
 int		tex_s_to_int(void);
 int		tex_e_to_int(void);
 int		tex_w_to_int(void);
-int		text_in_img(int i);
+int		text_in_img(int tex/* , int x, int y */);
 
 #endif
