@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 20:53:36 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:58:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ray_rotate(void);
 int 	which_side(void);
 void	ft_dir(void);
 void	screen_loop(void);
-void	draw_line(void);
+void	draw_line(double step);
 void	player_mini_map(void);
 int		create_trgb(int t, int r, int g, int b);
 void	init_texture(void);

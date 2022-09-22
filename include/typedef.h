@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 16:46:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:51:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ typedef struct	s_dist
 
 typedef struct s_wall
 {
-	int	top;
-	int	bot;
+	double	top;
+	double	bot;
 	// int	count;
 	// int	line_y;
 	// int	y;

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 16:50:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:05:20 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_size(void);
 static void draw_wall(int color/* , int y */);
 static void	jump_line_tex(int tex, int step);
 static void	jump_line_reverse_tex(int tex, int step);
-static void	increment_tex(int tex);
+static void	increment_tex(int tex, int step);
 static void	decrement_tex(int tex, int x);
 // static void	mod_four(void);
 
@@ -127,9 +127,10 @@ void	ray_rotate(void)
 
 void	screen_loop(void)
 {
-	int	tmp;
+	static int		tmp = 0;
+	double	step;
 
-	tmp = 0;
+	// tmp = 0;
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, &g_data.img.ll, &g_data.img.end);
 	while (g_data.ray.i < W)
 	{
@@ -140,10 +141,11 @@ void	screen_loop(void)
 		g_data.utils.line_height = ft_size();
 		g_data.wall.top = (H / 2) - (g_data.utils.line_height / 2);
 		g_data.wall.bot = (H / 2) + (g_data.utils.line_height / 2);
-		draw_line();
+		step = 1024.00 / (g_data.wall.bot - g_data.wall.top);
+		draw_line(step);
 		g_data.ray.i++;
 		g_data.img.adr += 4;
-		increment_tex(g_data.hit.side);
+		increment_tex(g_data.hit.side, step);
 		tmp++;
 		if (tmp == 1024)
 		{
@@ -155,29 +157,22 @@ void	screen_loop(void)
 	}
 	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
-	decrement_tex(g_data.hit.side, tmp);
+	// decrement_tex(g_data.hit.side, tmp);
 	// decrement_tex()
 }
 
-void draw_line(void)
+void draw_line(double step)
 {
 	// int	line_height;
-	int	i;
-	int	j;
+	double	i;
+	double	j;
 	int	y;
 	int	color;
-	
-	int	tmp = 0;
-	int	step;
+	static int	tmp = 0;
 
-	// line_height = ft_size();
-	// g_data.wall.top = (H / 2) - (g_data.utils.line_height / 2);
-	// g_data.wall.bot = (H / 2) + (g_data.utils.line_height / 2);
+	tmp = 0;
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
-	if (j >= H)
-		j = H - 1;
-	step = 1024 / (j - i);
 	y = 0;
 	while (y < H)
 	{
@@ -186,18 +181,17 @@ void draw_line(void)
 			color = create_trgb(00, g_data.utils.params.colors_c[0], g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
 			pixel_in_img(color);
 		}
-		else if (y >= i && y <= j)
+		else if (y >= round(i) && y <= round(j))
 		{
-			draw_wall(color/* , y */);
-			i++;
-			if (tmp <= 1024)
-				jump_line_tex(g_data.hit.side, step);
-			else
+			draw_wall(color);
+			// i++;
+			jump_line_tex(g_data.hit.side, step);
+			tmp += step;
+			if (tmp == 1024)
 			{
-				jump_line_reverse_tex(g_data.hit.side, step);
+				jump_line_reverse_tex(g_data.hit.side, tmp);
 				tmp = 0;
 			}
-			tmp += step;
 		}
 		else
 		{
@@ -208,10 +202,11 @@ void draw_line(void)
 		g_data.img.adr += W * 4;
 	}
 	jump_line_reverse_tex(g_data.hit.side, tmp);
+	tmp = 0;
 	g_data.img.adr -= H * (W * 4);
 }
 
-static void draw_wall(int color/* , int y */)
+static void draw_wall(int color)
 {
 	if (g_data.hit.side == NORTH)
 		color = tex_n_to_int();
@@ -250,25 +245,25 @@ static void	jump_line_tex(int tex, int step)
 static void	jump_line_reverse_tex(int tex, int step)
 {	
 	if (tex == NORTH)
-		g_data.sprites[0].adr -= (1024 * g_data.sprites[0].bpp / 8) * step;// * (1024 / step);
+		g_data.sprites[0].adr -= 1024 * (g_data.sprites[0].bpp / 8) * step;// * (1024 / step);
 	if (tex == SOUTH)
-		g_data.sprites[1].adr -= (1024 * g_data.sprites[1].bpp / 8) * step;// * (1024 / step);
+		g_data.sprites[1].adr -= 1024 * (g_data.sprites[1].bpp / 8) * step;// * (1024 / step);
 	if (tex == EAST)
-		g_data.sprites[2].adr -= (1024 * g_data.sprites[2].bpp / 8) * step;// * (1024 / step);
+		g_data.sprites[2].adr -= 1024 * (g_data.sprites[2].bpp / 8) * step;// * (1024 / step);
 	if (tex == WEST)
-		g_data.sprites[3].adr -= (1024 * g_data.sprites[3].bpp / 8) * step;// * (1024 / step);
+		g_data.sprites[3].adr -= 1024 * (g_data.sprites[3].bpp / 8) * step;// * (1024 / step);
 }
 
-static void	increment_tex(int tex)
+static void	increment_tex(int tex, int step)
 {	
 	if (tex == NORTH)
-		g_data.sprites[0].adr += 4;
+		g_data.sprites[0].adr += 4 * step;
 	if (tex == SOUTH)
-		g_data.sprites[1].adr += 4;
+		g_data.sprites[1].adr += 4 * step;
 	if (tex == EAST)
-		g_data.sprites[2].adr += 4;
+		g_data.sprites[2].adr += 4 * step;
 	if (tex == WEST)
-		g_data.sprites[3].adr += 4;
+		g_data.sprites[3].adr += 4 * step;
 }
 
 static void	decrement_tex(int tex, int x)
