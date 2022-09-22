@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/22 15:05:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:35:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ int which_side(void)
 {
 	static int	tmp_side = 0;
 
+	// int tmp_side;
+
+	// tmp_side = 0;
 	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) < fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
 		if (g_data.pos.y > g_data.hit.y)
@@ -150,7 +153,7 @@ void	screen_loop(void)
 		if (tmp == 1024)
 		{
 			tmp = 0;
-			decrement_tex(g_data.hit.side, 1024);
+			decrement_tex(g_data.hit.side, tmp/* 1024 */);
 		}
 		// if (g_data.wall.count >= 1024 * 4)
 			// decrement_tex();
@@ -170,7 +173,7 @@ void draw_line(double step)
 	int	color;
 	static int	tmp = 0;
 
-	tmp = 0;
+	// tmp = 0;
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
 	y = 0;
@@ -184,10 +187,12 @@ void draw_line(double step)
 		else if (y >= round(i) && y <= round(j))
 		{
 			draw_wall(color);
-			// i++;
-			jump_line_tex(g_data.hit.side, step);
-			tmp += step;
-			if (tmp == 1024)
+			if (tmp < 1024)
+			{
+				jump_line_tex(g_data.hit.side, step);
+				tmp += step;			
+			}
+			else if (tmp >= 1024)
 			{
 				jump_line_reverse_tex(g_data.hit.side, tmp);
 				tmp = 0;
@@ -266,16 +271,16 @@ static void	increment_tex(int tex, int step)
 		g_data.sprites[3].adr += 4 * step;
 }
 
-static void	decrement_tex(int tex, int x)
+static void	decrement_tex(int tex, int step)
 {	
 	if (tex == NORTH)
-		g_data.sprites[0].adr -= x * 4;
+		g_data.sprites[0].adr -= step * 4;
 	if (tex == SOUTH)
-		g_data.sprites[1].adr -= x * 4;
+		g_data.sprites[1].adr -= step * 4;
 	if (tex == EAST)
-		g_data.sprites[2].adr -= x * 4;
+		g_data.sprites[2].adr -= step * 4;
 	if (tex == WEST)
-		g_data.sprites[3].adr -= x * 4;
+		g_data.sprites[3].adr -= step * 4;
 }
 
 // static void	mod_four(void)
