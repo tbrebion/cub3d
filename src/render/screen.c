@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/22 15:35:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:17:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	ft_size(void);
 static void draw_wall(int color/* , int y */);
-static void	jump_line_tex(int tex, int step);
-static void	jump_line_reverse_tex(int tex, int step);
-static void	increment_tex(int tex, int step);
-static void	decrement_tex(int tex, int x);
+static void	jump_line_tex(int step);
+static void	jump_line_reverse_tex(int step);
+static void	increment_tex(int step);
+// static void	decrement_tex(int step);
 // static void	mod_four(void);
 
 void	ray_ver(void)
@@ -30,10 +30,7 @@ void	ray_ver(void)
 	while ((int)floor(y) > 0 && (int)floor(y) < 1000)
 	{
 		if ((int)floor(y) > g_data.map.h || (int)(x - 1 + g_data.ray.v) > g_data.map.w)
-		{
-			g_data.hit.d = 1000000;
 			break;
-		}
 		if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == '1' || g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == ' ')
 		{
 			g_data.hit.x = x;
@@ -94,9 +91,6 @@ int which_side(void)
 {
 	static int	tmp_side = 0;
 
-	// int tmp_side;
-
-	// tmp_side = 0;
 	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) < fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
 		if (g_data.pos.y > g_data.hit.y)
@@ -131,9 +125,10 @@ void	ray_rotate(void)
 void	screen_loop(void)
 {
 	static int		tmp = 0;
+	char *adr_spr[4];
 	double	step;
-
-	// tmp = 0;
+		
+	set_texture(adr_spr);
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, &g_data.img.ll, &g_data.img.end);
 	while (g_data.ray.i < W)
 	{
@@ -148,32 +143,28 @@ void	screen_loop(void)
 		draw_line(step);
 		g_data.ray.i++;
 		g_data.img.adr += 4;
-		increment_tex(g_data.hit.side, step);
+		increment_tex(step);
 		tmp++;
-		if (tmp == 1024)
-		{
-			tmp = 0;
-			decrement_tex(g_data.hit.side, tmp/* 1024 */);
-		}
-		// if (g_data.wall.count >= 1024 * 4)
-			// decrement_tex();
+		// if (tmp >= 1024)
+		// {
+			// tmp = 0;
+			// decrement_tex(tmp);
+		// }
 	}
 	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
-	// decrement_tex(g_data.hit.side, tmp);
-	// decrement_tex()
+	tmp = 0;
+	reset_texture(adr_spr);	
 }
 
 void draw_line(double step)
 {
-	// int	line_height;
 	double	i;
 	double	j;
 	int	y;
-	int	color;
+	static int	color = 0;
 	static int	tmp = 0;
 
-	// tmp = 0;
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
 	y = 0;
@@ -187,14 +178,12 @@ void draw_line(double step)
 		else if (y >= round(i) && y <= round(j))
 		{
 			draw_wall(color);
-			if (tmp < 1024)
+			i++;
+			jump_line_tex(step);
+			tmp += step;			
+			if (tmp >= 1024)
 			{
-				jump_line_tex(g_data.hit.side, step);
-				tmp += step;			
-			}
-			else if (tmp >= 1024)
-			{
-				jump_line_reverse_tex(g_data.hit.side, tmp);
+				jump_line_reverse_tex(tmp);
 				tmp = 0;
 			}
 		}
@@ -206,8 +195,8 @@ void draw_line(double step)
 		y++;
 		g_data.img.adr += W * 4;
 	}
-	jump_line_reverse_tex(g_data.hit.side, tmp);
-	tmp = 0;
+	jump_line_reverse_tex(tmp);
+	tmp = 0;	
 	g_data.img.adr -= H * (W * 4);
 }
 
@@ -215,14 +204,62 @@ static void draw_wall(int color)
 {
 	if (g_data.hit.side == NORTH)
 		color = tex_n_to_int();
-	else if (g_data.hit.side == SOUTH)
+	if (g_data.hit.side == SOUTH)
 		color = tex_s_to_int();
-	else if (g_data.hit.side == EAST)
+	if (g_data.hit.side == EAST)
 		color = tex_e_to_int();
-	else if (g_data.hit.side == WEST)
+	if (g_data.hit.side == WEST)
 		color = tex_w_to_int();
 	pixel_in_img(color);
 }
+
+static void	jump_line_tex(int step)
+{
+	if (g_data.hit.side == NORTH)
+		g_data.sprites[0].adr += 1024 * (g_data.sprites[0].bpp / 8) * step;
+	if (g_data.hit.side == SOUTH)
+		g_data.sprites[1].adr += 1024 * (g_data.sprites[1].bpp / 8) * step;
+	if (g_data.hit.side == EAST)
+		g_data.sprites[2].adr += 1024 * (g_data.sprites[2].bpp / 8) * step;
+	if (g_data.hit.side == WEST)
+		g_data.sprites[3].adr += 1024 * (g_data.sprites[3].bpp / 8) * step;
+}
+
+static void	jump_line_reverse_tex(int step)
+{	
+	if (g_data.hit.side == NORTH)
+		g_data.sprites[0].adr -= 1024 * (g_data.sprites[0].bpp / 8) * step;
+	if (g_data.hit.side == SOUTH)
+		g_data.sprites[1].adr -= 1024 * (g_data.sprites[1].bpp / 8) * step;
+	if (g_data.hit.side == EAST)
+		g_data.sprites[2].adr -= 1024 * (g_data.sprites[2].bpp / 8) * step;
+	if (g_data.hit.side == WEST)
+		g_data.sprites[3].adr -= 1024 * (g_data.sprites[3].bpp / 8) * step;
+}
+
+static void	increment_tex(int step)
+{	
+	if (g_data.hit.side == NORTH)
+		g_data.sprites[0].adr += 4 * step;
+	if (g_data.hit.side == SOUTH)
+		g_data.sprites[1].adr += 4 * step;
+	if (g_data.hit.side == EAST)
+		g_data.sprites[2].adr += 4 * step;
+	if (g_data.hit.side == WEST)
+		g_data.sprites[3].adr += 4 * step;
+}
+
+// static void	decrement_tex(int step)
+// {	
+// 	if (g_data.hit.side == NORTH)
+// 		g_data.sprites[0].adr -= step * 4;
+// 	if (g_data.hit.side == SOUTH)
+// 		g_data.sprites[1].adr -= step * 4;
+// 	if (g_data.hit.side == EAST)
+// 		g_data.sprites[2].adr -= step * 4;
+// 	if (g_data.hit.side == WEST)
+// 		g_data.sprites[3].adr -= step * 4;
+// }
 
 static int	ft_size(void)
 {
@@ -233,54 +270,6 @@ static int	ft_size(void)
 	fisheye *= 28 * PI / 180;
 	correc = (double)g_data.hit.d * cos(fisheye);
 	return (floor(H / correc));
-}
-
-static void	jump_line_tex(int tex, int step)
-{
-	if (tex == NORTH)
-		g_data.sprites[0].adr += 1024 * (g_data.sprites[0].bpp / 8) * step;
-	if (tex == SOUTH)
-		g_data.sprites[1].adr += 1024 * (g_data.sprites[1].bpp / 8) * step;
-	if (tex == EAST)
-		g_data.sprites[2].adr += 1024 * (g_data.sprites[2].bpp / 8) * step;
-	if (tex == WEST)
-		g_data.sprites[3].adr += 1024 * (g_data.sprites[3].bpp / 8) * step;
-}
-
-static void	jump_line_reverse_tex(int tex, int step)
-{	
-	if (tex == NORTH)
-		g_data.sprites[0].adr -= 1024 * (g_data.sprites[0].bpp / 8) * step;// * (1024 / step);
-	if (tex == SOUTH)
-		g_data.sprites[1].adr -= 1024 * (g_data.sprites[1].bpp / 8) * step;// * (1024 / step);
-	if (tex == EAST)
-		g_data.sprites[2].adr -= 1024 * (g_data.sprites[2].bpp / 8) * step;// * (1024 / step);
-	if (tex == WEST)
-		g_data.sprites[3].adr -= 1024 * (g_data.sprites[3].bpp / 8) * step;// * (1024 / step);
-}
-
-static void	increment_tex(int tex, int step)
-{	
-	if (tex == NORTH)
-		g_data.sprites[0].adr += 4 * step;
-	if (tex == SOUTH)
-		g_data.sprites[1].adr += 4 * step;
-	if (tex == EAST)
-		g_data.sprites[2].adr += 4 * step;
-	if (tex == WEST)
-		g_data.sprites[3].adr += 4 * step;
-}
-
-static void	decrement_tex(int tex, int step)
-{	
-	if (tex == NORTH)
-		g_data.sprites[0].adr -= step * 4;
-	if (tex == SOUTH)
-		g_data.sprites[1].adr -= step * 4;
-	if (tex == EAST)
-		g_data.sprites[2].adr -= step * 4;
-	if (tex == WEST)
-		g_data.sprites[3].adr -= step * 4;
 }
 
 // static void	mod_four(void)

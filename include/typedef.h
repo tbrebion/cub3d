@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/22 14:51:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:28:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define H 1440
-#define W 2560
+#define H 1080//1440
+#define W 1920//2560
 #define TEX_S 1024
 // #define TEX_H 1024
 

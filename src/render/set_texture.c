@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:11:53 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 20:53:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:58:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,18 @@ void	pixel_in_img(int color)
 	*(int *)g_data.img.adr = color;
 }
 
-// int	text_in_img(int tex/* , int x, int y */)
-// {
-// 	int	color;
+void	set_texture(char *adr_spr[4])
+{
+	adr_spr[0] = g_data.sprites[0].adr;
+	adr_spr[1] = g_data.sprites[1].adr;
+	adr_spr[2] = g_data.sprites[2].adr;
+	adr_spr[3] = g_data.sprites[3].adr;	
+}
 
-// 	color = 0;
-// 	if (tex == 0)
-// 		color = tex_n_to_int();
-// 	else if (tex == 1)
-// 		color = tex_s_to_int();
-// 	else if (tex == 2)
-// 		color = tex_e_to_int();
-// 		// // /* color = */*(int *)(g_data.img.adr + ((x + y * W) * g_data.img.bpp)) = color;
-// 	else if (tex == 3)
-// 		color = tex_w_to_int();
-// 	// /* color = */*(int *)(g_data.img.adr + ((x + y * W) * g_data.img.bpp)) = color;
-// 	// pixel_in_img(color);
-// 	return (color);
-// }
+void	reset_texture(char *adr_spr[4])
+{
+	g_data.sprites[0].adr = adr_spr[0];
+	g_data.sprites[1].adr = adr_spr[1];
+	g_data.sprites[2].adr = adr_spr[2];
+	g_data.sprites[3].adr = adr_spr[3];	
+}
