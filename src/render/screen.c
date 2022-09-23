@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/23 15:07:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:11:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void draw_wall(int color/* , int y */);
 static void	jump_line_tex(int step);
 static void	jump_line_reverse_tex(int step);
 static void	increment_tex(int step);
-static void	decrement_tex(int step);
+// static void	decrement_tex(int step);
 // static void	mod_four(void);
 
 void	ray_ver(void)
@@ -148,13 +148,14 @@ void	screen_loop(void)
 		if (tmp >= 1024)
 		{
 			tmp = 0;
-			decrement_tex(tmp);
+			// decrement_tex(tmp);
+			reset_texture(adr_spr);
 		}
 	}
 	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
 	tmp = 0;
-	reset_texture(adr_spr);	
+	reset_texture(adr_spr);
 }
 
 void draw_line(double step)
@@ -249,17 +250,17 @@ static void	increment_tex(int step)
 		g_data.sprites[3].adr += 4 * step;
 }
 
-static void	decrement_tex(int step)
-{	
-	if (g_data.hit.side == NORTH)
-		g_data.sprites[0].adr -= step * 4;
-	if (g_data.hit.side == SOUTH)
-		g_data.sprites[1].adr -= step * 4;
-	if (g_data.hit.side == EAST)
-		g_data.sprites[2].adr -= step * 4;
-	if (g_data.hit.side == WEST)
-		g_data.sprites[3].adr -= step * 4;
-}
+// static void	decrement_tex(int step)
+// {	
+// 	if (g_data.hit.side == NORTH)
+// 		g_data.sprites[0].adr -= step * 4;
+// 	if (g_data.hit.side == SOUTH)
+// 		g_data.sprites[1].adr -= step * 4;
+// 	if (g_data.hit.side == EAST)
+// 		g_data.sprites[2].adr -= step * 4;
+// 	if (g_data.hit.side == WEST)
+// 		g_data.sprites[3].adr -= step * 4;
+// }
 
 static double	ft_size(void)
 {
