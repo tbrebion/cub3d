@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/23 12:28:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:08:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ typedef struct	s_utils
 	int			max_len;
 	char		**file;
 	t_params	params;
-	int			line_height;
-	int			step;
+	double		line_height;
+	double		step;
 }	t_utils;
 
 typedef struct	s_dist

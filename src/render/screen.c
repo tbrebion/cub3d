@@ -6,18 +6,18 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/23 14:17:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:07:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	ft_size(void);
+static double ft_size(void);
 static void draw_wall(int color/* , int y */);
 static void	jump_line_tex(int step);
 static void	jump_line_reverse_tex(int step);
 static void	increment_tex(int step);
-// static void	decrement_tex(int step);
+static void	decrement_tex(int step);
 // static void	mod_four(void);
 
 void	ray_ver(void)
@@ -144,12 +144,12 @@ void	screen_loop(void)
 		g_data.ray.i++;
 		g_data.img.adr += 4;
 		increment_tex(step);
-		tmp++;
-		// if (tmp >= 1024)
-		// {
-			// tmp = 0;
-			// decrement_tex(tmp);
-		// }
+		tmp += step;
+		if (tmp >= 1024)
+		{
+			tmp = 0;
+			decrement_tex(tmp);
+		}
 	}
 	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
@@ -178,14 +178,14 @@ void draw_line(double step)
 		else if (y >= round(i) && y <= round(j))
 		{
 			draw_wall(color);
-			i++;
+			// i++;
 			jump_line_tex(step);
 			tmp += step;			
-			if (tmp >= 1024)
-			{
-				jump_line_reverse_tex(tmp);
-				tmp = 0;
-			}
+			// if (tmp >= 1024)
+			// {
+				// jump_line_reverse_tex(tmp);
+				// tmp = 0;
+			// }
 		}
 		else
 		{
@@ -196,7 +196,7 @@ void draw_line(double step)
 		g_data.img.adr += W * 4;
 	}
 	jump_line_reverse_tex(tmp);
-	tmp = 0;	
+	tmp = 0;
 	g_data.img.adr -= H * (W * 4);
 }
 
@@ -249,25 +249,25 @@ static void	increment_tex(int step)
 		g_data.sprites[3].adr += 4 * step;
 }
 
-// static void	decrement_tex(int step)
-// {	
-// 	if (g_data.hit.side == NORTH)
-// 		g_data.sprites[0].adr -= step * 4;
-// 	if (g_data.hit.side == SOUTH)
-// 		g_data.sprites[1].adr -= step * 4;
-// 	if (g_data.hit.side == EAST)
-// 		g_data.sprites[2].adr -= step * 4;
-// 	if (g_data.hit.side == WEST)
-// 		g_data.sprites[3].adr -= step * 4;
-// }
+static void	decrement_tex(int step)
+{	
+	if (g_data.hit.side == NORTH)
+		g_data.sprites[0].adr -= step * 4;
+	if (g_data.hit.side == SOUTH)
+		g_data.sprites[1].adr -= step * 4;
+	if (g_data.hit.side == EAST)
+		g_data.sprites[2].adr -= step * 4;
+	if (g_data.hit.side == WEST)
+		g_data.sprites[3].adr -= step * 4;
+}
 
-static int	ft_size(void)
+static double	ft_size(void)
 {
 	double	correc;
 	double	fisheye;
 
 	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
-	fisheye *= 28 * PI / 180;
+	fisheye *= 30 * PI / 180;
 	correc = (double)g_data.hit.d * cos(fisheye);
 	return (floor(H / correc));
 }
