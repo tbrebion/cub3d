@@ -6,50 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 16:21:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:30:42 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-/* ???
-EST CE QUE ON AJOUTE UNE SECURITE AU MOMENT DU HANDLER POUR VERIFIER
-LE PATH ET SON OUVERTURE
-??? */
-
-void	NO_handler(char *str)
-{
-	if (g_data.utils.params.NO_path)
-		ft_error("Texture defined multiple times");
-	del_last_backslash_n(str);
-	g_data.utils.params.NO_path = str;
-}
-
-void	SO_handler(char *str)
-{
-	if (g_data.utils.params.SO_path)
-		ft_error("Texture defined multiple times");
-	del_last_backslash_n(str);
-	g_data.utils.params.SO_path = str;
-}
-
-void	WE_handler(char *str)
-{
-	if (g_data.utils.params.WE_path)
-		ft_error("Texture defined multiple times");
-	del_last_backslash_n(str);
-	g_data.utils.params.WE_path = str;
-}
-
-void	EA_handler(char *str)
-{
-	if (g_data.utils.params.EA_path)
-		ft_error("Texture defined multiple times");
-	del_last_backslash_n(str);
-	g_data.utils.params.EA_path = str;
-}
-
-void	F_handler(char *str)
+void	f_handler(char *str)
 {
 	char	**split;
 	int		i;
@@ -72,7 +35,7 @@ void	F_handler(char *str)
 	}
 }
 
-void	C_handler(char *str)
+void	c_handler(char *str)
 {
 	char	**split;
 	int		i;
