@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 19:16:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:48:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,6 @@ void	draw_line(double step)
 
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
-	printf("\ni = %f\nj = %f\nj - i = %f\n",i, j, j - i);
 	y = 0;
 	while (y < H)
 	{

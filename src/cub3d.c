@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 20:53:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:19:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,6 @@ static void	init(void)
 	g_data.hit.x = 0;
 	g_data.hit.y = 0;
 	g_data.hit.d = 0;
-	// g_data.wall.count = 0;
-	// g_data.sprites[0].count = 0;
-	// g_data.sprites[1].count = 0;
-	// g_data.sprites[2].count = 0;
-	// g_data.sprites[3].count = 0;
 }
 
 void	player_mini_map(void)

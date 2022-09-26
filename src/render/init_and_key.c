@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 14:37:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:44:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_key(int keysym)
 	screen_loop();
 	draw();
 	player_mini_map();
+	printf("\nposx : %f\nposy %f\n\n", g_data.pos.x, g_data.pos.y);
 	return (1);
 }
 
