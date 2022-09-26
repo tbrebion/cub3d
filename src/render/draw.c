@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:27:15 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/13 15:57:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:35:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ void	draw(void)
 			if (g_data.map.tab[i][j] == '0' || player_pos(g_data.map.tab[i][j]))
 				draw_help_dos(x, y);
 			x += SIZE;
-			j++;	
+			j++;
 		}
 		x = 0;
 		y += SIZE;
 		j = 0;
 		i++;
 	}
-	
 }
 
 static void	draw_help(int x, int y)

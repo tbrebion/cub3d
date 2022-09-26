@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/23 14:07:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:41:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ int		tex_e_to_int(void);
 int		tex_w_to_int(void);
 void	set_texture(char *adr_spr[4]);
 void	reset_texture(char *adr_spr[4]);
-
+void	jump_line_tex(int step);
+void	jump_line_reverse_tex(int step);
+void	increment_tex(int step);
+void	decrement_tex(int step);
 
 #endif

@@ -6,32 +6,29 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 14:15:10 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:43:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static double ft_size(void);
-static void draw_wall(int color/* , int y */);
-static void	jump_line_tex(int step);
-static void	jump_line_reverse_tex(int step);
-static void	increment_tex(int step);
-static void	decrement_tex(int step);
-// static void	mod_four(void);
+static double	ft_size(void);
+static void		draw_wall(int color);
 
 void	ray_ver(void)
 {
-	double 	x;
-	double 	y;
+	double	x;
+	double	y;
 
 	x = floor(g_data.pos.x) + g_data.ray.v;
 	y = g_data.pos.y + (x - g_data.pos.x) * (g_data.ray.y / g_data.ray.x);
 	while ((int)floor(y) > 0 && (int)floor(y) < 1000)
 	{
-		if ((int)floor(y) > g_data.map.h || (int)(x - 1 + g_data.ray.v) > g_data.map.w)
-			break;
-		if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == '1' || g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == ' ')
+		if ((int)floor(y) > g_data.map.h || \
+		(int)(x - 1 + g_data.ray.v) > g_data.map.w)
+			break ;
+		if (g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == '1'\
+		|| g_data.map.tab[(int)floor(y)][(int)(x - 1 + g_data.ray.v)] == ' ')
 		{
 			g_data.hit.x = x;
 			g_data.hit.y = y;
@@ -57,9 +54,11 @@ void	ray_hor(void)
 	x = g_data.pos.x + (y - g_data.pos.y) * (g_data.ray.x / g_data.ray.y);
 	while ((int)floor(x) > 0 && (int)floor(x) < 1000)
 	{
-		if ((int)(y - 1 + g_data.ray.w) > g_data.map.h || (int)floor(x) > g_data.map.w)
-			break;
-		if (g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == '1' || g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == ' ')
+		if ((int)(y - 1 + g_data.ray.w) > g_data.map.h || \
+		(int)floor(x) > g_data.map.w)
+			break ;
+		if (g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == '1' \
+		|| g_data.map.tab[(int)(y - 1 + g_data.ray.w)][(int)floor(x)] == ' ')
 		{
 			if (g_data.hit.d > hypot(x - g_data.pos.x, y - g_data.pos.y))
 			{
@@ -87,18 +86,20 @@ void	ft_dir(void)
 		g_data.ray.w = 0;
 }
 
-int which_side(void)
+int	which_side(void)
 {
 	static int	tmp_side = 0;
 
-	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) < fabs((int)round(g_data.hit.x) - g_data.hit.x))
+	if (fabs((int)round(g_data.hit.y) - g_data.hit.y) \
+	< fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
 		if (g_data.pos.y > g_data.hit.y)
 			tmp_side = NORTH;
 		if (g_data.pos.y < g_data.hit.y)
 			tmp_side = SOUTH;
 	}
-	else if (fabs((int)round(g_data.hit.y) - g_data.hit.y) > fabs((int)round(g_data.hit.x) - g_data.hit.x))
+	else if (fabs((int)round(g_data.hit.y) - g_data.hit.y) \
+	> fabs((int)round(g_data.hit.x) - g_data.hit.x))
 	{
 		if (g_data.pos.x > g_data.hit.x)
 			tmp_side = WEST;
@@ -125,11 +126,12 @@ void	ray_rotate(void)
 void	screen_loop(void)
 {
 	static int		tmp = 0;
-	char 			*adr_spr[4];
+	char			*adr_spr[4];
 	int				step;
-		
+
 	set_texture(adr_spr);
-	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, &g_data.img.ll, &g_data.img.end);
+	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, \
+	&g_data.img.ll, &g_data.img.end);
 	while (g_data.ray.i < W)
 	{
 		ray_rotate();
@@ -142,9 +144,6 @@ void	screen_loop(void)
 		step = 1024.00 / (g_data.wall.bot - g_data.wall.top);
 		if (step == 0)
 			step = 1;
-		printf("\n%d\n", step);
-		// if (1024 % (int)(g_data.utils.line_height / 2))
-			// step += (1024 % (int)(g_data.utils.line_height / 2));
 		draw_line(step);
 		g_data.ray.i++;
 		g_data.img.adr += 4;
@@ -154,20 +153,20 @@ void	screen_loop(void)
 		{
 			tmp = 0;
 			decrement_tex(tmp);
-			// reset_texture(adr_spr);
 		}
 	}
-	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, g_data.img.ptr, 0, 0);
+	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, \
+	g_data.img.ptr, 0, 0);
 	g_data.ray.i = 0;
 	tmp = 0;
 	reset_texture(adr_spr);
 }
 
-void draw_line(double step)
+void	draw_line(double step)
 {
-	double	i;
-	double	j;
-	int	y;
+	double		i;
+	double		j;
+	int			y;
 	static int	color = 0;
 	static int	tmp = 0;
 
@@ -178,14 +177,15 @@ void draw_line(double step)
 	{
 		if (y < i)
 		{
-			color = create_trgb(00, g_data.utils.params.colors_c[0], g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
+			color = create_trgb(00, g_data.utils.params.colors_c[0], \
+			g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
 			pixel_in_img(color);
 		}
 		else if (y >= round(i) && y <= round(j))
 		{
 			draw_wall(color);
 			jump_line_tex(step);
-			tmp += step;			
+			tmp += step;
 			if (tmp >= 1024)
 			{
 				jump_line_reverse_tex(tmp);
@@ -194,7 +194,8 @@ void draw_line(double step)
 		}
 		else
 		{
-			color = create_trgb(00, g_data.utils.params.colors_f[0], g_data.utils.params.colors_f[1], g_data.utils.params.colors_f[2]);
+			color = create_trgb(00, g_data.utils.params.colors_f[0], \
+			g_data.utils.params.colors_f[1], g_data.utils.params.colors_f[2]);
 			pixel_in_img(color);
 		}
 		y++;
@@ -205,7 +206,7 @@ void draw_line(double step)
 	g_data.img.adr -= H * (W * 4);
 }
 
-static void draw_wall(int color)
+static void	draw_wall(int color)
 {
 	if (g_data.hit.side == NORTH)
 		color = tex_n_to_int();
@@ -216,54 +217,6 @@ static void draw_wall(int color)
 	if (g_data.hit.side == WEST)
 		color = tex_w_to_int();
 	pixel_in_img(color);
-}
-
-static void	jump_line_tex(int step)
-{
-	if (g_data.hit.side == NORTH)
-		g_data.sprites[0].adr += 1024 * (g_data.sprites[0].bpp / 8) * step;
-	if (g_data.hit.side == SOUTH)
-		g_data.sprites[1].adr += 1024 * (g_data.sprites[1].bpp / 8) * step;
-	if (g_data.hit.side == EAST)
-		g_data.sprites[2].adr += 1024 * (g_data.sprites[2].bpp / 8) * step;
-	if (g_data.hit.side == WEST)
-		g_data.sprites[3].adr += 1024 * (g_data.sprites[3].bpp / 8) * step;
-}
-
-static void	jump_line_reverse_tex(int step)
-{	
-	if (g_data.hit.side == NORTH)
-		g_data.sprites[0].adr -= 1024 * (g_data.sprites[0].bpp / 8) * step;
-	if (g_data.hit.side == SOUTH)
-		g_data.sprites[1].adr -= 1024 * (g_data.sprites[1].bpp / 8) * step;
-	if (g_data.hit.side == EAST)
-		g_data.sprites[2].adr -= 1024 * (g_data.sprites[2].bpp / 8) * step;
-	if (g_data.hit.side == WEST)
-		g_data.sprites[3].adr -= 1024 * (g_data.sprites[3].bpp / 8) * step;
-}
-
-static void	increment_tex(int step)
-{	
-	if (g_data.hit.side == NORTH)
-		g_data.sprites[0].adr += 4 * step;
-	if (g_data.hit.side == SOUTH)
-		g_data.sprites[1].adr += 4 * step;
-	if (g_data.hit.side == EAST)
-		g_data.sprites[2].adr += 4 * step;
-	if (g_data.hit.side == WEST)
-		g_data.sprites[3].adr += 4 * step;
-}
-
-static void	decrement_tex(int step)
-{	
-	if (g_data.hit.side == NORTH)
-		g_data.sprites[0].adr -= step * 4;
-	if (g_data.hit.side == SOUTH)
-		g_data.sprites[1].adr -= step * 4;
-	if (g_data.hit.side == EAST)
-		g_data.sprites[2].adr -= step * 4;
-	if (g_data.hit.side == WEST)
-		g_data.sprites[3].adr -= step * 4;
 }
 
 static double	ft_size(void)
