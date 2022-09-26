@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 13:46:11 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:15:10 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,14 +184,13 @@ void draw_line(double step)
 		else if (y >= round(i) && y <= round(j))
 		{
 			draw_wall(color);
-			// i++;
 			jump_line_tex(step);
 			tmp += step;			
-			// if (tmp >= 1024)
-			// {
-				// jump_line_reverse_tex(tmp);
-				// tmp = 0;
-			// }
+			if (tmp >= 1024)
+			{
+				jump_line_reverse_tex(tmp);
+				tmp = 0;
+			}
 		}
 		else
 		{
