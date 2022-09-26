@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 19:15:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:16:33 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void	draw_line(double step)
 				jump_line_tex(step);
 				tmp += step;
 				i++;
-			}			
+			}
 			draw_wall(color);
 			jump_line_tex(step);
 			tmp += step;
