@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:27 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 14:35:05 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:35:21 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 static void	check_arg(int ac, char **av);
 static void	init_pos(void);
 static void	get_dir(char c);
-
-////////////////////
-// static void	print_map(char **map);
-// static void	print_file(char **file);
-// static void	print_params(t_params params);
-////////////////////
 
 void	check_init_file(int ac, char **av)
 {
@@ -108,39 +102,3 @@ static void	get_dir(char c)
 	else
 		g_data.dir.y *= 1;
 }
-
-// static void	print_file(char **file)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	printf("////////////////////////////////\
-// ///////////////////////////////////////////////////\n");
-// 	while (file[++i])
-// 		printf("%s", file[i]);
-// 	printf("\n////////////////////////////////\
-// ///////////////////////////////////////////////////\n");
-// }
-
-// static void	print_map(char **map)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	printf("////////////////////////////////\
-// ///////////////////////////////////////////////////\n");
-// 	while (map[++i])
-// 		printf("%s1\n", map[i]);
-// 	printf("////////////////////////////////\
-// ///////////////////////////////////////////////////\n");
-// }
-
-// static void	print_params(t_params params)
-// {
-// 	printf("NO_path = [%s]\n", params.NO_path);
-// 	printf("SO_path = [%s]\n", params.SO_path);
-// 	printf("WE_path = [%s]\n", params.WE_path);
-// 	printf("EA_path = [%s]\n", params.EA_path);
-// 	printf("colors_f = %d,%d,%d\n", params.colors_f[0], params.colors_f[1], params.colors_f[2]);
-// 	printf("colors_c = %d,%d,%d\n", params.colors_c[0], params.colors_c[1], params.colors_c[2]);
-// }
