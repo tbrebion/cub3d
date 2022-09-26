@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 17:43:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:15:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ void	screen_loop(void)
 {
 	static int		tmp = 0;
 	char			*adr_spr[4];
-	int				step;
+	double			pourcent;
+	double			step;
 
 	set_texture(adr_spr);
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, \
@@ -141,10 +142,9 @@ void	screen_loop(void)
 		g_data.utils.line_height = ft_size();
 		g_data.wall.top = (H / 2) - (g_data.utils.line_height / 2);
 		g_data.wall.bot = (H / 2) + (g_data.utils.line_height / 2);
-		step = 1024.00 / (g_data.wall.bot - g_data.wall.top);
-		// step = (int)round(1024 * (100 / (g_data.wall.bot - g_data.wall.top)));
-		// printf("\nstep %d\n", step);
-		if (step == 0)
+		pourcent = ((g_data.wall.bot - g_data.wall.top) * 100 / 1024);
+		step = round((1024.00 / pourcent) / 10.00);
+		if (step <= 0 || pourcent >= 100)
 			step = 1;
 		draw_line(step);
 		g_data.ray.i++;
@@ -154,7 +154,7 @@ void	screen_loop(void)
 		if (tmp >= 1024)
 		{
 			tmp = 0;
-			decrement_tex(tmp);
+			reset_texture(adr_spr);
 		}
 	}
 	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, \
@@ -174,6 +174,7 @@ void	draw_line(double step)
 
 	i = g_data.wall.top;
 	j = g_data.wall.bot;
+	printf("\ni = %f\nj = %f\nj - i = %f\n",i, j, j - i);
 	y = 0;
 	while (y < H)
 	{
@@ -185,14 +186,25 @@ void	draw_line(double step)
 		}
 		else if (y >= round(i) && y <= round(j))
 		{
+			while (i < 0)
+			{			
+				if (tmp >= 1024)
+				{
+					jump_line_reverse_tex(tmp);
+					tmp = 0;
+				}
+				jump_line_tex(step);
+				tmp += step;
+				i++;
+			}			
 			draw_wall(color);
 			jump_line_tex(step);
 			tmp += step;
-			// if (tmp >= 1024)
-			// {
-				// jump_line_reverse_tex(tmp);
-				// tmp = 0;
-			// }
+			if (tmp >= 1024)
+			{
+				jump_line_reverse_tex(tmp);
+				tmp = 0;
+			}
 		}
 		else
 		{
