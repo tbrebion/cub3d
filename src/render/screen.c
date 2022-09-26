@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/23 17:11:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:28:20 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ void	screen_loop(void)
 		g_data.wall.top = (H / 2) - (g_data.utils.line_height / 2);
 		g_data.wall.bot = (H / 2) + (g_data.utils.line_height / 2);
 		step = 1024.00 / (g_data.wall.bot - g_data.wall.top);
+		// if (1024 % (int)(g_data.utils.line_height / 2))
+			// step += (1024 % (int)(g_data.utils.line_height / 2));
 		draw_line(step);
 		g_data.ray.i++;
 		g_data.img.adr += 4;
