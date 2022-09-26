@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:24:37 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/20 14:31:44 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:21:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	F_handler(char *str)
 	i = 0;
 	while (i < 3)
 	{
+		printf("color value #%d = %d\n", i, ft_atoi(split[i]));
 		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
-			ft_error("Error in game parameters (colors)");
+			ft_error("Error in game parameters (colors value)");
 		g_data.utils.params.colors_f[i] = ft_atoi(split[i]);
 		i++;
 	}
