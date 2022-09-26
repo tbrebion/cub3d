@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:50:18 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 19:19:21 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:50:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,22 @@ static void	init(void)
 
 void	player_mini_map(void)
 {
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) + 1, g_data.pos.y * SIZE, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) + 2, g_data.pos.y * SIZE, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) - 1, g_data.pos.y * SIZE, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, (g_data.pos.x * SIZE) - 2, g_data.pos.y * SIZE, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 2, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
-	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, g_data.pos.x * SIZE, (g_data.pos.y * SIZE) - 2, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		g_data.pos.x * SIZE, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		(g_data.pos.x * SIZE) + 1, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		(g_data.pos.x * SIZE) + 2, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		(g_data.pos.x * SIZE) - 1, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		(g_data.pos.x * SIZE) - 2, g_data.pos.y * SIZE, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 2, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		g_data.pos.x * SIZE, (g_data.pos.y * SIZE) + 1, 0x00FFFFFF);
+	mlx_pixel_put(g_data.mlx.ptr, g_data.win.ptr, \
+		g_data.pos.x * SIZE, (g_data.pos.y * SIZE) - 2, 0x00FFFFFF);
 }

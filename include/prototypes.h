@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:29 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/26 19:14:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:53:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,7 @@ void	jump_line_tex(int step);
 void	jump_line_reverse_tex(int step);
 void	increment_tex(int step);
 void	decrement_tex(int step);
+void	draw_wall(int color);
+double	ft_size(void);
 
 #endif
