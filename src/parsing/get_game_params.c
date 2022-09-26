@@ -6,15 +6,12 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/26 14:39:08 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:39:59 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	set_empty_params(void);
-static int	detect_param(char *str);
-static int	is_only_ones(char *str);
 static char	**get_header(void);
 static void	param_handler(char *str, int param);
 
