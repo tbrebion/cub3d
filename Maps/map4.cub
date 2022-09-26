@@ -1,9 +1,9 @@
-SO     ./render/so.xpm
-NO     ./render/no.xpm
-WE     ./render/we.xpm
-EA     ./render/ea.xpm
-F   100,200,300
+SO     ./images/south.xpm
+NO     ./images/north.xpm
+WE     ./images/west.xpm
+EA     ./images/east.xpm
 C   200,100,190
+F   100,200,200
 
 
 
