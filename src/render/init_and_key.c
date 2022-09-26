@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/20 14:33:53 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:01:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ int	ft_key(int keysym)
 
 static void	ft_ws(double d)
 {
+	// if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x + d * (g_data.dir.x * SPEED / 100))] == '1')
+	// {
+	// 	g_data.pos.x -= d * (g_data.dir.x * SPEED / 100);
+	// 	return ;
+	// }
+	// if (g_data.map.tab[(int)floor(g_data.pos.y + d * (g_data.dir.y * SPEED / 100))][(int)floor(g_data.pos.x)] == '1')
+	// {		
+	// 	g_data.pos.y -= d * (g_data.dir.y * SPEED / 100);
+	// 	return ;
+	// }
 	g_data.pos.x += d * (g_data.dir.x * SPEED / 100);
 	if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x)] == '1')
 		g_data.pos.x -= d * (g_data.dir.x * SPEED / 100);
@@ -59,6 +69,16 @@ static void	ft_ws(double d)
 
 static void	ft_ad(double d)
 {
+	// if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x - d * (g_data.dir.y * SPEED / 100))] == '1')
+	// {
+	// 	g_data.pos.x += d * (g_data.dir.y * SPEED / 100);
+	// 	return ;
+	// }
+	// if (g_data.map.tab[(int)floor(g_data.pos.y + d * (g_data.dir.x * SPEED / 100))][(int)floor(g_data.pos.x)] == '1')
+	// {		
+	// 	g_data.pos.y += d * (g_data.dir.x * SPEED / 100);
+	// 	return ;
+	// }
 	g_data.pos.x -= d * (g_data.dir.y * SPEED / 100);
 	if (g_data.map.tab[(int)floor(g_data.pos.y)][(int)floor(g_data.pos.x)] == '1')
 		g_data.pos.x += d * (g_data.dir.y * SPEED / 100);
