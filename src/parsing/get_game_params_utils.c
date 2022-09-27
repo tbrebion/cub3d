@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_game_params_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:37:47 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/26 14:39:40 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:19:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	is_only_ones(char *str)
 
 void	set_empty_params(void)
 {
-	g_data.utils.params.EA_path = NULL;
-	g_data.utils.params.NO_path = NULL;
-	g_data.utils.params.SO_path = NULL;
-	g_data.utils.params.WE_path = NULL;
+	g_data.utils.params.ea_path = NULL;
+	g_data.utils.params.no_path = NULL;
+	g_data.utils.params.so_path = NULL;
+	g_data.utils.params.we_path = NULL;
 	g_data.utils.params.colors_c[0] = -1;
 	g_data.utils.params.colors_f[0] = -1;
 	g_data.utils.params.colors_c[1] = -1;

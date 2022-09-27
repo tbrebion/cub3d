@@ -47,6 +47,7 @@ SOURCES		+=                                		\
 		src/render/screen.c                      	\
 		src/render/screen_tex.c                  	\
 		src/render/draw.c                        	\
+		src/render/screen_utils.c                	\
 		src/render/screen_loop.c                 	\
 		src/render/texture_to_int.c              	\
 		src/render/init_and_key.c                	\

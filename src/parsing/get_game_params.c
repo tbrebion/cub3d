@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_game_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:21:33 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/26 17:39:59 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:19:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	get_game_params(void)
 			ft_error("Unexpected field in file");
 		i++;
 	}
-	if (!g_data.utils.params.EA_path || !g_data.utils.params.NO_path \
-		|| !g_data.utils.params.SO_path || !g_data.utils.params.WE_path \
+	if (!g_data.utils.params.ea_path || !g_data.utils.params.no_path \
+		|| !g_data.utils.params.so_path || !g_data.utils.params.we_path \
 		|| g_data.utils.params.colors_c[0] == -1 \
 		|| g_data.utils.params.colors_f[0] == -1 \
 		|| g_data.utils.params.colors_c[1] == -1 \

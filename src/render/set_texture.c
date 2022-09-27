@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:11:53 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 14:25:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:19:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	init_texture(void)
 {
 	g_data.sprites[0].ptr = mlx_xpm_file_to_image(g_data.mlx.ptr, \
-	g_data.utils.params.NO_path, &g_data.sprites[0].x, &g_data.sprites[0].y);
+	g_data.utils.params.no_path, &g_data.sprites[0].x, &g_data.sprites[0].y);
 	if (!g_data.sprites[0].ptr)
 		ft_error("texture NO not found");
 	g_data.sprites[1].ptr = mlx_xpm_file_to_image(g_data.mlx.ptr, \
-	g_data.utils.params.SO_path, &g_data.sprites[1].x, &g_data.sprites[1].y);
+	g_data.utils.params.so_path, &g_data.sprites[1].x, &g_data.sprites[1].y);
 	if (!g_data.sprites[1].ptr)
 		ft_error("texture SO not found");
 	g_data.sprites[2].ptr = mlx_xpm_file_to_image(g_data.mlx.ptr, \
-	g_data.utils.params.EA_path, &g_data.sprites[2].x, &g_data.sprites[2].y);
+	g_data.utils.params.ea_path, &g_data.sprites[2].x, &g_data.sprites[2].y);
 	if (!g_data.sprites[2].ptr)
 		ft_error("texture EA not found");
 	g_data.sprites[3].ptr = mlx_xpm_file_to_image(g_data.mlx.ptr, \
-	g_data.utils.params.WE_path, &g_data.sprites[3].x, &g_data.sprites[3].y);
+	g_data.utils.params.we_path, &g_data.sprites[3].x, &g_data.sprites[3].y);
 	if (!g_data.sprites[3].ptr)
 		ft_error("texture WE not found");
 	g_data.sprites[0].adr = mlx_get_data_addr(g_data.sprites[0].ptr, \

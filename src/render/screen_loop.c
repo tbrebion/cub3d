@@ -6,22 +6,40 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 20:52:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 20:53:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:12:12 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+static void		draw_line(double step);
+static void		loop(int tmp, char *adr_spr[4], double pourcent, double step);
+static int		draw_loop(double *i, double step, int color, int tmp);
+static void		draw_helper(int color, int sky_ground);
+
 void	screen_loop(void)
 {
-	static int		tmp = 0;
+	int				tmp;
 	char			*adr_spr[4];
 	double			pourcent;
 	double			step;
 
+	tmp = 0;
 	set_texture(adr_spr);
 	g_data.img.adr = mlx_get_data_addr(g_data.img.ptr, &g_data.img.bpp, \
 	&g_data.img.ll, &g_data.img.end);
+	pourcent = 0.0;
+	step = 0.0;
+	loop(tmp, adr_spr, pourcent, step);
+	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, \
+	g_data.img.ptr, 0, 0);
+	g_data.ray.i = 0;
+	tmp = 0;
+	reset_texture(adr_spr);
+}
+
+static void	loop(int tmp, char *adr_spr[4], double pourcent, double step)
+{	
 	while (g_data.ray.i < W)
 	{
 		ray_rotate();
@@ -46,14 +64,9 @@ void	screen_loop(void)
 			reset_texture(adr_spr);
 		}
 	}
-	mlx_put_image_to_window(g_data.mlx.ptr, g_data.win.ptr, \
-	g_data.img.ptr, 0, 0);
-	g_data.ray.i = 0;
-	tmp = 0;
-	reset_texture(adr_spr);
 }
 
-void	draw_line(double step)
+static void	draw_line(double step)
 {
 	double		i;
 	double		j;
@@ -67,39 +80,11 @@ void	draw_line(double step)
 	while (y < H)
 	{
 		if (y < i)
-		{
-			color = create_trgb(00, g_data.utils.params.colors_c[0], \
-			g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
-			pixel_in_img(color);
-		}
+			draw_helper(color, 1);
 		else if (y >= round(i) && y <= round(j))
-		{
-			while (i < 0)
-			{			
-				if (tmp >= 1024)
-				{
-					jump_line_reverse_tex(tmp);
-					tmp = 0;
-				}
-				jump_line_tex(step);
-				tmp += step;
-				i++;
-			}
-			draw_wall(color);
-			jump_line_tex(step);
-			tmp += step;
-			if (tmp >= 1024)
-			{
-				jump_line_reverse_tex(tmp);
-				tmp = 0;
-			}
-		}
+			tmp = draw_loop(&i, step, color, tmp);
 		else
-		{
-			color = create_trgb(00, g_data.utils.params.colors_f[0], \
-			g_data.utils.params.colors_f[1], g_data.utils.params.colors_f[2]);
-			pixel_in_img(color);
-		}
+			draw_helper(color, 2);
 		y++;
 		g_data.img.adr += W * 4;
 	}
@@ -108,26 +93,42 @@ void	draw_line(double step)
 	g_data.img.adr -= H * (W * 4);
 }
 
-void	draw_wall(int color)
+static int	draw_loop(double *i, double step, int color, int tmp)
 {
-	if (g_data.hit.side == NORTH)
-		color = tex_n_to_int();
-	if (g_data.hit.side == SOUTH)
-		color = tex_s_to_int();
-	if (g_data.hit.side == EAST)
-		color = tex_e_to_int();
-	if (g_data.hit.side == WEST)
-		color = tex_w_to_int();
-	pixel_in_img(color);
+	while ((*i) < 0)
+	{			
+		if (tmp >= 1024)
+		{
+			jump_line_reverse_tex(tmp);
+			tmp = 0;
+		}
+		jump_line_tex(step);
+		tmp += step;
+		(*i)++;
+	}
+	draw_wall(color);
+	jump_line_tex(step);
+	tmp += step;
+	if (tmp >= 1024)
+	{
+		jump_line_reverse_tex(tmp);
+		tmp = 0;
+	}
+	return (tmp);
 }
 
-double	ft_size(void)
+static void	draw_helper(int color, int sky_ground)
 {
-	double	correc;
-	double	fisheye;
-
-	fisheye = fabs((double)g_data.ray.i / (W / 2) - 1);
-	fisheye *= 30 * PI / 180;
-	correc = (double)g_data.hit.d * cos(fisheye);
-	return (floor(H / correc));
+	if (sky_ground == 1)
+	{
+		color = create_trgb(00, g_data.utils.params.colors_c[0], \
+		g_data.utils.params.colors_c[1], g_data.utils.params.colors_c[2]);
+		pixel_in_img(color);
+	}
+	else if (sky_ground == 2)
+	{		
+		color = create_trgb(00, g_data.utils.params.colors_f[0], \
+		g_data.utils.params.colors_f[1], g_data.utils.params.colors_f[2]);
+		pixel_in_img(color);
+	}
 }

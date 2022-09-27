@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 10:51:47 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/09/26 20:55:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:56:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ray_ver(void)
 	g_data.hit.x = g_data.pos.x;
 	g_data.hit.y = g_data.pos.y;
 	g_data.hit.d = 10000000;
-	g_data.hit.side = 0;
 }
 
 void	ray_hor(void)

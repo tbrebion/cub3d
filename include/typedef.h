@@ -6,35 +6,33 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:33:31 by flcarval          #+#    #+#             */
-/*   Updated: 2022/09/26 19:19:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:19:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
 # include "cub3d.h"
 
-#define SIZE 8
-#define SPEED 60
-#define TURN 0.15
-#define PI 3.141592653589793
-#define NORTH 1
-#define SOUTH 2
-#define EAST 3
-#define WEST 4
-#define H 720
-#define W 960
-#define TEX_S 1024
+# define SIZE 8
+# define SPEED 60
+# define TURN 0.15
+# define PI 3.141592653589793
+# define NORTH 1
+# define SOUTH 2
+# define EAST 3
+# define WEST 4
+# define H 720
+# define W 960
+# define TEX_S 1024
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void	*ptr;
 }	t_mlx;
 
-typedef struct	s_win
+typedef struct s_win
 {
 	void	*ptr;
 }	t_win;
@@ -50,7 +48,7 @@ typedef struct s_img
 	int		end;
 }	t_img;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**tab;
 	int		w;
@@ -63,13 +61,13 @@ typedef struct s_pos
 	double	y;
 }	t_pos;
 
-typedef struct	s_dir
+typedef struct s_dir
 {
 	double	x;
 	double	y;
 }	t_dir;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	x;
 	double	y;
@@ -78,7 +76,7 @@ typedef struct	s_ray
 	int		i;
 }	t_ray;
 
-typedef struct	s_hit
+typedef struct s_hit
 {
 	double	x;
 	double	y;
@@ -86,17 +84,17 @@ typedef struct	s_hit
 	int		side;
 }	t_hit;
 
-typedef struct	s_params
+typedef struct s_params
 {
-	char	*NO_path;
-	char	*SO_path;
-	char	*WE_path;
-	char	*EA_path;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
 	int		colors_f[3];
 	int		colors_c[3];
 }	t_params;
 
-typedef struct	s_utils
+typedef struct s_utils
 {
 	int			max_len;
 	char		**file;
@@ -105,7 +103,7 @@ typedef struct	s_utils
 	double		step;
 }	t_utils;
 
-typedef struct	s_dist
+typedef struct s_dist
 {
 	double	dist;
 	int		side;
@@ -117,7 +115,7 @@ typedef struct s_wall
 	double	bot;
 }	t_wall;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_mlx		mlx;
 	t_win		win;
