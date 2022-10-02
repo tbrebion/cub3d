@@ -6,3 +6,4 @@ This 42 common core's project is a way to discover ray casting. Ray casting is t
 
 ## Preview
 
+![Preview](/preview.gif)
