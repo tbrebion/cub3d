@@ -1,4 +1,4 @@
-# <p align="center">Cub3d - done in collab with [tbrebion](https://github.com/tbrebion) [![flcarval's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl1lmiew3000609l599o75f45/project/2748071)](https://github.com/JaeSeoKim/badge42)</p>
+# <p align="center">Cub3d - done in collab with [chozeur](https://github.com/chozeur) [![flcarval's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl1lmiew3000609l599o75f45/project/2748071)](https://github.com/JaeSeoKim/badge42)</p>
 
 ## Ray Casting
 This 42 common core's project is a way to discover ray casting. 
